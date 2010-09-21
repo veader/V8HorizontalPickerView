@@ -1,0 +1,20 @@
+//
+//  HorzPickerTestAppAppDelegate.h
+//  HorzPickerTestApp
+//
+//  Created by Shawn Veader on 9/20/10.
+//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface HorzPickerTestAppAppDelegate : NSObject <UIApplicationDelegate> {
+    UIWindow *window;
+	TestViewController *testView;
+}
+
+@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) TestViewController *testView;
+
+@end
+
