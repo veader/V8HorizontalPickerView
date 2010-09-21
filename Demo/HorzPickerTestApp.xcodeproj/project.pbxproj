@@ -31,6 +31,7 @@
 		765B8AB4124846E300BDE37E /* V8HorizontalPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = V8HorizontalPickerView.m; path = ../V8HorizontalPickerView.m; sourceTree = SOURCE_ROOT; };
 		76EFB41A124789F5003020A7 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		76EFB41B124789F5003020A7 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		76FB0D2712496F9100407B4A /* V8HorizontalPickerViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = V8HorizontalPickerViewProtocol.h; path = ../V8HorizontalPickerViewProtocol.h; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* HorzPickerTestApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HorzPickerTestApp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +52,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				76FB0D2712496F9100407B4A /* V8HorizontalPickerViewProtocol.h */,
 				765B8AB3124846E300BDE37E /* V8HorizontalPickerView.h */,
 				765B8AB4124846E300BDE37E /* V8HorizontalPickerView.m */,
 				76EFB41A124789F5003020A7 /* TestViewController.h */,

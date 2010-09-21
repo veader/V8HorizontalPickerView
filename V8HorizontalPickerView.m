@@ -7,6 +7,28 @@
 
 #import "V8HorizontalPickerView.h"
 
+#pragma mark -
+#pragma mark Internal Method Interface
+@interface V8HorizontalPickerView (InternalMethods)
+- (void)getNumberOfElementsFromDataSource;
+- (void)getElementWidthsFromDelegate;
+- (void)setTotalWidthOfScrollContent;
+
+- (UIView *)labelForForElementAtIndex:(NSInteger)index withTitle:(NSString *)title;
+- (CGRect)frameForElementAtIndex:(NSInteger)index;
+
+- (void)scrollToElementNearestToCenter;
+- (NSInteger)nearestElementToCenter;
+- (CGPoint)currentCenter;
+- (BOOL)scrolledPastEnds;
+
+- (NSInteger)offsetForElementAtIndex:(NSInteger)index;
+- (NSInteger)centerOfElementAtIndex:(NSInteger)index;
+@end
+
+
+#pragma mark -
+#pragma mark Implementation
 @implementation V8HorizontalPickerView : UIView
 
 @synthesize dataSource, delegate;
@@ -46,9 +68,6 @@
 }
 
 - (void)dealloc {
-	[dataSource release];
-	[delegate release];
-
 	[_scrollView release];
 	[elementWidths release];
 	[elementFont release];
@@ -99,6 +118,102 @@
 	}
 }
 
+#pragma mark -
+#pragma mark Getters and Setters
+- (void)setDelegate:(id)newDelegate {
+	if (delegate != newDelegate) {
+		[delegate release];
+		delegate = [newDelegate retain];
+		[self reloadData];
+	}
+}
+
+- (void)setDataSource:(id)newDataSource {
+	if (dataSource != newDataSource) {
+		[dataSource release];
+		dataSource = [newDataSource retain];
+		[self reloadData];
+	}
+}
+
+// allow the setting of this views background color to change the scroll view
+- (void)setBackgroundColor:(UIColor *)newColor {
+	[super setBackgroundColor:newColor];
+	_scrollView.backgroundColor = newColor;
+	self.theBackgroundColor = newColor;
+	// TODO: set all subviews as well?
+}
+
+#pragma mark -
+#pragma mark Reload Data Method
+- (void)reloadData {
+	scrollSizeHasBeenSet = NO;
+	dataHasBeenLoaded    = NO;
+
+	[self getNumberOfElementsFromDataSource];
+	[self getElementWidthsFromDelegate];
+	[self setTotalWidthOfScrollContent];
+
+	dataHasBeenLoaded = YES;
+}
+
+#pragma mark -
+#pragma mark Scroll To Element Method
+- (void)scrollToElement:(NSInteger)index animated:(BOOL)animate {
+	int x = [self centerOfElementAtIndex:index] - _scrollView.center.x;
+	[_scrollView setContentOffset:CGPointMake(x, 0) animated:animate];
+	currentSelectedIndex = index;
+
+	// notify delegate of the selected index
+	SEL delegateCall = @selector(horizontalPickerView:didSelectElementAtIndex:);
+	if (self.delegate && [self.delegate respondsToSelector:delegateCall]) {
+		[self.delegate horizontalPickerView:self didSelectElementAtIndex:index];
+	}
+}
+
+
+#pragma mark -
+#pragma mark Reusable View
+// TODO: use this
+- (UIView *)dequeueReusableView {
+    UIView *view = [reusableViews anyObject];
+    if (view) {
+        [[view retain] autorelease];
+        [reusableViews removeObject:view];
+    }
+    return view;
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	// set the current item under the center to "highlighted" or current
+	currentSelectedIndex = [self nearestElementToCenter];
+
+	// TODO: is there a way to stop them from scrolling past a point?
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+	// only do this if we aren't decelerating
+	if (!decelerate) {
+		[self scrollToElementNearestToCenter];
+	}
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+	// only do this if we're past the beginning or end
+	if ([self scrolledPastEnds]) {
+		[self scrollToElementNearestToCenter];
+	}
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+	[self scrollToElementNearestToCenter];
+}
+
+
+#pragma mark -
+#pragma mark View Creation (Internal Method)
 // create UILabel for this element.
 - (UIView *)labelForForElementAtIndex:(NSInteger)index withTitle:(NSString *)title {
 	CGRect labelFrame     = [self frameForElementAtIndex:index];
@@ -123,44 +238,7 @@
 }
 
 #pragma mark -
-#pragma mark Getters and Setters
-- (void)setDelegate:(id)newDelegate {
-	if (delegate != newDelegate) {
-		[delegate release];
-		delegate = [newDelegate retain];
-		[self reloadData];
-	}
-}
-
-- (void)setDataSource:(id)newDataSource {
-	if (dataSource != newDataSource) {
-		[dataSource release];
-		dataSource = [newDataSource retain];
-		[self reloadData];
-	}
-}
-
-- (void)reloadData {
-	scrollSizeHasBeenSet = NO;
-	dataHasBeenLoaded    = NO;
-
-	[self getNumberOfElementsFromDataSource];
-	[self getElementWidthsFromDelegate];
-	[self setTotalWidthOfScrollContent];
-
-	dataHasBeenLoaded = YES;
-}
-
-// allow the setting of this views background color to change the scroll view
-- (void)setBackgroundColor:(UIColor *)newColor {
-	[super setBackgroundColor:newColor];
-	_scrollView.backgroundColor = newColor;
-	self.theBackgroundColor = newColor;
-	// TODO: set all subviews as well?
-}
-
-#pragma mark -
-#pragma mark DataSource Calling Methods
+#pragma mark DataSource Calling Method (Internal Method)
 - (void)getNumberOfElementsFromDataSource {
 	SEL dataSourceCall = @selector(numberOfElementsInHorizontalPickerView:);
 	if (self.dataSource && [self.dataSource respondsToSelector:dataSourceCall]) {
@@ -169,7 +247,7 @@
 }
 
 #pragma mark -
-#pragma mark Delegate Calling Methods
+#pragma mark Delegate Calling Method (Internal Method)
 - (void)getElementWidthsFromDelegate {
 	SEL delegateCall = @selector(horizontalPickerView:widthForElementAtIndex:);
 	[elementWidths removeAllObjects];
@@ -182,7 +260,7 @@
 }
 
 #pragma mark -
-#pragma mark View Calculation and Manipulation Methods
+#pragma mark View Calculation and Manipulation Methods (Internal Methods)
 // what is the total width of the content area?
 - (void)setTotalWidthOfScrollContent {
 	NSInteger totalWidth = endsPadding;
@@ -233,18 +311,6 @@
 					  self.frame.size.height);
 }
 
-- (void)scrollToElement:(NSInteger)index {
-	int x = [self centerOfElementAtIndex:index] - _scrollView.center.x;
-	[_scrollView setContentOffset:CGPointMake(x, 0) animated:YES];
-	currentSelectedIndex = index;
-
-	// notify delegate of the selected index
-	SEL delegateCall = @selector(horizontalPickerView:didSelectElementAtIndex:);
-	if (self.delegate && [self.delegate respondsToSelector:delegateCall]) {
-		[self.delegate horizontalPickerView:self didSelectElementAtIndex:index];
-	}
-}
-
 // what is the center, relative to the content offset?
 - (CGPoint)currentCenter {
 	return CGPointMake(_scrollView.contentOffset.x + _scrollView.center.x, 
@@ -280,7 +346,7 @@
 
 // move scroll view to position nearest element under the center
 - (void)scrollToElementNearestToCenter {
-	[self scrollToElement:[self nearestElementToCenter]];
+	[self scrollToElement:[self nearestElementToCenter] animated:YES];
 }
 
 - (BOOL)scrolledPastEnds {
@@ -291,45 +357,6 @@
 		return YES;
 	}
 	return NO;
-}
-
-#pragma mark -
-#pragma mark Reusable View
-// TODO: use this
-- (UIView *)dequeueReusableView {
-    UIView *view = [reusableViews anyObject];
-    if (view) {
-        [[view retain] autorelease];
-        [reusableViews removeObject:view];
-    }
-    return view;
-}
-
-#pragma mark -
-#pragma mark UIScrollViewDelegate Methods
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-	// set the current item under the center to "highlighted" or current
-	currentSelectedIndex = [self nearestElementToCenter];
-
-	// TODO: is there a way to stop them from scrolling past a point?
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-	// only do this if we aren't decelerating
-	if (!decelerate) {
-		[self scrollToElementNearestToCenter];
-	}
-}
-
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-	// only do this if we're past the beginning or end
-	if ([self scrolledPastEnds]) {
-		[self scrollToElementNearestToCenter];
-	}
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-	[self scrollToElementNearestToCenter];
 }
 
 @end

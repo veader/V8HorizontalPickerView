@@ -68,11 +68,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	[pickerView scrollToElement:0];
+	[pickerView scrollToElement:0 animated:NO];
 }
 
 - (void)nextButtonClicked:(id)sender {
-	[pickerView scrollToElement:indexCount];
+	[pickerView scrollToElement:indexCount animated:NO];
 	indexCount += 1;
 	if ([titleArray count] <= indexCount) {
 		indexCount = 0;
