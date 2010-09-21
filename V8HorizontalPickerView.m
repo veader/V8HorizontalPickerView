@@ -15,15 +15,19 @@
 - (void)setTotalWidthOfScrollContent;
 - (void)updateScrollContentInset;
 
+- (void)addScrollView;
 - (UIView *)labelForForElementAtIndex:(NSInteger)index withTitle:(NSString *)title;
 - (CGRect)frameForElementAtIndex:(NSInteger)index;
 
+- (CGPoint)currentCenter;
 - (void)scrollToElementNearestToCenter;
 - (NSInteger)nearestElementToCenter;
-- (CGPoint)currentCenter;
+- (NSInteger)nearestElementToPoint:(CGPoint)point;
 
 - (NSInteger)offsetForElementAtIndex:(NSInteger)index;
 - (NSInteger)centerOfElementAtIndex:(NSInteger)index;
+
+- (void)scrollViewTapped:(UITapGestureRecognizer *)recognizer;
 @end
 
 
@@ -40,20 +44,7 @@
 		elementWidths = [[NSMutableArray array] retain];
 		reusableViews = [[NSMutableSet alloc] init];
 
-		_scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-		_scrollView.delegate = self;
-		_scrollView.scrollEnabled = YES;
-		_scrollView.scrollsToTop  = NO;
-		_scrollView.showsVerticalScrollIndicator   = NO;
-		_scrollView.showsHorizontalScrollIndicator = NO;
-		_scrollView.bouncesZoom  = NO;
-		_scrollView.alwaysBounceHorizontal = YES;
-		_scrollView.alwaysBounceVertical   = NO;
-		_scrollView.minimumZoomScale = 1.0; // setting min/max the same disables zooming
-		_scrollView.maximumZoomScale = 1.0;
-		_scrollView.contentInset = UIEdgeInsetsZero;
-		_scrollView.decelerationRate = 0.1; //UIScrollViewDecelerationRateNormal;
-		[self addSubview:_scrollView];
+		[self addScrollView];
 		
 		self.textColor = [UIColor blackColor];
 
@@ -206,7 +197,31 @@
 
 
 #pragma mark -
-#pragma mark View Creation (Internal Method)
+#pragma mark View Creation Methods (Internal Methods)
+- (void)addScrollView {
+	if (_scrollView == nil) {
+		_scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+		_scrollView.delegate = self;
+		_scrollView.scrollEnabled = YES;
+		_scrollView.scrollsToTop  = NO;
+		_scrollView.showsVerticalScrollIndicator   = NO;
+		_scrollView.showsHorizontalScrollIndicator = NO;
+		_scrollView.bouncesZoom  = NO;
+		_scrollView.alwaysBounceHorizontal = YES;
+		_scrollView.alwaysBounceVertical   = NO;
+		_scrollView.minimumZoomScale = 1.0; // setting min/max the same disables zooming
+		_scrollView.maximumZoomScale = 1.0;
+		_scrollView.contentInset = UIEdgeInsetsZero;
+		_scrollView.decelerationRate = 0.1; //UIScrollViewDecelerationRateNormal;
+		
+		UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTapped:)];
+		[_scrollView addGestureRecognizer:tapRecognizer];
+		[tapRecognizer release];
+		
+		[self addSubview:_scrollView];
+	}
+}
+
 // create UILabel for this element.
 - (UIView *)labelForForElementAtIndex:(NSInteger)index withTitle:(NSString *)title {
 	CGRect labelFrame     = [self frameForElementAtIndex:index];
@@ -325,13 +340,16 @@
 
 // what is the element nearest to the center of the view?
 - (NSInteger)nearestElementToCenter {
-	CGPoint center = [self currentCenter];
+	return [self nearestElementToPoint:[self currentCenter]];
+}
 
+// what is the element nearest to the given point?
+- (NSInteger)nearestElementToPoint:(CGPoint)point {
 	for (int i = 0; i < numberOfElements; i++) {
 		CGRect frame = [self frameForElementAtIndex:i];
-		if (CGRectContainsPoint(frame, center)) {
+		if (CGRectContainsPoint(frame, point)) {
 			return i;
-		} else if (center.x < frame.origin.x) {
+		} else if (point.x < frame.origin.x) {
 			// if the center is before this element, go back to last one,
 			//     unless we're at the beginning
 			if (i > 0) {
@@ -340,7 +358,7 @@
 				return 0;
 			}
 			break;
-		} else if (center.x > frame.origin.y) {
+		} else if (point.x > frame.origin.y) {
 			// if the center is past the last element, scroll to it
 			if (i == numberOfElements - 1) {
 				return i;
@@ -355,4 +373,12 @@
 	[self scrollToElement:[self nearestElementToCenter] animated:YES];
 }
 
+// use the gesture recognizer to slide to element under tap
+- (void)scrollViewTapped:(UITapGestureRecognizer *)recognizer {
+	if (recognizer.state == UIGestureRecognizerStateRecognized ) {
+		CGPoint tapLocation    = [recognizer locationInView:_scrollView];
+		NSInteger elementIndex = [self nearestElementToPoint:tapLocation];
+		[self scrollToElement:elementIndex animated:YES];
+	}
+}
 @end
