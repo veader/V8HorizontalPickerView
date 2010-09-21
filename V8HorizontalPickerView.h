@@ -59,6 +59,7 @@
 - (void)scrollToElementNearestToCenter;
 - (NSInteger)nearestElementToCenter;
 - (CGPoint)currentCenter;
+- (BOOL)scrolledPastEnds;
 
 - (NSInteger)offsetForElementAtIndex:(NSInteger)index;
 - (NSInteger)centerOfElementAtIndex:(NSInteger)index;

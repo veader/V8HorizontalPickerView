@@ -283,6 +283,16 @@
 	[self scrollToElement:[self nearestElementToCenter]];
 }
 
+- (BOOL)scrolledPastEnds {
+	CGPoint center = [self currentCenter];
+	CGRect firstFrame = [self frameForElementAtIndex:0];
+	CGRect lastFrame  = [self frameForElementAtIndex:numberOfElements - 1];
+	if (center.x < firstFrame.origin.x || center.x > lastFrame.origin.x) {
+		return YES;
+	}
+	return NO;
+}
+
 #pragma mark -
 #pragma mark Reusable View
 // TODO: use this
@@ -305,13 +315,20 @@
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+	// only do this if we aren't decelerating
 	if (!decelerate) {
 		[self scrollToElementNearestToCenter];
 	}
 }
 
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+	// only do this if we're past the beginning or end
+	if ([self scrolledPastEnds]) {
+		[self scrollToElementNearestToCenter];
+	}
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-	// TODO: is there a way we can slow this down?
 	[self scrollToElementNearestToCenter];
 }
 
