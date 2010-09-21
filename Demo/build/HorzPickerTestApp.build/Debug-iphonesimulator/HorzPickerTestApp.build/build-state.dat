@@ -1,674 +1,0 @@
-THorzPickerTestApp
-v7
-r0
-t306727066.486443
-cCheck dependencies
-cProcessInfoPlistFile /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/Info.plist HorzPickerTestApp-Info.plist
-cCompileXIB /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/MainWindow.xib
-cProcessPCH /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-cmfjwowzamyrssbyoflkaskpoxgt/HorzPickerTestApp_Prefix.pch.gch HorzPickerTestApp_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/main.o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorzPickerTestAppAppDelegate.o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorzPickerTestAppAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/TestViewController.o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/TestViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/V8HorizontalPickerView.o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/../V8HorizontalPickerView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cLd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp normal i386
-cGenerateDSYMFile /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app.dSYM /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp
-cTouch /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk
-c000000004C6C30170000000000000110
-t1282158615
-s272
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000004C5A4DB60000000000295900
-t1280986550
-s2709760
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004C5A4DB0000000000029D580
-t1280986544
-s2741632
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004C5A4DA10000000000001466
-t1280986529
-s5222
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000004C6241ED00000000000009CD
-t1281507821
-s2509
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c000000004C6242840000000001E228C0
-t1281507972
-s31598784
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/CustomScrollView.h
-c000000004C97556B00000000000000DA
-t1284986219
-s218
-i<UIKit/UIKit.h>
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/CustomScrollView.m
-c000000004C980C1F00000000000003EC
-t1285032991
-s1004
-i"CustomScrollView.h"
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/HorizontalPickerView.h
-c000000004C980B7F0000000000000A31
-t1285032831
-s2609
-i<UIKit/UIKit.h>
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/HorizontalPickerView.m
-c000000004C980B8E00000000000025F7
-t1285032846
-s9719
-i"HorizontalPickerView.h"
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/HorzPickerTestAppAppDelegate.h
-c000000004C97528E00000000000001C0
-t1284985486
-s448
-i<UIKit/UIKit.h>
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/HorzPickerTestAppAppDelegate.m
-c000000004C9753810000000000000A8E
-t1284985729
-s2702
-i"TestViewController.h"
-i"HorzPickerTestAppAppDelegate.h"
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/TestViewController.h
-c000000004C980BCF000000000000027B
-t1285032911
-s635
-i<UIKit/UIKit.h>
-i"HorizontalPickerView.h"
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/TestViewController.m
-c000000004C980C970000000000000EC8
-t1285033111
-s3784
-i"TestViewController.h"
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/HorzPickerTestApp_Prefix.pch
-c000000004C97523300000000000000CB
-t1284985395
-s203
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/MainWindow.xib
-c000000004C975233000000000000213A
-t1284985395
-s8506
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app
-t1285033026
-s204
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app.dSYM
-t1285033026
-s102
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp
-t1285033026
-s45776
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/Info.plist
-t1284985730
-s637
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/MainWindow.nib
-t1284985731
-s1541
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/PkgInfo
-t1284985730
-s8
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/CustomScrollView.o
-t1284986272
-s35568
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorizontalPickerView.o
-t1285032896
-s72684
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorzPickerTestApp.LinkFileList
-c000000004C980C420000000000000296
-t1285033026
-s662
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorzPickerTestAppAppDelegate.o
-t1285032918
-s49620
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/TestViewController.o
-t1285033026
-s55272
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/main.o
-t1284985732
-s6324
-
-N/Users/veader/Code/iphone_apps/HorzPickerTestApp/main.m
-c000000004C9752330000000000000173
-t1284985395
-s371
-i<UIKit/UIKit.h>
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/../V8HorizontalPickerView.h
-c000000004C980FA80000000000000A3E
-t1285033896
-s2622
-i<UIKit/UIKit.h>
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/../V8HorizontalPickerView.m
-c000000004C9811170000000000002456
-t1285034263
-s9302
-i"V8HorizontalPickerView.h"
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorizontalPickerView.h
-c000000004C980B7F0000000000000A31
-t1285032831
-s2609
-i<UIKit/UIKit.h>
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorizontalPickerView.m
-c000000004C980B8E00000000000025F7
-t1285032846
-s9719
-i"HorizontalPickerView.h"
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorzPickerTestAppAppDelegate.h
-c000000004C97528E00000000000001C0
-t1284985486
-s448
-i<UIKit/UIKit.h>
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorzPickerTestAppAppDelegate.m
-c000000004C9753810000000000000A8E
-t1284985729
-s2702
-i"TestViewController.h"
-i"HorzPickerTestAppAppDelegate.h"
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/TestViewController.h
-c000000004C980F750000000000000287
-t1285033845
-s647
-i<UIKit/UIKit.h>
-i"V8HorizontalPickerView.h"
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/TestViewController.m
-c000000004C980F930000000000000ED2
-t1285033875
-s3794
-i"TestViewController.h"
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch
-c000000004C97523300000000000000CB
-t1284985395
-s203
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/MainWindow.xib
-c000000004C975233000000000000213A
-t1284985395
-s8506
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app
-t1285034266
-s204
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app.dSYM
-t1285034266
-s102
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp
-t1285034266
-s45660
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/Info.plist
-t1284985730
-s637
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/MainWindow.nib
-t1284985731
-s1541
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/PkgInfo
-t1284985730
-s8
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorizontalPickerView.o
-t1285032896
-s72684
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorzPickerTestApp.LinkFileList
-c000000004C980F9400000000000002C0
-t1285033876
-s704
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorzPickerTestAppAppDelegate.o
-t1285033897
-s49708
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/TestViewController.o
-t1285033897
-s55384
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/V8HorizontalPickerView.o
-t1285034266
-s71368
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/main.o
-t1285033877
-s6344
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/StaticAnalyzer/normal/i386/HorzPickerTestAppAppDelegate.plist
-t2
-s0
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/StaticAnalyzer/normal/i386/TestViewController.plist
-t2
-s0
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/StaticAnalyzer/normal/i386/V8HorizontalPickerView.plist
-t2
-s0
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/StaticAnalyzer/normal/i386/main.plist
-t2
-s0
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/main.m
-c000000004C9752330000000000000173
-t1284985395
-s371
-i<UIKit/UIKit.h>
-
-N/Users/veader/Code/iphone_apps/V8HorizontalPickerView/V8HorizontalPickerView.h
-c000000004C980FA80000000000000A3E
-t1285033896
-s2622
-i<UIKit/UIKit.h>
-
-N/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-abkhqihplkddrtdcriwzqxrjbdfs/HorzPickerTestApp_Prefix.pch.gch
-t1284985732
-s15211536
-
-N/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch.pth
-t2
-s0
-
-N/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-cmfjwowzamyrssbyoflkaskpoxgt/HorzPickerTestApp_Prefix.pch.gch
-t1285033876
-s15211536
-
-NHorzPickerTestApp-Info.plist
-c000000004C975233000000000000038D
-t1284985395
-s909
-
-CAnalyze /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/../V8HorizontalPickerView.m
-s306726850.665823
-e306726850.820631
-r1
-xAnalyze
-x/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/../V8HorizontalPickerView.m
-oIn file included from <built-in>:121:
-o<command line>:1:10: fatal error: '/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch' file not found
-o #include "/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch"
-o          ^
-o1 error generated.
-lSLF07#2@94"Analyze /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/../V8HorizontalPickerView.m306726850#306726850#0(494"In file included from <built-in>:121:<command line>:1:10: fatal error: '/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch' file not found #include "/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch"          ^1 error generated.1(25@46"Analyzer skipped this file due to parse errors306726850#18446744073709551615#0#1(25@197"'/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch' file not found306726850#18446744073709551615#0#0(6@14"<command line>306726850#1#0#1#0#0"0(6@14"<command line>306726850#0#0#0#0#0"0(0#0#86"/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/../V8HorizontalPickerView.m8604956640#2390"    cd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility=hidden -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -include /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch --analyze /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/../V8HorizontalPickerView.m -o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/StaticAnalyzer/normal/i386/V8HorizontalPickerView.plist0#
-
-CAnalyze /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorzPickerTestAppAppDelegate.m
-s306726850.532169
-e306726850.665738
-r1
-xAnalyze
-x/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorzPickerTestAppAppDelegate.m
-oIn file included from <built-in>:121:
-o<command line>:1:10: fatal error: '/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch' file not found
-o #include "/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch"
-o          ^
-o1 error generated.
-lSLF07#2@105"Analyze /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorzPickerTestAppAppDelegate.m306726850#306726850#0(494"In file included from <built-in>:121:<command line>:1:10: fatal error: '/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch' file not found #include "/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch"          ^1 error generated.1(25@46"Analyzer skipped this file due to parse errors306726850#18446744073709551615#0#1(25@197"'/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch' file not found306726850#18446744073709551615#0#0(6@14"<command line>306726850#1#0#1#0#0"0(6@14"<command line>306726850#0#0#0#0#0"0(0#0#97"/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorzPickerTestAppAppDelegate.m8605764096#2407"    cd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility=hidden -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -include /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch --analyze /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorzPickerTestAppAppDelegate.m -o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/StaticAnalyzer/normal/i386/HorzPickerTestAppAppDelegate.plist0#
-
-CAnalyze /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/TestViewController.m
-s306726850.656333
-e306726850.805857
-r1
-xAnalyze
-x/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/TestViewController.m
-oIn file included from <built-in>:121:
-o<command line>:1:10: fatal error: '/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch' file not found
-o #include "/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch"
-o          ^
-o1 error generated.
-lSLF07#2@95"Analyze /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/TestViewController.m306726850#306726850#0(494"In file included from <built-in>:121:<command line>:1:10: fatal error: '/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch' file not found #include "/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch"          ^1 error generated.1(25@46"Analyzer skipped this file due to parse errors306726850#18446744073709551615#0#1(25@197"'/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch' file not found306726850#18446744073709551615#0#0(6@14"<command line>306726850#1#0#1#0#0"0(6@14"<command line>306726850#0#0#0#0#0"0(0#0#87"/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/TestViewController.m8605391232#2387"    cd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility=hidden -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -include /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch --analyze /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/TestViewController.m -o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/StaticAnalyzer/normal/i386/TestViewController.plist0#
-
-CAnalyze /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/main.m
-s306726850.531007
-e306726850.656249
-r1
-xAnalyze
-x/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/main.m
-oIn file included from <built-in>:121:
-o<command line>:1:10: fatal error: '/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch' file not found
-o #include "/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch"
-o          ^
-o1 error generated.
-lSLF07#2@73"Analyze /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/main.m306726850#306726850#0(494"In file included from <built-in>:121:<command line>:1:10: fatal error: '/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch' file not found #include "/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch"          ^1 error generated.1(25@46"Analyzer skipped this file due to parse errors306726850#18446744073709551615#0#1(25@197"'/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch' file not found306726850#18446744073709551615#0#0(6@14"<command line>306726850#1#0#1#0#0"0(6@14"<command line>306726850#0#0#0#0#0"0(0#0#65"/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/main.m8605884000#2351"    cd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility=hidden -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -include /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch --analyze /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/main.m -o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/StaticAnalyzer/normal/i386/main.plist0#
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies306727066#306727066#0(0"0(0#1#0"8605372192#0"0#
-
-CCompileC build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/CustomScrollView.o /Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/CustomScrollView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s306679072.071624
-e306679072.143265
-r1
-xCompileC
-xbuild/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/CustomScrollView.o
-x/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/CustomScrollView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@83"Compile /Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/CustomScrollView.m306679072#306679072#0(0"0(0#0#75"/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/CustomScrollView.m8621703968#2318"    cd /Users/veader/Code/iphone_apps/HorzPickerTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -include /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-abkhqihplkddrtdcriwzqxrjbdfs/HorzPickerTestApp_Prefix.pch -c /Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/CustomScrollView.m -o /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/CustomScrollView.o0#
-
-CCompileC build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorizontalPickerView.o /Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/HorizontalPickerView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s306725695.851653
-e306725696.022096
-r1
-xCompileC
-xbuild/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorizontalPickerView.o
-x/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/HorizontalPickerView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@87"Compile /Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/HorizontalPickerView.m306725695#306725696#0(0"0(0#0#79"/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/HorizontalPickerView.m8617879520#2326"    cd /Users/veader/Code/iphone_apps/HorzPickerTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -include /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-abkhqihplkddrtdcriwzqxrjbdfs/HorzPickerTestApp_Prefix.pch -c /Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/HorizontalPickerView.m -o /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorizontalPickerView.o0#
-
-CCompileC build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorizontalPickerView.o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorizontalPickerView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorzPickerTestAppAppDelegate.o /Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/HorzPickerTestAppAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s306725718.240748
-e306725718.338309
-r1
-xCompileC
-xbuild/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorzPickerTestAppAppDelegate.o
-x/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/HorzPickerTestAppAppDelegate.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@95"Compile /Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/HorzPickerTestAppAppDelegate.m306725718#306725718#0(0"0(0#0#87"/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/HorzPickerTestAppAppDelegate.m8615867616#2342"    cd /Users/veader/Code/iphone_apps/HorzPickerTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -include /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-abkhqihplkddrtdcriwzqxrjbdfs/HorzPickerTestApp_Prefix.pch -c /Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/HorzPickerTestAppAppDelegate.m -o /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorzPickerTestAppAppDelegate.o0#
-
-CCompileC build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorzPickerTestAppAppDelegate.o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorzPickerTestAppAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s306726697.468025
-e306726697.545640
-r1
-xCompileC
-xbuild/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorzPickerTestAppAppDelegate.o
-x/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorzPickerTestAppAppDelegate.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@105"Compile /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorzPickerTestAppAppDelegate.m306726697#306726697#0(0"0(0#0#97"/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorzPickerTestAppAppDelegate.m8598629472#2452"    cd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -include /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-cmfjwowzamyrssbyoflkaskpoxgt/HorzPickerTestApp_Prefix.pch -c /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/HorzPickerTestAppAppDelegate.m -o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorzPickerTestAppAppDelegate.o0#
-
-CCompileC build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/TestViewController.o /Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/TestViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s306725826.452370
-e306725826.543036
-r1
-xCompileC
-xbuild/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/TestViewController.o
-x/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/TestViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@85"Compile /Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/TestViewController.m306725826#306725826#0(0"0(0#0#77"/Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/TestViewController.m8623919360#2322"    cd /Users/veader/Code/iphone_apps/HorzPickerTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -include /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-abkhqihplkddrtdcriwzqxrjbdfs/HorzPickerTestApp_Prefix.pch -c /Users/veader/Code/iphone_apps/HorzPickerTestApp/Classes/TestViewController.m -o /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/TestViewController.o0#
-
-CCompileC build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/TestViewController.o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/TestViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s306726697.469324
-e306726697.584524
-r1
-xCompileC
-xbuild/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/TestViewController.o
-x/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/TestViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@95"Compile /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/TestViewController.m306726697#306726697#0(0"0(0#0#87"/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/TestViewController.m8605196352#2432"    cd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -include /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-cmfjwowzamyrssbyoflkaskpoxgt/HorzPickerTestApp_Prefix.pch -c /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/Classes/TestViewController.m -o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/TestViewController.o0#
-
-CCompileC build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/V8HorizontalPickerView.o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/../V8HorizontalPickerView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s306727066.296461
-e306727066.436153
-r1
-xCompileC
-xbuild/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/V8HorizontalPickerView.o
-x/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/../V8HorizontalPickerView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@94"Compile /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/../V8HorizontalPickerView.m306727066#306727066#0(0"0(0#0#86"/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/../V8HorizontalPickerView.m8617010368#2435"    cd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -include /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-cmfjwowzamyrssbyoflkaskpoxgt/HorzPickerTestApp_Prefix.pch -c /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/../V8HorizontalPickerView.m -o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/V8HorizontalPickerView.o0#
-
-CCompileC build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/main.o /Users/veader/Code/iphone_apps/HorzPickerTestApp/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s306678532.101089
-e306678532.197938
-r1
-xCompileC
-xbuild/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/main.o
-x/Users/veader/Code/iphone_apps/HorzPickerTestApp/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@63"Compile /Users/veader/Code/iphone_apps/HorzPickerTestApp/main.m306678532#306678532#0(0"0(0#0#55"/Users/veader/Code/iphone_apps/HorzPickerTestApp/main.m8621191360#2286"    cd /Users/veader/Code/iphone_apps/HorzPickerTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -include /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-abkhqihplkddrtdcriwzqxrjbdfs/HorzPickerTestApp_Prefix.pch -c /Users/veader/Code/iphone_apps/HorzPickerTestApp/main.m -o /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/main.o0#
-
-CCompileC build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/main.o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s306726677.056424
-e306726677.121007
-r1
-xCompileC
-xbuild/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/main.o
-x/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@73"Compile /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/main.m306726677#306726677#0(0"0(0#0#65"/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/main.m8243112767684377600#2396"    cd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -include /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-cmfjwowzamyrssbyoflkaskpoxgt/HorzPickerTestApp_Prefix.pch -c /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/main.m -o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/main.o0#
-
-CCompileXIB /Users/veader/Code/iphone_apps/HorzPickerTestApp/MainWindow.xib
-s306678530.650666
-e306678531.056884
-r1
-xCompileXIB
-x/Users/veader/Code/iphone_apps/HorzPickerTestApp/MainWindow.xib
-lSLF07#2@25"CompileXIB MainWindow.xib306678530#306678531#0(0"0(0#0#63"/Users/veader/Code/iphone_apps/HorzPickerTestApp/MainWindow.xib8621189824#672"    cd /Users/veader/Code/iphone_apps/HorzPickerTestApp    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.1    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/MainWindow.nib /Users/veader/Code/iphone_apps/HorzPickerTestApp/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk0#
-
-CCompileXIB /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/MainWindow.xib
-r0
-
-CGenerateDSYMFile /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app.dSYM /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp
-s306725826.573619
-e306725826.607143
-r1
-xGenerateDSYMFile
-x/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app.dSYM
-x/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp
-lSLF07#2@139"GenerateDSYMFile build/Debug-iphonesimulator/HorzPickerTestApp.app.dSYM build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp306725826#306725826#0(0"0(0#0#116"/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp8623818624#505"    cd /Users/veader/Code/iphone_apps/HorzPickerTestApp    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/dsymutil /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp -o /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app.dSYM0#
-
-CGenerateDSYMFile /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app.dSYM /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp
-s306727066.464484
-e306727066.483630
-r1
-xGenerateDSYMFile
-x/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app.dSYM
-x/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp
-lSLF07#2@139"GenerateDSYMFile build/Debug-iphonesimulator/HorzPickerTestApp.app.dSYM build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp306727066#306727066#0(0"0(0#0#126"/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp8618297504#535"    cd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/dsymutil /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp -o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app.dSYM0#
-
-CLd /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp normal i386
-s306725826.543133
-e306725826.573403
-r1
-xLd
-x/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp
-xnormal
-xi386
-lSLF07#2@121"Link /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp306725826#306725826#0(0"0(0#0#0"8623865536#1062"    cd /Users/veader/Code/iphone_apps/HorzPickerTestApp    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -L/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator -F/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator -filelist /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorzPickerTestApp.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -o /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp0#
-
-CLd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp normal i386
-s306727066.436252
-e306727066.464378
-r1
-xLd
-x/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp
-xnormal
-xi386
-lSLF07#2@131"Link /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp306727066#306727066#0(0"0(0#0#0"8618320448#1112"    cd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -L/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator -F/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator -filelist /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/Objects-normal/i386/HorzPickerTestApp.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -o /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/HorzPickerTestApp0#
-
-CProcessInfoPlistFile /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/Info.plist HorzPickerTestApp-Info.plist
-s306678530.621967
-e306678530.650571
-r1
-xProcessInfoPlistFile
-x/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/Info.plist
-xHorzPickerTestApp-Info.plist
-lSLF07#2@36"Process HorzPickerTestApp-Info.plist306678530#306678530#0(0"0(0#0#77"/Users/veader/Code/iphone_apps/HorzPickerTestApp/HorzPickerTestApp-Info.plist32088581143724132#601"    cd /Users/veader/Code/iphone_apps/HorzPickerTestApp    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    builtin-infoPlistUtility HorzPickerTestApp-Info.plist -genpkginfo /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app/Info.plist0#
-
-CProcessInfoPlistFile /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app/Info.plist HorzPickerTestApp-Info.plist
-r0
-
-CProcessPCH /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-abkhqihplkddrtdcriwzqxrjbdfs/HorzPickerTestApp_Prefix.pch.gch HorzPickerTestApp_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-s306678531.057040
-e306678532.100952
-r1
-xProcessPCH
-x/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-abkhqihplkddrtdcriwzqxrjbdfs/HorzPickerTestApp_Prefix.pch.gch
-xHorzPickerTestApp_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@39"Precompile HorzPickerTestApp_Prefix.pch306678531#306678532#0(0"0(0#0#77"/Users/veader/Code/iphone_apps/HorzPickerTestApp/HorzPickerTestApp_Prefix.pch8620693888#2158"    cd /Users/veader/Code/iphone_apps/HorzPickerTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -c /Users/veader/Code/iphone_apps/HorzPickerTestApp/HorzPickerTestApp_Prefix.pch -o /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-abkhqihplkddrtdcriwzqxrjbdfs/HorzPickerTestApp_Prefix.pch.gch0#
-
-CProcessPCH /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch.pth HorzPickerTestApp_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.analyzer
-s306726850.201636
-e306726850.530514
-r1
-xProcessPCH
-x/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch.pth
-xHorzPickerTestApp_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.analyzer
-oIn file included from /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch:7:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:9:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIResponder.h:10:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIEvent.h:9:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h:26:
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGPDFContext.h:60:23: error: expected function body after function declarator
-o   CFDataRef metadata) CG_AVAILABLE_STARTING(__MAC_10_7, __IPHONE_4_0);
-o                       ^
-oIn file included from /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch:7:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:9:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIResponder.h:10:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIEvent.h:9:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h:8:
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGBase.h:21:32: note: instantiated from:
-o # define CG_AVAILABLE_STARTING __OSX_AVAILABLE_STARTING
-o                                ^
-o<scratch space>:82:1: note: instantiated from:
-o __AVAILABILITY_INTERNAL__MAC_10_7
-o ^
-oIn file included from /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch:7:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:250:91: error: expected a type
-o + (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);
-o                                                                                           ^
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:256:86: error: expected a type
-o + (void)transitionWithView:(UIView *)view duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);
-o                                                                                      ^
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:258:114: error: expected a type
-o + (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0); // toView added to fromView.superview, fromView removed from its superview
-o                                                                                                                  ^
-oIn file included from /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch:7:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:13:
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:187:31: error: unknown type name 'UIApplicationState'
-o @property(nonatomic,readonly) UIApplicationState applicationState __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);
-o                               ^
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:190:4: error: expected a type
-o - (UIBackgroundTaskIdentifier)beginBackgroundTaskWithExpirationHandler:(void(^)(void))handler  __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);
-o    ^
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:191:28: error: expected a type
-o - (void)endBackgroundTask:(UIBackgroundTaskIdentifier)identifier __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);
-o                            ^
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:202:45: error: expected a type
-o - (void)registerForRemoteNotificationTypes:(UIRemoteNotificationType)types __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
-o                                             ^
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:206:4: error: expected a type
-o - (UIRemoteNotificationType)enabledRemoteNotificationTypes __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
-o    ^
-oIn file included from /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch:7:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:73:
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITextView.h:82:22: error: unknown type name 'UIDataDetectorTypes'
-o @property(nonatomic) UIDataDetectorTypes dataDetectorTypes __OSX_AVAILABLE_STARTING(__MAC_NA, __IPHONE_3_0);
-o                      ^
-oIn file included from /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch:7:
-oIn file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:79:
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIWebView.h:54:22: error: unknown type name 'UIDataDetectorTypes'
-o @property(nonatomic) UIDataDetectorTypes dataDetectorTypes __OSX_AVAILABLE_STARTING(__MAC_NA, __IPHONE_3_0);
-o                      ^
-o11 errors generated.
-lSLF07#2@39"Precompile HorzPickerTestApp_Prefix.pch306726850#306726850#0(8291"In file included from /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch:7:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:9:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIResponder.h:10:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIEvent.h:9:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h:26:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGPDFContext.h:60:23: error: expected function body after function declarator   CFDataRef metadata) CG_AVAILABLE_STARTING(__MAC_10_7, __IPHONE_4_0);                       ^In file included from /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch:7:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:9:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIResponder.h:10:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIEvent.h:9:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h:8:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGBase.h:21:32: note: instantiated from: # define CG_AVAILABLE_STARTING __OSX_AVAILABLE_STARTING                                ^<scratch space>:82:1: note: instantiated from: __AVAILABILITY_INTERNAL__MAC_10_7 ^In file included from /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch:7:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:11:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIActivityIndicatorView.h:8:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:250:91: error: expected a type + (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);                                                                                           ^/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:256:86: error: expected a type + (void)transitionWithView:(UIView *)view duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);                                                                                      ^/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h:258:114: error: expected a type + (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^)(BOOL finished))completion __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0); // toView added to fromView.superview, fromView removed from its superview                                                                                                                  ^In file included from /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch:7:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:13:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:187:31: error: unknown type name 'UIApplicationState' @property(nonatomic,readonly) UIApplicationState applicationState __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);                               ^/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:190:4: error: expected a type - (UIBackgroundTaskIdentifier)beginBackgroundTaskWithExpirationHandler:(void(^)(void))handler  __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);    ^/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:191:28: error: expected a type - (void)endBackgroundTask:(UIBackgroundTaskIdentifier)identifier __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_4_0);                            ^/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:202:45: error: expected a type - (void)registerForRemoteNotificationTypes:(UIRemoteNotificationType)types __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);                                             ^/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h:206:4: error: expected a type - (UIRemoteNotificationType)enabledRemoteNotificationTypes __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);    ^In file included from /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch:7:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:73:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITextView.h:82:22: error: unknown type name 'UIDataDetectorTypes' @property(nonatomic) UIDataDetectorTypes dataDetectorTypes __OSX_AVAILABLE_STARTING(__MAC_NA, __IPHONE_3_0);                      ^In file included from /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch:7:In file included from /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h:79:/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIWebView.h:54:22: error: unknown type name 'UIDataDetectorTypes' @property(nonatomic) UIDataDetectorTypes dataDetectorTypes __OSX_AVAILABLE_STARTING(__MAC_NA, __IPHONE_3_0);                      ^11 errors generated.1(25@46"Analyzer skipped this file due to parse errors306726850#18446744073709551615#0#11(25@48"expected function body after function declarator306726850#18446744073709551615#0#0(6@155"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGPDFContext.h302679128#60#0#60#0#0"0(25@15"expected a type306726850#18446744073709551615#0#0(6@142"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h303200621#250#0#250#0#0"0(25@15"expected a type306726850#18446744073709551615#0#0(6@142"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h303200621#256#0#256#0#0"0(25@15"expected a type306726850#18446744073709551615#0#0(6@142"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h303200621#258#0#258#0#0"0(25@38"unknown type name 'UIApplicationState'306726850#18446744073709551615#0#0(6@149"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h303200621#187#0#187#0#0"0(25@15"expected a type306726850#18446744073709551615#0#0(6@149"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h303200621#190#0#190#0#0"0(25@15"expected a type306726850#18446744073709551615#0#0(6@149"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h303200621#191#0#191#0#0"0(25@15"expected a type306726850#18446744073709551615#0#0(6@149"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h303200621#202#0#202#0#0"0(25@15"expected a type306726850#18446744073709551615#0#0(6@149"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h303200621#206#0#206#0#0"0(25@39"unknown type name 'UIDataDetectorTypes'306726850#18446744073709551615#0#0(6@146"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITextView.h303200622#82#0#82#0#0"0(25@39"unknown type name 'UIDataDetectorTypes'306726850#18446744073709551615#0#0(6@145"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIWebView.h303200623#54#0#54#0#0"0(6@155"/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGPDFContext.h302679128#0#0#0#0#0"0(0#0#87"/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch8601700000#2195"    cd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -fvisibility=hidden -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -c /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch -o /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-blgwddvyapsiblaixcgqozriqbcs/HorzPickerTestApp_Prefix.pch.pth0#
-
-CProcessPCH /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-cmfjwowzamyrssbyoflkaskpoxgt/HorzPickerTestApp_Prefix.pch.gch HorzPickerTestApp_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-s306726676.200153
-e306726677.056328
-r1
-xProcessPCH
-x/var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-cmfjwowzamyrssbyoflkaskpoxgt/HorzPickerTestApp_Prefix.pch.gch
-xHorzPickerTestApp_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@39"Precompile HorzPickerTestApp_Prefix.pch306726676#306726677#0(0"0(0#0#87"/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch8243112767684377600#2258"    cd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-generated-files.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-own-target-headers.hmap -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-all-target-headers.hmap -iquote /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/HorzPickerTestApp-project-headers.hmap -F/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/include -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources/i386 -I/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/HorzPickerTestApp.build/Debug-iphonesimulator/HorzPickerTestApp.build/DerivedSources -c /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/HorzPickerTestApp_Prefix.pch -o /var/folders/3G/3GDwu85QHp0ZlArPTNrmlU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/HorzPickerTestApp_Prefix-cmfjwowzamyrssbyoflkaskpoxgt/HorzPickerTestApp_Prefix.pch.gch0#
-
-CTouch /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app
-s306725826.607223
-e306725826.611558
-r1
-xTouch
-x/Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app
-lSLF07#2@104"Touch /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app306725826#306725826#0(0"0(0#0#0"8638095616#370"    cd /Users/veader/Code/iphone_apps/HorzPickerTestApp    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /usr/bin/touch -c /Users/veader/Code/iphone_apps/HorzPickerTestApp/build/Debug-iphonesimulator/HorzPickerTestApp.app0#
-
-CTouch /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app
-s306727066.483711
-e306727066.486406
-r1
-xTouch
-x/Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app
-lSLF07#2@114"Touch /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app306727066#306727066#0(0"0(0#0#0"8618198912#390"    cd /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /usr/bin/touch -c /Users/veader/Code/iphone_apps/V8HorizontalPickerView/Demo/build/Debug-iphonesimulator/HorzPickerTestApp.app0#
-
