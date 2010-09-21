@@ -1,0 +1,9 @@
+# XCode noise
+build/*
+*.xcodeproj/*.pbxuser
+*.xcodeproj/*.mode1v3
+
+# OSX noise
+.DS_Store
+profile
+
