@@ -67,13 +67,13 @@
 }
 
 - (void)dealloc {
-	[_scrollView release];
+	[_scrollView   release];
 	[elementWidths release];
-	[elementFont release];
+	[elementFont   release];
 	[reusableViews release];
 
-	[textColor release];
-	[selectedTextColor release];
+	[textColor          release];
+	[selectedTextColor  release];
 	[theBackgroundColor release];
 
     [super dealloc];
@@ -287,7 +287,6 @@
 // what is the left-most edge of the element at the given index?
 - (NSInteger)offsetForElementAtIndex:(NSInteger)index {
 	NSInteger offset = 0;
-
 	if (index >= [elementWidths count]) {
 		return 0;
 	}
