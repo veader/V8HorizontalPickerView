@@ -13,6 +13,7 @@
 - (void)getNumberOfElementsFromDataSource;
 - (void)getElementWidthsFromDelegate;
 - (void)setTotalWidthOfScrollContent;
+- (void)updateScrollContentInset;
 
 - (UIView *)labelForForElementAtIndex:(NSInteger)index withTitle:(NSString *)title;
 - (CGRect)frameForElementAtIndex:(NSInteger)index;
@@ -20,7 +21,6 @@
 - (void)scrollToElementNearestToCenter;
 - (NSInteger)nearestElementToCenter;
 - (CGPoint)currentCenter;
-- (BOOL)scrolledPastEnds;
 
 - (NSInteger)offsetForElementAtIndex:(NSInteger)index;
 - (NSInteger)centerOfElementAtIndex:(NSInteger)index;
@@ -60,7 +60,6 @@
 		numberOfElements     = 0;
 		elementPadding       = 0;
 		currentSelectedIndex = 0;
-		endsPadding = frame.size.width / 2;
 		dataHasBeenLoaded    = NO;
 		scrollSizeHasBeenSet = NO;
 	}
@@ -122,16 +121,14 @@
 #pragma mark Getters and Setters
 - (void)setDelegate:(id)newDelegate {
 	if (delegate != newDelegate) {
-		[delegate release];
-		delegate = [newDelegate retain];
+		delegate = newDelegate;
 		[self reloadData];
 	}
 }
 
 - (void)setDataSource:(id)newDataSource {
 	if (dataSource != newDataSource) {
-		[dataSource release];
-		dataSource = [newDataSource retain];
+		dataSource = newDataSource;
 		[self reloadData];
 	}
 }
@@ -153,6 +150,7 @@
 	[self getNumberOfElementsFromDataSource];
 	[self getElementWidthsFromDelegate];
 	[self setTotalWidthOfScrollContent];
+	[self updateScrollContentInset];
 
 	dataHasBeenLoaded = YES;
 }
@@ -189,8 +187,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	// set the current item under the center to "highlighted" or current
 	currentSelectedIndex = [self nearestElementToCenter];
-
-	// TODO: is there a way to stop them from scrolling past a point?
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -201,10 +197,7 @@
 }
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-	// only do this if we're past the beginning or end
-	if ([self scrolledPastEnds]) {
-		[self scrollToElementNearestToCenter];
-	}
+//	[self scrollToElementNearestToCenter];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -263,12 +256,11 @@
 #pragma mark View Calculation and Manipulation Methods (Internal Methods)
 // what is the total width of the content area?
 - (void)setTotalWidthOfScrollContent {
-	NSInteger totalWidth = endsPadding;
+	NSInteger totalWidth = 0;
 	for (int i = 0; i < numberOfElements; i++) {
 		totalWidth += [[elementWidths objectAtIndex:i] intValue];
 		totalWidth += elementPadding;
 	}
-	totalWidth += endsPadding;
 
 	if (_scrollView) {
 		// create our scroll view as wide as all the elements to be included
@@ -277,9 +269,24 @@
 	}
 }
 
+- (void)updateScrollContentInset {
+	// update content inset if we have element widths
+	if ([elementWidths count] != 0) {
+		CGFloat scrollerWidth = _scrollView.frame.size.width;
+		
+		CGFloat firstWidth = [[elementWidths objectAtIndex:0] floatValue];
+		CGFloat lastWidth  = [[elementWidths lastObject] floatValue];
+		
+		CGFloat firstInset = ((scrollerWidth - firstWidth) / 2);
+		CGFloat lastInset  = ((scrollerWidth - lastWidth)  / 2);
+		
+		_scrollView.contentInset = UIEdgeInsetsMake(0, firstInset, 0, lastInset);
+	}
+}
+
 // what is the left-most edge of the element at the given index?
 - (NSInteger)offsetForElementAtIndex:(NSInteger)index {
-	NSInteger offset = endsPadding;
+	NSInteger offset = 0;
 
 	if (index >= [elementWidths count]) {
 		return 0;
@@ -347,16 +354,6 @@
 // move scroll view to position nearest element under the center
 - (void)scrollToElementNearestToCenter {
 	[self scrollToElement:[self nearestElementToCenter] animated:YES];
-}
-
-- (BOOL)scrolledPastEnds {
-	CGPoint center = [self currentCenter];
-	CGRect firstFrame = [self frameForElementAtIndex:0];
-	CGRect lastFrame  = [self frameForElementAtIndex:numberOfElements - 1];
-	if (center.x < firstFrame.origin.x || center.x > lastFrame.origin.x) {
-		return YES;
-	}
-	return NO;
 }
 
 @end
