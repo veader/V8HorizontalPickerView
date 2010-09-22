@@ -11,6 +11,7 @@
 
 @implementation TestingScrollView
 
+@synthesize selectionLineOrigin;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -20,15 +21,23 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    // Drawing center line
 	CGContextRef c = UIGraphicsGetCurrentContext();
+	UIEdgeInsets insets = self.contentInset;
+
+	// draw a center line
+	CGFloat yellow[4] = {1.0f, 0.6f, 0.6f, 1.0f};
+	CGContextSetStrokeColor(c, yellow);
+	CGContextBeginPath(c);
+	CGContextMoveToPoint(c, self.center.x - insets.left, 0.0f);
+	CGContextAddLineToPoint(c, self.center.x - insets.left, self.frame.size.height);
+	CGContextStrokePath(c);
+
+	// draw selection line
 	CGFloat red[4] = {1.0f, 0.0f, 0.0f, 1.0f};
 	CGContextSetStrokeColor(c, red);
 	CGContextBeginPath(c);
-	CGFloat centerX = self.center.x;
-	UIEdgeInsets insets = self.contentInset;
-	CGContextMoveToPoint(c, centerX - insets.left, 0.0f);
-	CGContextAddLineToPoint(c, centerX - insets.left, self.frame.size.height);
+	CGContextMoveToPoint(c, self.selectionLineOrigin.x - insets.left, 0.0f);
+	CGContextAddLineToPoint(c, self.selectionLineOrigin.x - insets.left, self.frame.size.height);
 	CGContextStrokePath(c);
 }
 
@@ -36,5 +45,11 @@
     [super dealloc];
 }
 
+- (void)setSelectionLineOrigin:(CGPoint)point {
+	if (!CGPointEqualToPoint(point, selectionLineOrigin)) {
+		selectionLineOrigin = point;
+		[self setNeedsLayout];
+	}
+}
 
 @end

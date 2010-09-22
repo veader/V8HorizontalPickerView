@@ -46,6 +46,7 @@
 @property (nonatomic, retain) UIFont *elementFont;
 @property (nonatomic, retain) UIColor *textColor;
 @property (nonatomic, retain) UIColor *selectedTextColor;
+@property (nonatomic, assign) CGPoint selectionPoint;
 
 - (void)reloadData;
 - (UIView *)dequeueReusableView;

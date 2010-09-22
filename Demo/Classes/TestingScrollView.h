@@ -10,7 +10,9 @@
 
 
 @interface TestingScrollView : UIScrollView {
-
+	CGPoint selectionLineOrigin;
 }
+
+@property (nonatomic, assign) CGPoint selectionLineOrigin;
 
 @end

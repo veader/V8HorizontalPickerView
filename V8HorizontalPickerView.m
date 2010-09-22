@@ -42,6 +42,7 @@
 @synthesize dataSource, delegate;
 @synthesize numberOfElements; // readonly
 @synthesize elementFont, textColor, selectedTextColor;
+@synthesize selectionPoint;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -50,13 +51,17 @@
 
 		[self addScrollView];
 		
-		self.textColor = [UIColor blackColor];
+		self.textColor   = [UIColor blackColor];
+		self.elementFont = [UIFont systemFontOfSize:12.0f];
 
 		numberOfElements     = 0;
 		elementPadding       = 0;
 		currentSelectedIndex = 0;
 		dataHasBeenLoaded    = NO;
 		scrollSizeHasBeenSet = NO;
+
+		// default to the center
+		selectionPoint = CGPointMake(frame.size.width / 2, 0.0f);
 	}
     return self;
 }
@@ -127,6 +132,16 @@
 	}
 }
 
+- (void)setSelectionPoint:(CGPoint)point {
+	if (!CGPointEqualToPoint(point, selectionPoint)) {
+		selectionPoint = point;
+		[self updateScrollContentInset];
+#ifdef V8TESTINGUI
+		((TestingScrollView *)_scrollView).selectionLineOrigin = selectionPoint;
+#endif
+	}
+}
+
 // allow the setting of this views background color to change the scroll view
 - (void)setBackgroundColor:(UIColor *)newColor {
 	[super setBackgroundColor:newColor];
@@ -151,7 +166,7 @@
 #pragma mark -
 #pragma mark Scroll To Element Method
 - (void)scrollToElement:(NSInteger)index animated:(BOOL)animate {
-	int x = [self centerOfElementAtIndex:index] - _scrollView.center.x;
+	int x = [self centerOfElementAtIndex:index] - selectionPoint.x;
 	[_scrollView setContentOffset:CGPointMake(x, 0) animated:animate];
 	currentSelectedIndex = index;
 
@@ -197,13 +212,13 @@
 	[self scrollToElementNearestToCenter];
 }
 
-
 #pragma mark -
 #pragma mark View Creation Methods (Internal Methods)
 - (void)addScrollView {
 	if (_scrollView == nil) {
 #ifdef V8TESTINGUI
 		_scrollView = [[TestingScrollView alloc] initWithFrame:self.bounds];
+		((TestingScrollView *)_scrollView).selectionLineOrigin = selectionPoint;
 #else
 		_scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
 #endif
@@ -228,7 +243,7 @@
 	}
 }
 
-// create UILabel for this element.
+// create a UILabel for this element.
 - (UIView *)labelForForElementAtIndex:(NSInteger)index withTitle:(NSString *)title {
 	CGRect labelFrame     = [self frameForElementAtIndex:index];
 	UILabel *elementLabel = [[UILabel alloc] initWithFrame:labelFrame];
@@ -236,16 +251,12 @@
 	elementLabel.textAlignment   = UITextAlignmentCenter;
 	elementLabel.backgroundColor = self.backgroundColor;
 	elementLabel.text            = title;
+	elementLabel.font            = self.elementFont;
 
 	if (currentSelectedIndex == index && self.selectedTextColor) {
 		elementLabel.textColor = self.selectedTextColor;
 	} else {
 		elementLabel.textColor = self.textColor;
-	}
-	if (self.elementFont) {
-		elementLabel.font = self.elementFont;
-	} else {
-		elementLabel.font = [UIFont systemFontOfSize:12.0f];
 	}
 
 	return [elementLabel autorelease];
@@ -290,17 +301,30 @@
 	}
 }
 
+// reset the content inset of the scroll view based on centering first and last elements.
 - (void)updateScrollContentInset {
 	// update content inset if we have element widths
 	if ([elementWidths count] != 0) {
 		CGFloat scrollerWidth = _scrollView.frame.size.width;
+
+		CGFloat halfFirstWidth = [[elementWidths objectAtIndex:0] floatValue] / 2.0; 
+		CGFloat halfLastWidth  = [[elementWidths lastObject] floatValue]      / 2.0;
 		
-		CGFloat firstWidth = [[elementWidths objectAtIndex:0] floatValue];
-		CGFloat lastWidth  = [[elementWidths lastObject] floatValue];
-		
-		CGFloat firstInset = ((scrollerWidth - firstWidth) / 2);
-		CGFloat lastInset  = ((scrollerWidth - lastWidth)  / 2);
-		
+		// calculating the inset so that the bouncing on the ends happens more smooothly
+		// - first inset is the distance from the left edge to the left edge of the
+		//     first element when that element is centered under the selection point.
+		//     - represented below as the # area
+		// - last inset is the distance from the right edge to the right edge of
+		//     the last element when that element is centered under the selection point.
+		//     - represented below as the * area
+		//
+		//        Selection
+		//  +---------|---------------+
+		//  |####| Element |**********| << UIScrollView
+		//  +-------------------------+
+		CGFloat firstInset = selectionPoint.x - halfFirstWidth;
+		CGFloat lastInset  = (scrollerWidth - selectionPoint.x) - halfLastWidth;
+
 		_scrollView.contentInset = UIEdgeInsetsMake(0, firstInset, 0, lastInset);
 	}
 }
@@ -343,10 +367,10 @@
 					  self.frame.size.height - (heightPadding * 2));
 }
 
-// what is the center, relative to the content offset?
+// what is the "center", relative to the content offset and adjusted to selection point?
 - (CGPoint)currentCenter {
-	return CGPointMake(_scrollView.contentOffset.x + _scrollView.center.x, 
-					   _scrollView.center.y);
+	CGFloat x = _scrollView.contentOffset.x + selectionPoint.x;
+	return CGPointMake(x, 0.0f);
 }
 
 // what is the element nearest to the center of the view?

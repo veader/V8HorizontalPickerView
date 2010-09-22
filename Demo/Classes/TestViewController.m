@@ -40,12 +40,13 @@
 	CGFloat x = (self.view.frame.size.width - width) / 2.0f;
 	CGRect tmpFrame = CGRectMake(x, 150.0f, width, 40.0f);
 	pickerView = [[V8HorizontalPickerView alloc] initWithFrame:tmpFrame];
-	pickerView.backgroundColor = [UIColor blackColor];
+	pickerView.backgroundColor = [UIColor darkGrayColor];
 	pickerView.textColor = [UIColor grayColor];
 	pickerView.selectedTextColor = [UIColor whiteColor];
 	pickerView.delegate = self;
 	pickerView.dataSource = self;
 	pickerView.elementFont = [UIFont boldSystemFontOfSize:14.0f];
+	pickerView.selectionPoint = CGPointMake(60, 0);
 	[self.view addSubview:pickerView];
 	
 	self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
