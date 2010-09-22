@@ -35,6 +35,7 @@
 
 	// the point, defaults to center of view, where the selected element sits
 	CGPoint selectionPoint;
+	UIView *selectionIndicatorView;
 
 	BOOL dataHasBeenLoaded;
 	BOOL scrollSizeHasBeenSet;
@@ -47,6 +48,7 @@
 @property (nonatomic, retain) UIColor *textColor;
 @property (nonatomic, retain) UIColor *selectedTextColor;
 @property (nonatomic, assign) CGPoint selectionPoint;
+@property (nonatomic, retain) UIView *selectionIndicatorView;
 
 - (void)reloadData;
 - (UIView *)dequeueReusableView;

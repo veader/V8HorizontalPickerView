@@ -42,7 +42,7 @@
 @synthesize dataSource, delegate;
 @synthesize numberOfElements; // readonly
 @synthesize elementFont, textColor, selectedTextColor;
-@synthesize selectionPoint;
+@synthesize selectionPoint, selectionIndicatorView;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -74,6 +74,10 @@
 
 	[textColor          release];
 	[selectedTextColor  release];
+
+	if (selectionIndicatorView) {
+		[selectionIndicatorView release];
+	}
 
     [super dealloc];
 }
@@ -147,6 +151,22 @@
 	[super setBackgroundColor:newColor];
 	_scrollView.backgroundColor = newColor;
 	// TODO: set all subviews as well?
+}
+
+- (void)setSelectionIndicatorView:(UIView *)indicatorView {
+	if (selectionIndicatorView != indicatorView) {
+		[selectionIndicatorView release];
+		selectionIndicatorView = [indicatorView retain];
+
+		// properly place indicator image in view relative to selection point
+		CGFloat x = self.selectionPoint.x - (selectionIndicatorView.frame.size.width / 2);
+		CGFloat y = self.frame.size.height - selectionIndicatorView.frame.size.height;
+		CGRect tmpFrame = CGRectMake(x, y,
+									 selectionIndicatorView.frame.size.width,
+									 selectionIndicatorView.frame.size.height);
+		selectionIndicatorView.frame = tmpFrame;
+		[self addSubview:selectionIndicatorView];
+	}
 }
 
 #pragma mark -

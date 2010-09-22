@@ -47,6 +47,9 @@
 	pickerView.dataSource = self;
 	pickerView.elementFont = [UIFont boldSystemFontOfSize:14.0f];
 	pickerView.selectionPoint = CGPointMake(60, 0);
+	UIImageView *indicator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"indicator"]];
+	pickerView.selectionIndicatorView = indicator;
+	[indicator release];
 	[self.view addSubview:pickerView];
 	
 	self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
