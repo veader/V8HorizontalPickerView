@@ -11,22 +11,30 @@
 @interface V8HorizontalPickerView : UIView <UIScrollViewDelegate> {
 	UIScrollView *_scrollView;
 
+	// delegate and datasources to feed scroll view. this view only maintains
+	//     a weak reference to these.
 	id <V8HorizontalPickerViewDataSource> dataSource;
 	id <V8HorizontalPickerViewDelegate> delegate;
 
+	// collection of widths of each element.
 	NSMutableArray *elementWidths;
-	NSMutableSet *reusableViews;
 
+	// reusable views for "tiling" views
+	NSMutableSet *_reusableViews;
+
+	// what font to use for the element labels?
 	UIFont *elementFont;
 
+	// color of labels used in picker
 	UIColor *textColor;
-	UIColor *selectedTextColor;
-	UIColor *theBackgroundColor;
+	UIColor *selectedTextColor; // color of current selected element
 	
 	NSInteger numberOfElements;
 	NSInteger elementPadding;
-	NSInteger endsPadding;
 	NSInteger currentSelectedIndex;
+
+	// the point, defaults to center of view, where the selected element sits
+	CGPoint selectionPoint;
 
 	BOOL dataHasBeenLoaded;
 	BOOL scrollSizeHasBeenSet;
@@ -38,11 +46,10 @@
 @property (nonatomic, retain) UIFont *elementFont;
 @property (nonatomic, retain) UIColor *textColor;
 @property (nonatomic, retain) UIColor *selectedTextColor;
-@property (nonatomic, retain) UIColor *theBackgroundColor;
 
+- (void)reloadData;
 - (UIView *)dequeueReusableView;
 - (void)scrollToElement:(NSInteger)index animated:(BOOL)animate;
-- (void)reloadData;
 
 @end
 

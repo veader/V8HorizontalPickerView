@@ -41,12 +41,12 @@
 
 @synthesize dataSource, delegate;
 @synthesize numberOfElements; // readonly
-@synthesize elementFont, textColor, selectedTextColor, theBackgroundColor;
+@synthesize elementFont, textColor, selectedTextColor;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
 		elementWidths = [[NSMutableArray array] retain];
-		reusableViews = [[NSMutableSet alloc] init];
+		_reusableViews = [[NSMutableSet alloc] init];
 
 		[self addScrollView];
 		
@@ -65,11 +65,10 @@
 	[_scrollView   release];
 	[elementWidths release];
 	[elementFont   release];
-	[reusableViews release];
+	[_reusableViews release];
 
 	[textColor          release];
 	[selectedTextColor  release];
-	[theBackgroundColor release];
 
     [super dealloc];
 }
@@ -132,7 +131,6 @@
 - (void)setBackgroundColor:(UIColor *)newColor {
 	[super setBackgroundColor:newColor];
 	_scrollView.backgroundColor = newColor;
-	self.theBackgroundColor = newColor;
 	// TODO: set all subviews as well?
 }
 
@@ -169,10 +167,10 @@
 #pragma mark Reusable View
 // TODO: use this
 - (UIView *)dequeueReusableView {
-    UIView *view = [reusableViews anyObject];
+    UIView *view = [_reusableViews anyObject];
     if (view) {
         [[view retain] autorelease];
-        [reusableViews removeObject:view];
+        [_reusableViews removeObject:view];
     }
     return view;
 }
@@ -236,7 +234,7 @@
 	UILabel *elementLabel = [[UILabel alloc] initWithFrame:labelFrame];
 
 	elementLabel.textAlignment   = UITextAlignmentCenter;
-	elementLabel.backgroundColor = self.theBackgroundColor;
+	elementLabel.backgroundColor = self.backgroundColor;
 	elementLabel.text            = title;
 
 	if (currentSelectedIndex == index && self.selectedTextColor) {
