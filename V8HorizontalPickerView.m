@@ -7,6 +7,10 @@
 
 #import "V8HorizontalPickerView.h"
 
+#ifdef V8TESTINGUI
+#import "TestingScrollView.h"
+#endif
+
 #pragma mark -
 #pragma mark Internal Method Interface
 @interface V8HorizontalPickerView (InternalMethods)
@@ -200,7 +204,11 @@
 #pragma mark View Creation Methods (Internal Methods)
 - (void)addScrollView {
 	if (_scrollView == nil) {
+#ifdef V8TESTINGUI
+		_scrollView = [[TestingScrollView alloc] initWithFrame:self.bounds];
+#else
 		_scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+#endif
 		_scrollView.delegate = self;
 		_scrollView.scrollEnabled = YES;
 		_scrollView.scrollsToTop  = NO;
@@ -326,10 +334,15 @@
 
 // what is the frame for the element at the given index?
 - (CGRect)frameForElementAtIndex:(NSInteger)index {
+#ifdef V8TESTINGUI
+	CGFloat heightPadding = 5.0f;
+#else
+	CGFloat heightPadding = 0.0f;
+#endif
 	return CGRectMake([self offsetForElementAtIndex:index],
-					  0.0f,
+					  heightPadding,
 					  [[elementWidths objectAtIndex:index] intValue],
-					  self.frame.size.height);
+					  self.frame.size.height - (heightPadding * 2));
 }
 
 // what is the center, relative to the content offset?
