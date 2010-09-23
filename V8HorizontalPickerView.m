@@ -20,6 +20,7 @@
 - (void)updateScrollContentInset;
 
 - (void)addScrollView;
+- (void)drawPositionIndicator;
 - (UIView *)labelForForElementAtIndex:(NSInteger)index withTitle:(NSString *)title;
 - (CGRect)frameForElementAtIndex:(NSInteger)index;
 
@@ -42,7 +43,7 @@
 @synthesize dataSource, delegate;
 @synthesize numberOfElements; // readonly
 @synthesize elementFont, textColor, selectedTextColor;
-@synthesize selectionPoint, selectionIndicatorView;
+@synthesize selectionPoint, selectionIndicatorView, indicatorPosition;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -62,6 +63,7 @@
 
 		// default to the center
 		selectionPoint = CGPointMake(frame.size.width / 2, 0.0f);
+		indicatorPosition = V8HorizontalPickerIndicatorBottom;
 	}
     return self;
 }
@@ -153,19 +155,22 @@
 	// TODO: set all subviews as well?
 }
 
+- (void)setIndicatorPosition:(V8HorizontalPickerIndicatorPosition)position {
+	if (indicatorPosition != position) {
+		indicatorPosition = position;
+		[self drawPositionIndicator];
+	}
+}
+
 - (void)setSelectionIndicatorView:(UIView *)indicatorView {
 	if (selectionIndicatorView != indicatorView) {
-		[selectionIndicatorView release];
+		if (selectionIndicatorView) {
+			[selectionIndicatorView removeFromSuperview];
+			[selectionIndicatorView release];
+		}
 		selectionIndicatorView = [indicatorView retain];
 
-		// properly place indicator image in view relative to selection point
-		CGFloat x = self.selectionPoint.x - (selectionIndicatorView.frame.size.width / 2);
-		CGFloat y = self.frame.size.height - selectionIndicatorView.frame.size.height;
-		CGRect tmpFrame = CGRectMake(x, y,
-									 selectionIndicatorView.frame.size.width,
-									 selectionIndicatorView.frame.size.height);
-		selectionIndicatorView.frame = tmpFrame;
-		[self addSubview:selectionIndicatorView];
+		[self drawPositionIndicator];
 	}
 }
 
@@ -261,6 +266,31 @@
 		
 		[self addSubview:_scrollView];
 	}
+}
+
+- (void)drawPositionIndicator {
+	CGFloat x = self.selectionPoint.x - (selectionIndicatorView.frame.size.width / 2);
+	CGFloat y;
+
+	switch (self.indicatorPosition) {
+		case V8HorizontalPickerIndicatorTop: {
+			y = 0.0f;
+			break;
+		}
+		case V8HorizontalPickerIndicatorBottom: {
+			y = self.frame.size.height - selectionIndicatorView.frame.size.height;
+			break;
+		}
+		default:
+			break;
+	}
+
+	// properly place indicator image in view relative to selection point
+	CGRect tmpFrame = CGRectMake(x, y,
+								 selectionIndicatorView.frame.size.width,
+								 selectionIndicatorView.frame.size.height);
+	selectionIndicatorView.frame = tmpFrame;
+	[self addSubview:selectionIndicatorView];
 }
 
 // create a UILabel for this element.

@@ -49,6 +49,7 @@
 	pickerView.selectionPoint = CGPointMake(60, 0);
 	UIImageView *indicator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"indicator"]];
 	pickerView.selectionIndicatorView = indicator;
+//	pickerView.indicatorPosition = V8HorizontalPickerIndicatorTop;
 	[indicator release];
 	[self.view addSubview:pickerView];
 	

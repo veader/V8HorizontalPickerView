@@ -8,6 +8,11 @@
 #import <UIKit/UIKit.h>
 #import "V8HorizontalPickerViewProtocol.h"
 
+typedef enum {
+	V8HorizontalPickerIndicatorTop = 0,
+	V8HorizontalPickerIndicatorBottom
+} V8HorizontalPickerIndicatorPosition;
+
 @interface V8HorizontalPickerView : UIView <UIScrollViewDelegate> {
 	UIScrollView *_scrollView;
 
@@ -32,6 +37,7 @@
 	NSInteger numberOfElements;
 	NSInteger elementPadding;
 	NSInteger currentSelectedIndex;
+	V8HorizontalPickerIndicatorPosition indicatorPosition;
 
 	// the point, defaults to center of view, where the selected element sits
 	CGPoint selectionPoint;
@@ -49,6 +55,7 @@
 @property (nonatomic, retain) UIColor *selectedTextColor;
 @property (nonatomic, assign) CGPoint selectionPoint;
 @property (nonatomic, retain) UIView *selectionIndicatorView;
+@property (nonatomic, assign) V8HorizontalPickerIndicatorPosition indicatorPosition;
 
 - (void)reloadData;
 - (UIView *)dequeueReusableView;
