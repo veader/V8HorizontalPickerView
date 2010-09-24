@@ -52,6 +52,10 @@ typedef enum {
 	// state keepers
 	BOOL dataHasBeenLoaded;
 	BOOL scrollSizeHasBeenSet;
+
+	// keep track of which elements are visible for tiling
+	int firstVisibleElement;
+	int lastVisibleElement;
 }
 
 @property (nonatomic, assign) id <V8HorizontalPickerViewDataSource> dataSource;
@@ -73,3 +77,15 @@ typedef enum {
 
 @end
 
+// sub-class of UILabel that knows how to change it's state
+@interface V8HorizontalPickerLabel : UILabel <V8HorizontalPickerElementState> {
+	BOOL selectedElement;
+	UIColor *selectedStateColor;
+	UIColor *normalStateColor;
+}
+
+@property (nonatomic, assign) BOOL selectedElement;
+@property (nonatomic, retain) UIColor *selectedStateColor;
+@property (nonatomic, retain) UIColor *normalStateColor;
+
+@end

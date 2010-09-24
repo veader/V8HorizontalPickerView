@@ -21,7 +21,7 @@
 
 - (void)addScrollView;
 - (void)drawPositionIndicator;
-- (UIView *)labelForForElementAtIndex:(NSInteger)index withTitle:(NSString *)title;
+- (V8HorizontalPickerLabel *)labelForForElementAtIndex:(NSInteger)index withTitle:(NSString *)title;
 - (CGRect)frameForElementAtIndex:(NSInteger)index;
 
 - (CGPoint)currentCenter;
@@ -66,6 +66,9 @@
 		// default to the center
 		selectionPoint = CGPointMake(frame.size.width / 2, 0.0f);
 		indicatorPosition = V8HorizontalPickerIndicatorBottom;
+		
+		firstVisibleElement = -1;
+		lastVisibleElement  = -1;
 	}
     return self;
 }
@@ -102,25 +105,52 @@
 
 	SEL titleForElementSelector = @selector(horizontalPickerView:titleForElementAtIndex:);
 	SEL viewForElementSelector  = @selector(horizontalPickerView:viewForElementAtIndex:);
+	SEL setSelectedSelector     = @selector(setSelectedElement:);
 
+	CGRect visibleBounds = [self bounds];
+	// remove any subviews that are no longer visible
 	for (UIView *view in [_scrollView subviews]) {
-		[view removeFromSuperview];
+		CGRect scaledViewFrame = [_scrollView convertRect:[view frame] toView:self];
+
+        // if the view doesn't intersect, it's not visible, so we can recycle it
+        if (!CGRectIntersectsRect(scaledViewFrame, visibleBounds)) {
+			[_reusableViews addObject:view];
+            [view removeFromSuperview];
+        } else { // if it is still visible, update it's selected state
+			if ([view respondsToSelector:setSelectedSelector]) {
+				[(V8HorizontalPickerLabel *)view setSelectedElement:(currentSelectedIndex == view.tag)];
+			}
+		}
 	}
 
-	// TODO: remove this in favor of loading the views as we go
-	for (int i = 0; i < numberOfElements; i++) {
-		UIView *view = nil;
-		if (self.delegate && [self.delegate respondsToSelector:titleForElementSelector]) {
-			NSString *title = [self.delegate horizontalPickerView:self titleForElementAtIndex:i];
-			view = [self labelForForElementAtIndex:i withTitle:title];
-		} else if (self.delegate && [self.delegate respondsToSelector:viewForElementSelector]) {
-			view = [self.delegate horizontalPickerView:self viewForElementAtIndex:i];
-		}
-		
-		if (view) {
-			[_scrollView addSubview:view];
+	// find needed elements by looking at left and right edges of frame
+	CGPoint offset = _scrollView.contentOffset;
+	int firstNeededElement = [self nearestElementToPoint:CGPointMake(offset.x, 0.0f)];
+	int lastNeededElement  = [self nearestElementToPoint:CGPointMake(offset.x + visibleBounds.size.width, 0.0f)];
+
+	// add any views that have become visible
+	UIView *view = nil;
+	for (int i = firstNeededElement; i <= lastNeededElement; i++) {
+		// if this element was not in the previous visible group, load it.
+		if (i < firstVisibleElement || i > lastVisibleElement) {
+			view = nil;
+			if (self.delegate && [self.delegate respondsToSelector:titleForElementSelector]) {
+				NSString *title = [self.delegate horizontalPickerView:self titleForElementAtIndex:i];
+				view = [self labelForForElementAtIndex:i withTitle:title];
+			} else if (self.delegate && [self.delegate respondsToSelector:viewForElementSelector]) {
+				view = [self.delegate horizontalPickerView:self viewForElementAtIndex:i];
+			}
+			
+			if (view) {
+				view.tag = i;
+				[_scrollView addSubview:view];
+			}
 		}
 	}
+
+	// save off what's visible now
+	firstVisibleElement = firstNeededElement;
+	lastVisibleElement  = lastNeededElement;
 }
 
 #pragma mark -
@@ -327,22 +357,23 @@
 }
 
 // create a UILabel for this element.
-- (UIView *)labelForForElementAtIndex:(NSInteger)index withTitle:(NSString *)title {
+- (V8HorizontalPickerLabel *)labelForForElementAtIndex:(NSInteger)index withTitle:(NSString *)title {
 	CGRect labelFrame     = [self frameForElementAtIndex:index];
-	UILabel *elementLabel = [[UILabel alloc] initWithFrame:labelFrame];
+	V8HorizontalPickerLabel *elementLabel = [[V8HorizontalPickerLabel alloc] initWithFrame:labelFrame];
 
 	elementLabel.textAlignment   = UITextAlignmentCenter;
 	elementLabel.backgroundColor = self.backgroundColor;
 	elementLabel.text            = title;
 	elementLabel.font            = self.elementFont;
-
-	if (currentSelectedIndex == index && self.selectedTextColor) {
-		elementLabel.textColor = self.selectedTextColor;
-	} else {
-		elementLabel.textColor = self.textColor;
-	}
+	
+	elementLabel.normalStateColor   = self.textColor;
+	elementLabel.selectedStateColor = self.selectedTextColor;
+	elementLabel.selectedElement    = (currentSelectedIndex == index);
 
 	return [elementLabel autorelease];
+}
+
+- (void)adjustViewState {
 }
 
 #pragma mark -
@@ -510,6 +541,35 @@
 		if (elementIndex != -1) { // point not in element
 			[self scrollToElement:elementIndex animated:YES];
 		}
+	}
+}
+
+@end
+
+
+// ------------------------------------------------------------------------
+@implementation V8HorizontalPickerLabel : UILabel
+
+@synthesize selectedElement, selectedStateColor, normalStateColor;
+
+- (void)setSelectedElement:(BOOL)selected {
+	if (selectedElement != selected) {
+		if (selected) {
+			self.textColor = self.selectedStateColor;
+		} else {
+			self.textColor = self.normalStateColor;
+		}
+		selectedElement = selected;
+		[self setNeedsLayout];
+	}
+}
+
+- (void)setNormalStateColor:(UIColor *)color {
+	if (normalStateColor != color) {
+		[normalStateColor release];
+		normalStateColor = [color retain];
+		self.textColor = normalStateColor;
+		[self setNeedsLayout];
 	}
 }
 
