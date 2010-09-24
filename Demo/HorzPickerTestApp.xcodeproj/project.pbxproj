@@ -21,7 +21,6 @@
 		76C85CC7124C3367006E4393 /* right_fade.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C85CC3124C3367006E4393 /* right_fade.png */; };
 		76C85CC8124C3367006E4393 /* right_fade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C85CC4124C3367006E4393 /* right_fade@2x.png */; };
 		76EFB41D124789F5003020A7 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EFB41B124789F5003020A7 /* TestViewController.m */; };
-		76FB0D8F12497D0200407B4A /* TestingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FB0D8E12497D0200407B4A /* TestingScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,8 +44,6 @@
 		76EFB41A124789F5003020A7 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		76EFB41B124789F5003020A7 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		76FB0D2712496F9100407B4A /* V8HorizontalPickerViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = V8HorizontalPickerViewProtocol.h; path = ../V8HorizontalPickerViewProtocol.h; sourceTree = SOURCE_ROOT; };
-		76FB0D8D12497D0200407B4A /* TestingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestingScrollView.h; path = Classes/TestingScrollView.h; sourceTree = "<group>"; };
-		76FB0D8E12497D0200407B4A /* TestingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestingScrollView.m; path = Classes/TestingScrollView.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* HorzPickerTestApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HorzPickerTestApp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,7 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
-				76FB0DD8124983B200407B4A /* Testing Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -139,15 +135,6 @@
 				76C20239124A529A000F0F70 /* indicator@2x.png */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		76FB0DD8124983B200407B4A /* Testing Classes */ = {
-			isa = PBXGroup;
-			children = (
-				76FB0D8D12497D0200407B4A /* TestingScrollView.h */,
-				76FB0D8E12497D0200407B4A /* TestingScrollView.m */,
-			);
-			name = "Testing Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,7 +210,6 @@
 				1D3623260D0F684500981E51 /* HorzPickerTestAppAppDelegate.m in Sources */,
 				76EFB41D124789F5003020A7 /* TestViewController.m in Sources */,
 				765B8AB5124846E300BDE37E /* V8HorizontalPickerView.m in Sources */,
-				76FB0D8F12497D0200407B4A /* TestingScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

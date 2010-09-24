@@ -7,9 +7,6 @@
 
 #import "V8HorizontalPickerView.h"
 
-#ifdef V8TESTINGUI
-#import "TestingScrollView.h"
-#endif
 
 #pragma mark -
 #pragma mark Internal Method Interface
@@ -173,9 +170,6 @@
 	if (!CGPointEqualToPoint(point, selectionPoint)) {
 		selectionPoint = point;
 		[self updateScrollContentInset];
-#ifdef V8TESTINGUI
-		((TestingScrollView *)_scrollView).selectionLineOrigin = selectionPoint;
-#endif
 	}
 }
 
@@ -304,12 +298,7 @@
 #pragma mark View Creation Methods (Internal Methods)
 - (void)addScrollView {
 	if (_scrollView == nil) {
-#ifdef V8TESTINGUI
-		_scrollView = [[TestingScrollView alloc] initWithFrame:self.bounds];
-		((TestingScrollView *)_scrollView).selectionLineOrigin = selectionPoint;
-#else
 		_scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-#endif
 		_scrollView.delegate = self;
 		_scrollView.scrollEnabled = YES;
 		_scrollView.scrollsToTop  = NO;
@@ -470,15 +459,10 @@
 
 // what is the frame for the element at the given index?
 - (CGRect)frameForElementAtIndex:(NSInteger)index {
-#ifdef V8TESTINGUI
-	CGFloat heightPadding = 5.0f;
-#else
-	CGFloat heightPadding = 0.0f;
-#endif
 	return CGRectMake([self offsetForElementAtIndex:index],
-					  heightPadding,
+					  0.0f,
 					  [[elementWidths objectAtIndex:index] intValue],
-					  self.frame.size.height - (heightPadding * 2));
+					  self.frame.size.height);
 }
 
 // what is the "center", relative to the content offset and adjusted to selection point?
