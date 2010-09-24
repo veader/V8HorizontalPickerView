@@ -28,6 +28,7 @@
 - (void)scrollToElementNearestToCenter;
 - (NSInteger)nearestElementToCenter;
 - (NSInteger)nearestElementToPoint:(CGPoint)point;
+- (NSInteger)elementContainingPoint:(CGPoint)point;
 
 - (NSInteger)offsetForElementAtIndex:(NSInteger)index;
 - (NSInteger)centerOfElementAtIndex:(NSInteger)index;
@@ -453,6 +454,17 @@
 	return 0;
 }
 
+// similar to nearestElementToPoint: however, this method does not look past beginning/end
+- (NSInteger)elementContainingPoint:(CGPoint)point {
+	for (int i = 0; i < numberOfElements; i++) {
+		CGRect frame = [self frameForElementAtIndex:i];
+		if (CGRectContainsPoint(frame, point)) {
+			return i;
+		}
+	}
+	return -1;
+}
+
 // move scroll view to position nearest element under the center
 - (void)scrollToElementNearestToCenter {
 	[self scrollToElement:[self nearestElementToCenter] animated:YES];
@@ -462,8 +474,11 @@
 - (void)scrollViewTapped:(UITapGestureRecognizer *)recognizer {
 	if (recognizer.state == UIGestureRecognizerStateRecognized ) {
 		CGPoint tapLocation    = [recognizer locationInView:_scrollView];
-		NSInteger elementIndex = [self nearestElementToPoint:tapLocation];
-		[self scrollToElement:elementIndex animated:YES];
+		NSInteger elementIndex = [self elementContainingPoint:tapLocation];
+		if (elementIndex != -1) { // point not in element
+			[self scrollToElement:elementIndex animated:YES];
+		}
 	}
 }
+
 @end
