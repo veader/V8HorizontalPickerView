@@ -47,10 +47,22 @@
 	pickerView.dataSource = self;
 	pickerView.elementFont = [UIFont boldSystemFontOfSize:14.0f];
 	pickerView.selectionPoint = CGPointMake(60, 0);
+
+	// add carat or other view to indicate selected element
 	UIImageView *indicator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"indicator"]];
 	pickerView.selectionIndicatorView = indicator;
-//	pickerView.indicatorPosition = V8HorizontalPickerIndicatorTop;
+//	pickerView.indicatorPosition = V8HorizontalPickerIndicatorTop; // specify indicator's location
 	[indicator release];
+
+	// add gradient images to left and right of view if desired
+//	UIImageView *leftFade = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"left_fade"]];
+//	pickerView.leftEdgeView = leftFade;
+//	[leftFade release];
+//
+//	UIImageView *rightFade = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"right_fade"]];
+//	pickerView.rightEdgeView = rightFade;
+//	[rightFade release];
+	
 	[self.view addSubview:pickerView];
 	
 	self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];

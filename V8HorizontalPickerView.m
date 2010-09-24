@@ -45,6 +45,7 @@
 @synthesize numberOfElements; // readonly
 @synthesize elementFont, textColor, selectedTextColor;
 @synthesize selectionPoint, selectionIndicatorView, indicatorPosition;
+@synthesize leftEdgeView, rightEdgeView;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -70,10 +71,12 @@
 }
 
 - (void)dealloc {
-	[_scrollView   release];
-	[elementWidths release];
-	[elementFont   release];
+	[_scrollView    release];
+	[elementWidths  release];
+	[elementFont    release];
 	[_reusableViews release];
+	[leftEdgeView   release];
+	[rightEdgeView  release];
 
 	[textColor          release];
 	[selectedTextColor  release];
@@ -97,8 +100,8 @@
 		[self setTotalWidthOfScrollContent];
 	}
 
-	SEL titleForElementSelector  = @selector(horizontalPickerView:titleForElementAtIndex:);
-	SEL viewForElementSelector   = @selector(horizontalPickerView:viewForElementAtIndex:);
+	SEL titleForElementSelector = @selector(horizontalPickerView:titleForElementAtIndex:);
+	SEL viewForElementSelector  = @selector(horizontalPickerView:viewForElementAtIndex:);
 
 	for (UIView *view in [_scrollView subviews]) {
 		[view removeFromSuperview];
@@ -112,9 +115,6 @@
 			view = [self labelForForElementAtIndex:i withTitle:title];
 		} else if (self.delegate && [self.delegate respondsToSelector:viewForElementSelector]) {
 			view = [self.delegate horizontalPickerView:self viewForElementAtIndex:i];
-			// TODO: possibly adjust frame
-		} else {
-			// TODO: go boom! ???
 		}
 		
 		if (view) {
@@ -172,6 +172,38 @@
 		selectionIndicatorView = [indicatorView retain];
 
 		[self drawPositionIndicator];
+	}
+}
+
+- (void)setLeftEdgeView:(UIView *)leftView {
+	if (leftEdgeView != leftView) {
+		if (leftEdgeView) {
+			[leftEdgeView removeFromSuperview];
+			[leftEdgeView release];
+		}
+		leftEdgeView = [leftView retain];
+		
+		CGRect tmpFrame = leftEdgeView.frame;
+		tmpFrame.origin.x = 0.0f;
+		tmpFrame.origin.y = 0.0f;
+		leftEdgeView.frame = tmpFrame;
+		[self addSubview:leftEdgeView];
+	}
+}
+
+- (void)setRightEdgeView:(UIView *)rightView {
+	if (rightEdgeView != rightView) {
+		if (rightEdgeView) {
+			[rightEdgeView removeFromSuperview];
+			[rightEdgeView release];
+		}
+		rightEdgeView = [rightView retain];
+		
+		CGRect tmpFrame = rightEdgeView.frame;
+		tmpFrame.origin.x = self.frame.size.width - tmpFrame.size.width;
+		tmpFrame.origin.y = 0.0f;
+		rightEdgeView.frame = tmpFrame;
+		[self addSubview:rightEdgeView];
 	}
 }
 

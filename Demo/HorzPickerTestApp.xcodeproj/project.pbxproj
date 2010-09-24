@@ -16,6 +16,10 @@
 		765B8AB5124846E300BDE37E /* V8HorizontalPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 765B8AB4124846E300BDE37E /* V8HorizontalPickerView.m */; };
 		76C2023A124A529A000F0F70 /* indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C20238124A529A000F0F70 /* indicator.png */; };
 		76C2023B124A529A000F0F70 /* indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C20239124A529A000F0F70 /* indicator@2x.png */; };
+		76C85CC5124C3367006E4393 /* left_fade.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C85CC1124C3367006E4393 /* left_fade.png */; };
+		76C85CC6124C3367006E4393 /* left_fade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C85CC2124C3367006E4393 /* left_fade@2x.png */; };
+		76C85CC7124C3367006E4393 /* right_fade.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C85CC3124C3367006E4393 /* right_fade.png */; };
+		76C85CC8124C3367006E4393 /* right_fade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C85CC4124C3367006E4393 /* right_fade@2x.png */; };
 		76EFB41D124789F5003020A7 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EFB41B124789F5003020A7 /* TestViewController.m */; };
 		76FB0D8F12497D0200407B4A /* TestingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FB0D8E12497D0200407B4A /* TestingScrollView.m */; };
 /* End PBXBuildFile section */
@@ -34,6 +38,10 @@
 		765B8AB4124846E300BDE37E /* V8HorizontalPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = V8HorizontalPickerView.m; path = ../V8HorizontalPickerView.m; sourceTree = SOURCE_ROOT; };
 		76C20238124A529A000F0F70 /* indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = indicator.png; sourceTree = "<group>"; };
 		76C20239124A529A000F0F70 /* indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "indicator@2x.png"; sourceTree = "<group>"; };
+		76C85CC1124C3367006E4393 /* left_fade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_fade.png; sourceTree = "<group>"; };
+		76C85CC2124C3367006E4393 /* left_fade@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_fade@2x.png"; sourceTree = "<group>"; };
+		76C85CC3124C3367006E4393 /* right_fade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_fade.png; sourceTree = "<group>"; };
+		76C85CC4124C3367006E4393 /* right_fade@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_fade@2x.png"; sourceTree = "<group>"; };
 		76EFB41A124789F5003020A7 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		76EFB41B124789F5003020A7 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		76FB0D2712496F9100407B4A /* V8HorizontalPickerViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = V8HorizontalPickerViewProtocol.h; path = ../V8HorizontalPickerViewProtocol.h; sourceTree = SOURCE_ROOT; };
@@ -123,6 +131,10 @@
 		76C20237124A5282000F0F70 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				76C85CC1124C3367006E4393 /* left_fade.png */,
+				76C85CC2124C3367006E4393 /* left_fade@2x.png */,
+				76C85CC3124C3367006E4393 /* right_fade.png */,
+				76C85CC4124C3367006E4393 /* right_fade@2x.png */,
 				76C20238124A529A000F0F70 /* indicator.png */,
 				76C20239124A529A000F0F70 /* indicator@2x.png */,
 			);
@@ -193,6 +205,10 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				76C2023A124A529A000F0F70 /* indicator.png in Resources */,
 				76C2023B124A529A000F0F70 /* indicator@2x.png in Resources */,
+				76C85CC5124C3367006E4393 /* left_fade.png in Resources */,
+				76C85CC6124C3367006E4393 /* left_fade@2x.png in Resources */,
+				76C85CC7124C3367006E4393 /* right_fade.png in Resources */,
+				76C85CC8124C3367006E4393 /* right_fade@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
