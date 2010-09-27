@@ -11,6 +11,8 @@
 #pragma mark -
 #pragma mark Internal Method Interface
 @interface V8HorizontalPickerView (InternalMethods)
+- (void)collectData;
+
 - (void)getNumberOfElementsFromDataSource;
 - (void)getElementWidthsFromDelegate;
 - (void)setTotalWidthOfScrollContent;
@@ -94,7 +96,7 @@
 	[super layoutSubviews];
 
 	if (!dataHasBeenLoaded) {
-		[self reloadData];
+		[self collectData];
 	}
 	if (!scrollSizeHasBeenSet) {
 		[self setTotalWidthOfScrollContent];
@@ -155,14 +157,14 @@
 - (void)setDelegate:(id)newDelegate {
 	if (delegate != newDelegate) {
 		delegate = newDelegate;
-		[self reloadData];
+		[self collectData];
 	}
 }
 
 - (void)setDataSource:(id)newDataSource {
 	if (dataSource != newDataSource) {
 		dataSource = newDataSource;
-		[self reloadData];
+		[self collectData];
 	}
 }
 
@@ -234,6 +236,22 @@
 #pragma mark -
 #pragma mark Reload Data Method
 - (void)reloadData {
+	// remove all scrollview subviews and "recycle" them
+	for (UIView *view in [_scrollView subviews]) {
+		[_reusableViews addObject:view];
+		[view removeFromSuperview];
+	}
+
+	firstVisibleElement = NSIntegerMax;
+	lastVisibleElement  = NSIntegerMin;
+
+	
+	[self collectData];
+
+	[self setNeedsLayout];
+}
+
+- (void)collectData {
 	scrollSizeHasBeenSet = NO;
 	dataHasBeenLoaded    = NO;
 

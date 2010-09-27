@@ -13,14 +13,16 @@
 
 @interface TestViewController : UIViewController <V8HorizontalPickerViewDelegate, V8HorizontalPickerViewDataSource> {
 	V8HorizontalPickerView *pickerView;
-	NSArray *titleArray;
+	NSMutableArray *titleArray;
 	UIButton *nextButton;
+	UIButton *reloadButton;
 	UILabel *infoLabel;
 	int indexCount;
 }
 
 @property (nonatomic, retain) V8HorizontalPickerView *pickerView;
 @property (nonatomic, retain) UIButton *nextButton;
+@property (nonatomic, retain) UIButton *reloadButton;
 @property (nonatomic, retain) UILabel *infoLabel;
 
 @end

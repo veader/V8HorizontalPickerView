@@ -12,12 +12,12 @@
 @implementation TestViewController
 
 @synthesize pickerView;
-@synthesize nextButton;
+@synthesize nextButton, reloadButton;
 @synthesize infoLabel;
 
 - (id)init {
 	if (self = [super init]) {
-		titleArray = [[NSArray arrayWithObjects:@"All", @"Today", @"Thursday",
+		titleArray = [[NSMutableArray arrayWithObjects:@"All", @"Today", @"Thursday",
 							@"Wednesday", @"Tuesday", @"Monday", nil] retain];
 		indexCount = 0;
 	}
@@ -25,10 +25,11 @@
 }
 
 - (void)dealloc {
-	[pickerView release];
-	[titleArray release];
-	[nextButton release];
-	[infoLabel  release];
+	[pickerView   release];
+	[titleArray   release];
+	[nextButton   release];
+	[reloadButton release];
+	[infoLabel    release];
     [super dealloc];
 }
 
@@ -40,11 +41,11 @@
 	CGFloat x = (self.view.frame.size.width - width) / 2.0f;
 	CGRect tmpFrame = CGRectMake(x, 150.0f, width, 40.0f);
 	pickerView = [[V8HorizontalPickerView alloc] initWithFrame:tmpFrame];
-	pickerView.backgroundColor = [UIColor darkGrayColor];
-	pickerView.textColor = [UIColor grayColor];
+	pickerView.backgroundColor   = [UIColor darkGrayColor];
 	pickerView.selectedTextColor = [UIColor whiteColor];
-	pickerView.delegate = self;
-	pickerView.dataSource = self;
+	pickerView.textColor   = [UIColor grayColor];
+	pickerView.delegate    = self;
+	pickerView.dataSource  = self;
 	pickerView.elementFont = [UIFont boldSystemFontOfSize:14.0f];
 	pickerView.selectionPoint = CGPointMake(60, 0);
 
@@ -75,7 +76,16 @@
 	nextButton.titleLabel.textColor = [UIColor blackColor];
 	[self.view addSubview:nextButton];
 	
+	self.reloadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	tmpFrame = CGRectMake(x, 300, width, 50.0f);
+	reloadButton.frame = tmpFrame;
+	[reloadButton addTarget:self
+					 action:@selector(reloadButtonClicked:)
+		   forControlEvents:UIControlEventTouchUpInside];
+	[reloadButton setTitle:@"Reload Data" forState:UIControlStateNormal];
+	[self.view addSubview:reloadButton];
+	
+	tmpFrame = CGRectMake(x, 375, width, 50.0f);
 	infoLabel = [[UILabel alloc] initWithFrame:tmpFrame];
 	infoLabel.backgroundColor = [UIColor blackColor];
 	infoLabel.textColor = [UIColor whiteColor];
@@ -96,6 +106,15 @@
 	}
 	[nextButton	setTitle:[NSString stringWithFormat:@"Center Element %d", indexCount]
 				forState:UIControlStateNormal];
+}
+
+- (void)reloadButtonClicked:(id)sender {
+	// change our title array so we can see a change
+	if ([titleArray count] > 1) {
+		[titleArray removeLastObject];
+	}
+
+	[pickerView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
