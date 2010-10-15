@@ -33,6 +33,9 @@
 - (NSInteger)centerOfElementAtIndex:(NSInteger)index;
 
 - (void)scrollViewTapped:(UITapGestureRecognizer *)recognizer;
+
+- (NSInteger)tagForElementAtIndex:(NSInteger)index;
+- (NSInteger)indexForElement:(UIView *)element;
 @end
 
 
@@ -117,7 +120,9 @@
             [view removeFromSuperview];
         } else { // if it is still visible, update it's selected state
 			if ([view respondsToSelector:setSelectedSelector]) {
-				[(V8HorizontalPickerLabel *)view setSelectedElement:(currentSelectedIndex == view.tag)];
+				// view's tag is it's index
+				BOOL isSelected = (currentSelectedIndex == [self indexForElement:view]);
+				[(V8HorizontalPickerLabel *)view setSelectedElement:isSelected];
 			}
 		}
 	}
@@ -130,9 +135,9 @@
 	// add any views that have become visible
 	UIView *view = nil;
 	for (int i = firstNeededElement; i <= lastNeededElement; i++) {
-		// if this element was not in the previous visible group, load it.
-		if (i < firstVisibleElement || i > lastVisibleElement) {
-			view = nil;
+		view = nil; // paranoia
+		view = [_scrollView viewWithTag:[self tagForElementAtIndex:i]];
+		if (!view) {
 			if (self.delegate && [self.delegate respondsToSelector:titleForElementSelector]) {
 				NSString *title = [self.delegate horizontalPickerView:self titleForElementAtIndex:i];
 				view = [self labelForForElementAtIndex:i withTitle:title];
@@ -141,7 +146,8 @@
 			}
 			
 			if (view) {
-				view.tag = i;
+				// use the index as the tag so we can find it later
+				view.tag = [self tagForElementAtIndex:i];
 				[_scrollView addSubview:view];
 			}
 		}
@@ -462,6 +468,16 @@
 		offset += elementPadding;
 	}
 	return offset;
+}
+
+// return the tag for an element at a given index
+- (NSInteger)tagForElementAtIndex:(NSInteger)index {
+	return (index + 1) * 10;
+}
+
+// return the index given an element's tag
+- (NSInteger)indexForElement:(UIView *)element {
+	return (element.tag / 10) - 1;
 }
 
 // what is the center of the element at the given index?
