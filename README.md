@@ -5,7 +5,7 @@ by Shawn Veader (@veader) of V8 Logic / V8 Labs, LLC
 
 How to use V8HorizontalPickerView
 ---------------------------------
-Add the V8HorizontalPickerView header and implementation files (.h and .m)
+Add the `V8HorizontalPickerView` header and implementation files (.h and .m)
 along with the protocol header file to your app source and include them in
 your project. (I like to keep them in their own group to keep things tidy.)
 
@@ -17,14 +17,14 @@ I modeled this after a lot of the standard Apple controls such as `UITableView`.
 
 Delegate Protocol
 ----------------
-  - (NSInteger)numberOfElementsInHorizontalPickerView:(V8HorizontalPickerView *)picker;
+    - (NSInteger)numberOfElementsInHorizontalPickerView:(V8HorizontalPickerView *)picker;
 
-Data Source Methods
+Data Source Protocol
 -------------------
-  - (void)horizontalPickerView:(V8HorizontalPickerView *)picker didSelectElementAtIndex:(NSInteger)index;
-  - (NSString *)horizontalPickerView:(V8HorizontalPickerView *)picker titleForElementAtIndex:(NSInteger)index;
-  - (UIView *)  horizontalPickerView:(V8HorizontalPickerView *)picker viewForElementAtIndex:(NSInteger)index;
-  - (NSInteger) horizontalPickerView:(V8HorizontalPickerView *)picker widthForElementAtIndex:(NSInteger)index;
+    - (void)horizontalPickerView:(V8HorizontalPickerView *)picker didSelectElementAtIndex:(NSInteger)index;
+    - (NSString *)horizontalPickerView:(V8HorizontalPickerView *)picker titleForElementAtIndex:(NSInteger)index;
+    - (UIView *)  horizontalPickerView:(V8HorizontalPickerView *)picker viewForElementAtIndex:(NSInteger)index;
+    - (NSInteger) horizontalPickerView:(V8HorizontalPickerView *)picker widthForElementAtIndex:(NSInteger)index;
 
 The protocol requires the width method to be implemented and for either the
 title or view *ForElementAtIndex: method to be implemented. (ie: you don't
