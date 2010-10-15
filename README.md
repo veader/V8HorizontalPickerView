@@ -32,7 +32,10 @@ need both)
 
 Using Views for Elements
 ------------------------
-If you are going to implement the -horizontalPickerView:viewForElementAtIndex:
+If you are going to implement the
+
+    -horizontalPickerView:viewForElementAtIndex:
+
 data source method, make sure your view conforms to the 
 `V8HorizontalPickerElementState` protocol.
 
