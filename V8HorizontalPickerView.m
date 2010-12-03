@@ -44,7 +44,7 @@
 @implementation V8HorizontalPickerView : UIView
 
 @synthesize dataSource, delegate;
-@synthesize numberOfElements; // readonly
+@synthesize numberOfElements, currentSelectedIndex; // readonly
 @synthesize elementFont, textColor, selectedTextColor;
 @synthesize selectionPoint, selectionIndicatorView, indicatorPosition;
 @synthesize leftEdgeView, rightEdgeView;

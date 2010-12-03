@@ -61,6 +61,7 @@ typedef enum {
 @property (nonatomic, assign) id <V8HorizontalPickerViewDataSource> dataSource;
 @property (nonatomic, assign) id <V8HorizontalPickerViewDelegate> delegate;
 @property (nonatomic, readonly) NSInteger numberOfElements;
+@property (nonatomic, readonly) NSInteger currentSelectedIndex;
 @property (nonatomic, retain) UIFont *elementFont;
 @property (nonatomic, retain) UIColor *textColor;
 @property (nonatomic, retain) UIColor *selectedTextColor;
