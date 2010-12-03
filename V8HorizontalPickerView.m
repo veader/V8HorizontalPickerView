@@ -138,18 +138,20 @@
 		view = nil; // paranoia
 		view = [_scrollView viewWithTag:[self tagForElementAtIndex:i]];
 		if (!view) {
-			if (self.delegate && [self.delegate respondsToSelector:titleForElementSelector]) {
-				NSString *title = [self.delegate horizontalPickerView:self titleForElementAtIndex:i];
-				view = [self labelForForElementAtIndex:i withTitle:title];
-			} else if (self.delegate && [self.delegate respondsToSelector:viewForElementSelector]) {
-				view = [self.delegate horizontalPickerView:self viewForElementAtIndex:i];
-			}
-			
-			if (view) {
-				// use the index as the tag so we can find it later
-				view.tag = [self tagForElementAtIndex:i];
-				[_scrollView addSubview:view];
-			}
+            if (i < numberOfElements) { // make sure we are not requesting data out of range
+                if (self.delegate && [self.delegate respondsToSelector:titleForElementSelector]) {
+                    NSString *title = [self.delegate horizontalPickerView:self titleForElementAtIndex:i];
+                    view = [self labelForForElementAtIndex:i withTitle:title];
+                } else if (self.delegate && [self.delegate respondsToSelector:viewForElementSelector]) {
+                    view = [self.delegate horizontalPickerView:self viewForElementAtIndex:i];
+                }
+
+                if (view) {
+                    // use the index as the tag so we can find it later
+                    view.tag = [self tagForElementAtIndex:i];
+                    [_scrollView addSubview:view];
+                }
+            }
 		}
 	}
 

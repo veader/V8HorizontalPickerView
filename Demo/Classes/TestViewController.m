@@ -19,6 +19,7 @@
 	if (self = [super init]) {
 		titleArray = [[NSMutableArray arrayWithObjects:@"All", @"Today", @"Thursday",
 							@"Wednesday", @"Tuesday", @"Monday", nil] retain];
+        // titleArray = [[NSMutableArray array] retain]; // for testing
 		indexCount = 0;
 	}
 	return self;
