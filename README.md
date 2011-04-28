@@ -23,7 +23,7 @@ Data Source Protocol
 -------------------
     - (void)horizontalPickerView:(V8HorizontalPickerView *)picker didSelectElementAtIndex:(NSInteger)index;
     - (NSString *)horizontalPickerView:(V8HorizontalPickerView *)picker titleForElementAtIndex:(NSInteger)index;
-    - (UIView *)  horizontalPickerView:(V8HorizontalPickerView *)picker viewForElementAtIndex:(NSInteger)index;
+    - (UIView *)  horizontalPickerView:(V8HorizontalPickerView *)picker  viewForElementAtIndex:(NSInteger)index;
     - (NSInteger) horizontalPickerView:(V8HorizontalPickerView *)picker widthForElementAtIndex:(NSInteger)index;
 
 The protocol requires the width method to be implemented and for either the

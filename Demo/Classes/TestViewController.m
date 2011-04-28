@@ -16,7 +16,7 @@
 @synthesize infoLabel;
 
 - (id)init {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		titleArray = [[NSMutableArray arrayWithObjects:@"All", @"Today", @"Thursday",
 							@"Wednesday", @"Tuesday", @"Monday", nil] retain];
         // titleArray = [[NSMutableArray array] retain]; // for testing
@@ -133,14 +133,12 @@
 }
 
 
-#pragma mark -
-#pragma mark HorizontalPickerView DataSource Methods
+#pragma mark - HorizontalPickerView DataSource Methods
 - (NSInteger)numberOfElementsInHorizontalPickerView:(V8HorizontalPickerView *)picker {
 	return [titleArray count];
 }
 
-#pragma mark -
-#pragma mark HorizontalPickerView Delegate Methods
+#pragma mark - HorizontalPickerView Delegate Methods
 - (NSString *)horizontalPickerView:(V8HorizontalPickerView *)picker titleForElementAtIndex:(NSInteger)index {
 	return [titleArray objectAtIndex:index];
 }

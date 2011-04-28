@@ -8,8 +8,7 @@
 #import "V8HorizontalPickerView.h"
 
 
-#pragma mark -
-#pragma mark Internal Method Interface
+#pragma mark - Internal Method Interface
 @interface V8HorizontalPickerView (InternalMethods)
 - (void)collectData;
 
@@ -39,8 +38,7 @@
 @end
 
 
-#pragma mark -
-#pragma mark Implementation
+#pragma mark - Implementation
 @implementation V8HorizontalPickerView : UIView
 
 @synthesize dataSource, delegate;
@@ -93,8 +91,7 @@
     [super dealloc];
 }
 
-#pragma mark -
-#pragma mark LayoutSubViews
+#pragma mark - LayoutSubViews
 - (void)layoutSubviews {
 	[super layoutSubviews];
 
@@ -160,8 +157,7 @@
 	lastVisibleElement  = lastNeededElement;
 }
 
-#pragma mark -
-#pragma mark Getters and Setters
+#pragma mark - Getters and Setters
 - (void)setDelegate:(id)newDelegate {
 	if (delegate != newDelegate) {
 		delegate = newDelegate;
@@ -241,8 +237,7 @@
 	}
 }
 
-#pragma mark -
-#pragma mark Reload Data Method
+#pragma mark - Reload Data Method
 - (void)reloadData {
 	// remove all scrollview subviews and "recycle" them
 	for (UIView *view in [_scrollView subviews]) {
@@ -271,8 +266,7 @@
 	dataHasBeenLoaded = YES;
 }
 
-#pragma mark -
-#pragma mark Scroll To Element Method
+#pragma mark - Scroll To Element Method
 - (void)scrollToElement:(NSInteger)index animated:(BOOL)animate {
 	int x = [self centerOfElementAtIndex:index] - selectionPoint.x;
 	[_scrollView setContentOffset:CGPointMake(x, 0) animated:animate];
@@ -286,8 +280,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Reusable View
+#pragma mark - Reusable View
 // TODO: use this
 - (UIView *)dequeueReusableView {
     UIView *view = [_reusableViews anyObject];
@@ -298,8 +291,7 @@
     return view;
 }
 
-#pragma mark -
-#pragma mark UIScrollViewDelegate Methods
+#pragma mark - UIScrollViewDelegate Methods
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	// set the current item under the center to "highlighted" or current
 	currentSelectedIndex = [self nearestElementToCenter];
@@ -320,8 +312,7 @@
 	[self scrollToElementNearestToCenter];
 }
 
-#pragma mark -
-#pragma mark View Creation Methods (Internal Methods)
+#pragma mark - View Creation Methods (Internal Methods)
 - (void)addScrollView {
 	if (_scrollView == nil) {
 		_scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
@@ -391,8 +382,7 @@
 - (void)adjustViewState {
 }
 
-#pragma mark -
-#pragma mark DataSource Calling Method (Internal Method)
+#pragma mark - DataSource Calling Method (Internal Method)
 - (void)getNumberOfElementsFromDataSource {
 	SEL dataSourceCall = @selector(numberOfElementsInHorizontalPickerView:);
 	if (self.dataSource && [self.dataSource respondsToSelector:dataSourceCall]) {
@@ -400,8 +390,7 @@
 	}
 }
 
-#pragma mark -
-#pragma mark Delegate Calling Method (Internal Method)
+#pragma mark - Delegate Calling Method (Internal Method)
 - (void)getElementWidthsFromDelegate {
 	SEL delegateCall = @selector(horizontalPickerView:widthForElementAtIndex:);
 	[elementWidths removeAllObjects];
@@ -413,8 +402,7 @@
 	}
 }
 
-#pragma mark -
-#pragma mark View Calculation and Manipulation Methods (Internal Methods)
+#pragma mark - View Calculation and Manipulation Methods (Internal Methods)
 // what is the total width of the content area?
 - (void)setTotalWidthOfScrollContent {
 	NSInteger totalWidth = 0;
@@ -568,6 +556,7 @@
 
 
 // ------------------------------------------------------------------------
+#pragma mark - Picker Label Implementation
 @implementation V8HorizontalPickerLabel : UILabel
 
 @synthesize selectedElement, selectedStateColor, normalStateColor;
