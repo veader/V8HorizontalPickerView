@@ -54,7 +54,6 @@
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
 		elementWidths = [[NSMutableArray array] retain];
-		_reusableViews = [[NSMutableSet alloc] init];
 
 		[self addScrollView];
 		
@@ -83,7 +82,6 @@
 	[_scrollView    release];
 	[elementWidths  release];
 	[elementFont    release];
-	[_reusableViews release];
 	[leftEdgeView   release];
 	[rightEdgeView  release];
 
@@ -125,10 +123,6 @@
 
         // if the view doesn't intersect, it's not visible, so we can recycle it
         if (!CGRectIntersectsRect(scaledViewFrame, visibleBounds)) {
-			if (view != leftScrollEdgeView || view != rightScrollEdgeView) {
-				// don't try to reuse left/right scroll edge views
-				[_reusableViews addObject:view];
-			}
             [view removeFromSuperview];
         } else { // if it is still visible, update it's selected state
 			if ([view respondsToSelector:setSelectedSelector]) {
@@ -305,7 +299,6 @@
 - (void)reloadData {
 	// remove all scrollview subviews and "recycle" them
 	for (UIView *view in [_scrollView subviews]) {
-		[_reusableViews addObject:view];
 		[view removeFromSuperview];
 	}
 
@@ -342,18 +335,6 @@
 	if (self.delegate && [self.delegate respondsToSelector:delegateCall]) {
 		[self.delegate horizontalPickerView:self didSelectElementAtIndex:index];
 	}
-}
-
-
-#pragma mark - Reusable View
-// TODO: use this
-- (UIView *)dequeueReusableView {
-    UIView *view = [_reusableViews anyObject];
-    if (view) {
-        [[view retain] autorelease];
-        [_reusableViews removeObject:view];
-    }
-    return view;
 }
 
 

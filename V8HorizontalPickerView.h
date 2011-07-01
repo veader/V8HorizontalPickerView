@@ -26,9 +26,6 @@ typedef enum {
 	// collection of widths of each element.
 	NSMutableArray *elementWidths;
 
-	// reusable views for "tiling" views
-	NSMutableSet *_reusableViews;
-
 	// what font to use for the element labels?
 	UIFont *elementFont;
 
@@ -84,7 +81,6 @@ typedef enum {
 
 
 - (void)reloadData;
-- (UIView *)dequeueReusableView;
 - (void)scrollToElement:(NSInteger)index animated:(BOOL)animate;
 
 @end
