@@ -49,6 +49,13 @@ typedef enum {
 	UIView *leftEdgeView;
 	UIView *rightEdgeView;
 
+	// views for left and right of scrolling area
+	UIView *leftScrollEdgeView;
+	UIView *rightScrollEdgeView;
+
+	// padding for left/right scroll edge views
+	CGFloat scrollEdgeViewOutsidePadding;
+
 	// state keepers
 	BOOL dataHasBeenLoaded;
 	BOOL scrollSizeHasBeenSet;
@@ -70,6 +77,10 @@ typedef enum {
 @property (nonatomic, assign) V8HorizontalPickerIndicatorPosition indicatorPosition;
 @property (nonatomic, retain) UIView *leftEdgeView;
 @property (nonatomic, retain) UIView *rightEdgeView;
+@property (nonatomic, retain) UIView *leftScrollEdgeView;
+@property (nonatomic, retain) UIView *rightScrollEdgeView;
+@property (nonatomic, assign) CGFloat scrollEdgeViewOutsidePadding;
+
 
 
 - (void)reloadData;

@@ -22,6 +22,9 @@
 - (V8HorizontalPickerLabel *)labelForForElementAtIndex:(NSInteger)index withTitle:(NSString *)title;
 - (CGRect)frameForElementAtIndex:(NSInteger)index;
 
+- (CGRect)frameForLeftScrollEdgeView;
+- (CGRect)frameForRightScrollEdgeView;
+
 - (CGPoint)currentCenter;
 - (void)scrollToElementNearestToCenter;
 - (NSInteger)nearestElementToCenter;
@@ -46,6 +49,7 @@
 @synthesize elementFont, textColor, selectedTextColor;
 @synthesize selectionPoint, selectionIndicatorView, indicatorPosition;
 @synthesize leftEdgeView, rightEdgeView;
+@synthesize leftScrollEdgeView, rightScrollEdgeView, scrollEdgeViewOutsidePadding;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -69,6 +73,8 @@
 		
 		firstVisibleElement = -1;
 		lastVisibleElement  = -1;
+
+		scrollEdgeViewOutsidePadding = 0.0f;
 	}
     return self;
 }
@@ -81,6 +87,9 @@
 	[leftEdgeView   release];
 	[rightEdgeView  release];
 
+	[leftScrollEdgeView  release];
+	[rightScrollEdgeView release];
+
 	[textColor          release];
 	[selectedTextColor  release];
 
@@ -90,6 +99,7 @@
 
     [super dealloc];
 }
+
 
 #pragma mark - LayoutSubViews
 - (void)layoutSubviews {
@@ -106,14 +116,19 @@
 	SEL viewForElementSelector  = @selector(horizontalPickerView:viewForElementAtIndex:);
 	SEL setSelectedSelector     = @selector(setSelectedElement:);
 
-	CGRect visibleBounds = [self bounds];
+	CGRect visibleBounds   = [self bounds];
+	CGRect scaledViewFrame = CGRectZero;
+
 	// remove any subviews that are no longer visible
 	for (UIView *view in [_scrollView subviews]) {
-		CGRect scaledViewFrame = [_scrollView convertRect:[view frame] toView:self];
+		scaledViewFrame = [_scrollView convertRect:[view frame] toView:self];
 
         // if the view doesn't intersect, it's not visible, so we can recycle it
         if (!CGRectIntersectsRect(scaledViewFrame, visibleBounds)) {
-			[_reusableViews addObject:view];
+			if (view != leftScrollEdgeView || view != rightScrollEdgeView) {
+				// don't try to reuse left/right scroll edge views
+				[_reusableViews addObject:view];
+			}
             [view removeFromSuperview];
         } else { // if it is still visible, update it's selected state
 			if ([view respondsToSelector:setSelectedSelector]) {
@@ -152,10 +167,30 @@
 		}
 	}
 
+	// add the left or right edge views if visible
+	CGRect viewFrame = CGRectZero;
+	if (leftScrollEdgeView) {
+		viewFrame = [self frameForLeftScrollEdgeView];
+		scaledViewFrame = [_scrollView convertRect:viewFrame toView:self];
+		if (CGRectIntersectsRect(scaledViewFrame, visibleBounds) && ![leftScrollEdgeView isDescendantOfView:_scrollView]) {
+			leftScrollEdgeView.frame = viewFrame;
+			[_scrollView addSubview:leftScrollEdgeView];
+		}
+	}
+	if (rightScrollEdgeView) {
+		viewFrame = [self frameForRightScrollEdgeView];
+		scaledViewFrame = [_scrollView convertRect:viewFrame toView:self];
+		if (CGRectIntersectsRect(scaledViewFrame, visibleBounds) && ![rightScrollEdgeView isDescendantOfView:_scrollView]) {
+			rightScrollEdgeView.frame = viewFrame;
+			[_scrollView addSubview:rightScrollEdgeView];
+		}
+	}
+
 	// save off what's visible now
 	firstVisibleElement = firstNeededElement;
 	lastVisibleElement  = lastNeededElement;
 }
+
 
 #pragma mark - Getters and Setters
 - (void)setDelegate:(id)newDelegate {
@@ -237,6 +272,35 @@
 	}
 }
 
+- (void)setLeftScrollEdgeView:(UIView *)leftView {
+	if (leftScrollEdgeView != leftView) {
+		if (leftScrollEdgeView) {
+			[leftScrollEdgeView removeFromSuperview];
+			[leftScrollEdgeView release];
+		}
+		leftScrollEdgeView = [leftView retain];
+
+		scrollSizeHasBeenSet = NO;
+		[self updateScrollContentInset];
+		[self setNeedsLayout];
+	}
+}
+
+- (void)setRightScrollEdgeView:(UIView *)rightView {
+	if (rightScrollEdgeView != rightView) {
+		if (rightScrollEdgeView) {
+			[rightScrollEdgeView removeFromSuperview];
+			[rightScrollEdgeView release];
+		}
+		rightScrollEdgeView = [rightView retain];
+
+		scrollSizeHasBeenSet = NO;
+		[self updateScrollContentInset];
+		[self setNeedsLayout];
+	}
+}
+
+
 #pragma mark - Reload Data Method
 - (void)reloadData {
 	// remove all scrollview subviews and "recycle" them
@@ -266,6 +330,7 @@
 	dataHasBeenLoaded = YES;
 }
 
+
 #pragma mark - Scroll To Element Method
 - (void)scrollToElement:(NSInteger)index animated:(BOOL)animate {
 	int x = [self centerOfElementAtIndex:index] - selectionPoint.x;
@@ -291,6 +356,7 @@
     return view;
 }
 
+
 #pragma mark - UIScrollViewDelegate Methods
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	// set the current item under the center to "highlighted" or current
@@ -311,6 +377,7 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	[self scrollToElementNearestToCenter];
 }
+
 
 #pragma mark - View Creation Methods (Internal Methods)
 - (void)addScrollView {
@@ -379,8 +446,6 @@
 	return [elementLabel autorelease];
 }
 
-- (void)adjustViewState {
-}
 
 #pragma mark - DataSource Calling Method (Internal Method)
 - (void)getNumberOfElementsFromDataSource {
@@ -389,6 +454,7 @@
 		numberOfElements = [self.dataSource numberOfElementsInHorizontalPickerView:self];
 	}
 }
+
 
 #pragma mark - Delegate Calling Method (Internal Method)
 - (void)getElementWidthsFromDelegate {
@@ -406,10 +472,26 @@
 // what is the total width of the content area?
 - (void)setTotalWidthOfScrollContent {
 	NSInteger totalWidth = 0;
+
+	// add width of left and right edge views, if given
+	if (leftScrollEdgeView) {
+		totalWidth += scrollEdgeViewOutsidePadding;
+		totalWidth += leftScrollEdgeView.frame.size.width;
+		totalWidth += elementPadding;
+	}
+	if (rightScrollEdgeView) {
+		totalWidth += elementPadding;
+		totalWidth += rightScrollEdgeView.frame.size.width;
+		totalWidth += scrollEdgeViewOutsidePadding;
+	}
+
+	// sum the width of all elements
 	for (int i = 0; i < numberOfElements; i++) {
 		totalWidth += [[elementWidths objectAtIndex:i] intValue];
 		totalWidth += elementPadding;
 	}
+	// TODO: is this necessary?
+	totalWidth -= elementPadding; // we add "one too many" in for loop
 
 	if (_scrollView) {
 		// create our scroll view as wide as all the elements to be included
@@ -440,7 +522,17 @@
 		//  |####| Element |**********| << UIScrollView
 		//  +-------------------------+
 		CGFloat firstInset = selectionPoint.x - halfFirstWidth;
+		if (leftScrollEdgeView) {
+			firstInset -= scrollEdgeViewOutsidePadding;
+			firstInset -= leftScrollEdgeView.frame.size.width;
+			firstInset -= elementPadding;
+		}
 		CGFloat lastInset  = (scrollerWidth - selectionPoint.x) - halfLastWidth;
+		if (rightScrollEdgeView) {
+			lastInset -= elementPadding;
+			lastInset -= rightScrollEdgeView.frame.size.width;
+			lastInset -= scrollEdgeViewOutsidePadding;
+		}
 
 		_scrollView.contentInset = UIEdgeInsetsMake(0, firstInset, 0, lastInset);
 	}
@@ -451,6 +543,13 @@
 	NSInteger offset = 0;
 	if (index >= [elementWidths count]) {
 		return 0;
+	}
+
+	// add width of left edge view, if given
+	if (leftScrollEdgeView) {
+		offset += scrollEdgeViewOutsidePadding;
+		offset += leftScrollEdgeView.frame.size.width;
+		offset += elementPadding;
 	}
 
 	for (int i = 0; i < index; i++) {
@@ -487,6 +586,32 @@
 					  0.0f,
 					  [[elementWidths objectAtIndex:index] intValue],
 					  self.frame.size.height);
+}
+
+// what is the frame for the left scroll edge view?
+- (CGRect)frameForLeftScrollEdgeView {
+	if (leftScrollEdgeView) {
+		CGFloat scrollHeight = _scrollView.contentSize.height;
+		CGFloat viewHeight   = leftScrollEdgeView.frame.size.height;
+		return CGRectMake(scrollEdgeViewOutsidePadding, ((scrollHeight / 2.0f) - (viewHeight / 2.0f)),
+						  leftScrollEdgeView.frame.size.width, viewHeight);
+	} else {
+		return CGRectZero;
+	}
+}
+
+// what is the frame for the right scroll edge view?
+- (CGRect)frameForRightScrollEdgeView {
+	if (rightScrollEdgeView) {
+		CGFloat scrollWidth  = _scrollView.contentSize.width;
+		CGFloat scrollHeight = _scrollView.contentSize.height;
+		CGFloat viewWidth  = rightScrollEdgeView.frame.size.width;
+		CGFloat viewHeight = rightScrollEdgeView.frame.size.height;
+		return CGRectMake(scrollWidth - viewWidth - scrollEdgeViewOutsidePadding, ((scrollHeight / 2.0f) - (viewHeight / 2.0f)),
+						  viewWidth, viewHeight);
+	} else {
+		return CGRectZero;
+	}
 }
 
 // what is the "center", relative to the content offset and adjusted to selection point?
