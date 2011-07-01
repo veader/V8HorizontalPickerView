@@ -24,6 +24,8 @@
 
 - (CGRect)frameForLeftScrollEdgeView;
 - (CGRect)frameForRightScrollEdgeView;
+- (CGFloat)leftScrollEdgeWidth;
+- (CGFloat)rightScrollEdgeWidth;
 
 - (CGPoint)currentCenter;
 - (void)scrollToElementNearestToCenter;
@@ -49,7 +51,7 @@
 @synthesize elementFont, textColor, selectedTextColor;
 @synthesize selectionPoint, selectionIndicatorView, indicatorPosition;
 @synthesize leftEdgeView, rightEdgeView;
-@synthesize leftScrollEdgeView, rightScrollEdgeView, scrollEdgeViewOutsidePadding;
+@synthesize leftScrollEdgeView, rightScrollEdgeView, scrollEdgeViewPadding;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -73,7 +75,7 @@
 		firstVisibleElement = -1;
 		lastVisibleElement  = -1;
 
-		scrollEdgeViewOutsidePadding = 0.0f;
+		scrollEdgeViewPadding = 0.0f;
 	}
     return self;
 }
@@ -454,17 +456,8 @@
 - (void)setTotalWidthOfScrollContent {
 	NSInteger totalWidth = 0;
 
-	// add width of left and right edge views, if given
-	if (leftScrollEdgeView) {
-		totalWidth += scrollEdgeViewOutsidePadding;
-		totalWidth += leftScrollEdgeView.frame.size.width;
-		totalWidth += elementPadding;
-	}
-	if (rightScrollEdgeView) {
-		totalWidth += elementPadding;
-		totalWidth += rightScrollEdgeView.frame.size.width;
-		totalWidth += scrollEdgeViewOutsidePadding;
-	}
+	totalWidth += [self leftScrollEdgeWidth];
+	totalWidth += [self rightScrollEdgeWidth];
 
 	// sum the width of all elements
 	for (int i = 0; i < numberOfElements; i++) {
@@ -503,17 +496,9 @@
 		//  |####| Element |**********| << UIScrollView
 		//  +-------------------------+
 		CGFloat firstInset = selectionPoint.x - halfFirstWidth;
-		if (leftScrollEdgeView) {
-			firstInset -= scrollEdgeViewOutsidePadding;
-			firstInset -= leftScrollEdgeView.frame.size.width;
-			firstInset -= elementPadding;
-		}
+		firstInset -= [self leftScrollEdgeWidth];
 		CGFloat lastInset  = (scrollerWidth - selectionPoint.x) - halfLastWidth;
-		if (rightScrollEdgeView) {
-			lastInset -= elementPadding;
-			lastInset -= rightScrollEdgeView.frame.size.width;
-			lastInset -= scrollEdgeViewOutsidePadding;
-		}
+		lastInset -= [self rightScrollEdgeWidth];
 
 		_scrollView.contentInset = UIEdgeInsetsMake(0, firstInset, 0, lastInset);
 	}
@@ -526,12 +511,7 @@
 		return 0;
 	}
 
-	// add width of left edge view, if given
-	if (leftScrollEdgeView) {
-		offset += scrollEdgeViewOutsidePadding;
-		offset += leftScrollEdgeView.frame.size.width;
-		offset += elementPadding;
-	}
+	offset += [self leftScrollEdgeWidth];
 
 	for (int i = 0; i < index; i++) {
 		offset += [[elementWidths objectAtIndex:i] intValue];
@@ -574,11 +554,21 @@
 	if (leftScrollEdgeView) {
 		CGFloat scrollHeight = _scrollView.contentSize.height;
 		CGFloat viewHeight   = leftScrollEdgeView.frame.size.height;
-		return CGRectMake(scrollEdgeViewOutsidePadding, ((scrollHeight / 2.0f) - (viewHeight / 2.0f)),
+		return CGRectMake(0.0f, ((scrollHeight / 2.0f) - (viewHeight / 2.0f)),
 						  leftScrollEdgeView.frame.size.width, viewHeight);
 	} else {
 		return CGRectZero;
 	}
+}
+
+// what is the width of the left edge of the scroll area?
+- (CGFloat)leftScrollEdgeWidth {
+	if (leftScrollEdgeView) {
+		CGFloat width = leftScrollEdgeView.frame.size.width;
+		width += scrollEdgeViewPadding;
+		return width;
+	}
+	return 0.0f;
 }
 
 // what is the frame for the right scroll edge view?
@@ -588,11 +578,21 @@
 		CGFloat scrollHeight = _scrollView.contentSize.height;
 		CGFloat viewWidth  = rightScrollEdgeView.frame.size.width;
 		CGFloat viewHeight = rightScrollEdgeView.frame.size.height;
-		return CGRectMake(scrollWidth - viewWidth - scrollEdgeViewOutsidePadding, ((scrollHeight / 2.0f) - (viewHeight / 2.0f)),
+		return CGRectMake(scrollWidth - viewWidth, ((scrollHeight / 2.0f) - (viewHeight / 2.0f)),
 						  viewWidth, viewHeight);
 	} else {
 		return CGRectZero;
 	}
+}
+
+// what is the width of the right edge of the scroll area?
+- (CGFloat)rightScrollEdgeWidth {
+	if (rightScrollEdgeView) {
+		CGFloat width = rightScrollEdgeView.frame.size.width;
+		width += scrollEdgeViewPadding;
+		return width;
+	}
+	return 0.0f;
 }
 
 // what is the "center", relative to the content offset and adjusted to selection point?

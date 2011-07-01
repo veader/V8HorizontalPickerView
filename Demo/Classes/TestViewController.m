@@ -69,7 +69,7 @@
 //	UIImageView *leftImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"loopback"]];
 //	pickerView.leftScrollEdgeView = leftImage;
 //	[leftImage release];
-//	pickerView.scrollEdgeViewOutsidePadding = 10.0f;
+//	pickerView.scrollEdgeViewPadding = 20.0f;
 //
 //	UIImageView *rightImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"airplane"]];
 //	pickerView.rightScrollEdgeView = rightImage;

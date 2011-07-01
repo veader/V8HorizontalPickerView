@@ -51,7 +51,7 @@ typedef enum {
 	UIView *rightScrollEdgeView;
 
 	// padding for left/right scroll edge views
-	CGFloat scrollEdgeViewOutsidePadding;
+	CGFloat scrollEdgeViewPadding;
 
 	// state keepers
 	BOOL dataHasBeenLoaded;
@@ -76,7 +76,7 @@ typedef enum {
 @property (nonatomic, retain) UIView *rightEdgeView;
 @property (nonatomic, retain) UIView *leftScrollEdgeView;
 @property (nonatomic, retain) UIView *rightScrollEdgeView;
-@property (nonatomic, assign) CGFloat scrollEdgeViewOutsidePadding;
+@property (nonatomic, assign) CGFloat scrollEdgeViewPadding;
 
 
 
