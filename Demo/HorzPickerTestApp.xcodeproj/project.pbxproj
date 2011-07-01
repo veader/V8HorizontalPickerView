@@ -20,6 +20,10 @@
 		76C85CC6124C3367006E4393 /* left_fade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C85CC2124C3367006E4393 /* left_fade@2x.png */; };
 		76C85CC7124C3367006E4393 /* right_fade.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C85CC3124C3367006E4393 /* right_fade.png */; };
 		76C85CC8124C3367006E4393 /* right_fade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C85CC4124C3367006E4393 /* right_fade@2x.png */; };
+		76E61B1313BCFD590062C954 /* loopback.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E61B1113BCFD590062C954 /* loopback.png */; };
+		76E61B1413BCFD590062C954 /* loopback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E61B1213BCFD590062C954 /* loopback@2x.png */; };
+		76E61B1D13BD6A6B0062C954 /* airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E61B1B13BD6A6B0062C954 /* airplane.png */; };
+		76E61B1E13BD6A6B0062C954 /* airplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E61B1C13BD6A6B0062C954 /* airplane@2x.png */; };
 		76EFB41D124789F5003020A7 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EFB41B124789F5003020A7 /* TestViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +45,10 @@
 		76C85CC2124C3367006E4393 /* left_fade@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_fade@2x.png"; sourceTree = "<group>"; };
 		76C85CC3124C3367006E4393 /* right_fade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_fade.png; sourceTree = "<group>"; };
 		76C85CC4124C3367006E4393 /* right_fade@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_fade@2x.png"; sourceTree = "<group>"; };
+		76E61B1113BCFD590062C954 /* loopback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loopback.png; sourceTree = "<group>"; };
+		76E61B1213BCFD590062C954 /* loopback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loopback@2x.png"; sourceTree = "<group>"; };
+		76E61B1B13BD6A6B0062C954 /* airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airplane.png; sourceTree = "<group>"; };
+		76E61B1C13BD6A6B0062C954 /* airplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "airplane@2x.png"; sourceTree = "<group>"; };
 		76EFB41A124789F5003020A7 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		76EFB41B124789F5003020A7 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		76FB0D2712496F9100407B4A /* V8HorizontalPickerViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = V8HorizontalPickerViewProtocol.h; path = ../V8HorizontalPickerViewProtocol.h; sourceTree = SOURCE_ROOT; };
@@ -127,12 +135,16 @@
 		76C20237124A5282000F0F70 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				76E61B1B13BD6A6B0062C954 /* airplane.png */,
+				76E61B1C13BD6A6B0062C954 /* airplane@2x.png */,
+				76C20238124A529A000F0F70 /* indicator.png */,
+				76C20239124A529A000F0F70 /* indicator@2x.png */,
+				76E61B1113BCFD590062C954 /* loopback.png */,
+				76E61B1213BCFD590062C954 /* loopback@2x.png */,
 				76C85CC1124C3367006E4393 /* left_fade.png */,
 				76C85CC2124C3367006E4393 /* left_fade@2x.png */,
 				76C85CC3124C3367006E4393 /* right_fade.png */,
 				76C85CC4124C3367006E4393 /* right_fade@2x.png */,
-				76C20238124A529A000F0F70 /* indicator.png */,
-				76C20239124A529A000F0F70 /* indicator@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -196,6 +208,10 @@
 				76C85CC6124C3367006E4393 /* left_fade@2x.png in Resources */,
 				76C85CC7124C3367006E4393 /* right_fade.png in Resources */,
 				76C85CC8124C3367006E4393 /* right_fade@2x.png in Resources */,
+				76E61B1313BCFD590062C954 /* loopback.png in Resources */,
+				76E61B1413BCFD590062C954 /* loopback@2x.png in Resources */,
+				76E61B1D13BD6A6B0062C954 /* airplane.png in Resources */,
+				76E61B1E13BD6A6B0062C954 /* airplane@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

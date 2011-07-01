@@ -64,7 +64,17 @@
 //	UIImageView *rightFade = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"right_fade"]];
 //	pickerView.rightEdgeView = rightFade;
 //	[rightFade release];
-	
+
+	// add image to left of scroll area
+//	UIImageView *leftImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"loopback"]];
+//	pickerView.leftScrollEdgeView = leftImage;
+//	[leftImage release];
+//	pickerView.scrollEdgeViewOutsidePadding = 10.0f;
+//
+//	UIImageView *rightImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"airplane"]];
+//	pickerView.rightScrollEdgeView = rightImage;
+//	[rightImage release];
+
 	[self.view addSubview:pickerView];
 	
 	self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
