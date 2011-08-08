@@ -52,4 +52,6 @@ AppStore.
 
 Apps Using this Control
 -----------------------
-f/Stats - Flickr stats on your iPhone
+[f/stats](http://fstatsapp.com) - Flickr stats for iPhone
+
+- Submit yours to be included in this list.
