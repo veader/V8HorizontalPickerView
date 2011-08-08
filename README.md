@@ -39,9 +39,17 @@ If you are going to implement the
 data source method, make sure your view conforms to the 
 `V8HorizontalPickerElementState` protocol.
 
+License
+-------
+See LICENSE file. TL;DR: I putting this out with the zlib/libpng license.
+
 Thanks
 ------
 Thanks for taking the time to check out the project. Let me know via the
 GitHub issues feature if you find any bugs or have feature requests. Please
 drop me a note and let me know if you use this in a project that hits the
 AppStore.
+
+Apps Using this Control
+-----------------------
+f/Stats - Flickr stats on your iPhone
