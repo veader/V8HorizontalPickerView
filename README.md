@@ -41,7 +41,7 @@ data source method, make sure your view conforms to the
 
 License
 -------
-See LICENSE file. TL;DR: I putting this out with the zlib/libpng license.
+See LICENSE file. TL;DR: I publishing this under the zlib/libpng license.
 
 Thanks
 ------
