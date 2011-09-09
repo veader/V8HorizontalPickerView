@@ -337,6 +337,10 @@
 	if (self.delegate && [self.delegate respondsToSelector:delegateCall]) {
 		[self.delegate horizontalPickerView:self didSelectElementAtIndex:index];
 	}
+
+#if (__IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_4_3)
+	[self setNeedsLayout];
+#endif
 }
 
 
@@ -344,6 +348,10 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	// set the current item under the center to "highlighted" or current
 	currentSelectedIndex = [self nearestElementToCenter];
+
+#if (__IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_4_3)
+	[self setNeedsLayout];
+#endif
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
