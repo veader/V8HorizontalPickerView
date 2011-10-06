@@ -76,11 +76,16 @@
 		lastVisibleElement  = -1;
 
 		scrollEdgeViewPadding = 0.0f;
+
+		self.autoresizesSubviews = YES;
+		self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	}
     return self;
 }
 
 - (void)dealloc {
+	_scrollView.delegate = nil;
+
 	[_scrollView    release];
 	[elementWidths  release];
 	[elementFont    release];
@@ -386,6 +391,8 @@
 		_scrollView.maximumZoomScale = 1.0;
 		_scrollView.contentInset = UIEdgeInsetsZero;
 		_scrollView.decelerationRate = 0.1; //UIScrollViewDecelerationRateNormal;
+		_scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+		_scrollView.autoresizesSubviews = YES;
 		
 		UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTapped:)];
 		[_scrollView addGestureRecognizer:tapRecognizer];
@@ -443,6 +450,8 @@
 	SEL dataSourceCall = @selector(numberOfElementsInHorizontalPickerView:);
 	if (self.dataSource && [self.dataSource respondsToSelector:dataSourceCall]) {
 		numberOfElements = [self.dataSource numberOfElementsInHorizontalPickerView:self];
+	} else {
+		numberOfElements = 0;
 	}
 }
 
@@ -468,8 +477,8 @@
 	totalWidth += [self rightScrollEdgeWidth];
 
 	// sum the width of all elements
-	for (int i = 0; i < numberOfElements; i++) {
-		totalWidth += [[elementWidths objectAtIndex:i] intValue];
+	for (NSNumber *width in elementWidths) {
+		totalWidth += [width intValue];
 		totalWidth += elementPadding;
 	}
 	// TODO: is this necessary?
@@ -488,8 +497,12 @@
 	if ([elementWidths count] != 0) {
 		CGFloat scrollerWidth = _scrollView.frame.size.width;
 
-		CGFloat halfFirstWidth = [[elementWidths objectAtIndex:0] floatValue] / 2.0; 
-		CGFloat halfLastWidth  = [[elementWidths lastObject] floatValue]      / 2.0;
+		CGFloat halfFirstWidth = 0.0f;
+		CGFloat halfLastWidth  = 0.0f;
+		if ( [elementWidths count] > 0 ) {
+			halfFirstWidth = [[elementWidths objectAtIndex:0] floatValue] / 2.0; 
+			halfLastWidth  = [[elementWidths lastObject] floatValue]      / 2.0;
+		}
 		
 		// calculating the inset so that the bouncing on the ends happens more smooothly
 		// - first inset is the distance from the left edge to the left edge of the
@@ -521,7 +534,7 @@
 
 	offset += [self leftScrollEdgeWidth];
 
-	for (int i = 0; i < index; i++) {
+	for (int i = 0; i < index && i < [elementWidths count]; i++) {
 		offset += [[elementWidths objectAtIndex:i] intValue];
 		offset += elementPadding;
 	}
@@ -551,10 +564,11 @@
 
 // what is the frame for the element at the given index?
 - (CGRect)frameForElementAtIndex:(NSInteger)index {
-	return CGRectMake([self offsetForElementAtIndex:index],
-					  0.0f,
-					  [[elementWidths objectAtIndex:index] intValue],
-					  self.frame.size.height);
+	CGFloat width = 0.0f;
+	if ([elementWidths count] > index) {
+		width = [[elementWidths objectAtIndex:index] intValue];
+	}
+	return CGRectMake([self offsetForElementAtIndex:index], 0.0f, width, self.frame.size.height);
 }
 
 // what is the frame for the left scroll edge view?
