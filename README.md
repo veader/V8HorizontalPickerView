@@ -54,5 +54,7 @@ AppStore.
 Apps Using this Control
 -----------------------
 [f/stats](http://fstatsapp.com) - Flickr stats for iPhone
+[Spentory](http://spentory-landingpage.herokuapp.com/) - Expense Transactions inventory for iPhone
+
 
 - Submit yours to be included in this list.
