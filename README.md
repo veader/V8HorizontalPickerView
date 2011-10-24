@@ -1,6 +1,8 @@
 V8HorizontalPickerView
 ======================
-by Shawn Veader (@veader) of V8 Logic / V8 Labs, LLC
+by Shawn Veader (@veader) of [V8 Logic](http://v8logic.com) / [V8 Labs, LLC](http://v8labs.com)
+
+Original design by [Buck Sharp](http://bucksharp.tumblr.com/), the designer on f/stats.
 
 
 How to use V8HorizontalPickerView
