@@ -34,6 +34,13 @@
     [super dealloc];
 }
 
+- (void)didReceiveMemoryWarning {
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - View Management Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -81,7 +88,7 @@
 	tmpFrame = CGRectMake(x, 225.0f, width, 50.0f);
 	nextButton.frame = tmpFrame;
 	[nextButton addTarget:self
-				   action:@selector(nextButtonClicked:)
+				   action:@selector(nextButtonTapped:)
 		 forControlEvents:UIControlEventTouchUpInside];
 	[nextButton	setTitle:@"Center Element 0" forState:UIControlStateNormal];
 	nextButton.titleLabel.textColor = [UIColor blackColor];
@@ -91,7 +98,7 @@
 	tmpFrame = CGRectMake(x, 300, width, 50.0f);
 	reloadButton.frame = tmpFrame;
 	[reloadButton addTarget:self
-					 action:@selector(reloadButtonClicked:)
+					 action:@selector(reloadButtonTapped:)
 		   forControlEvents:UIControlEventTouchUpInside];
 	[reloadButton setTitle:@"Reload Data" forState:UIControlStateNormal];
 	[self.view addSubview:reloadButton];
@@ -104,12 +111,27 @@
 	[self.view addSubview:infoLabel];
 }
 
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+	self.pickerView = nil;
+	self.nextButton = nil;
+	self.infoLabel  = nil;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[pickerView scrollToElement:0 animated:NO];
 }
 
-- (void)nextButtonClicked:(id)sender {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	return (interfaceOrientation == UIInterfaceOrientationPortrait ||
+			interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+			interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+}
+
+#pragma mark - Button Tap Handlers
+- (void)nextButtonTapped:(id)sender {
 	[pickerView scrollToElement:indexCount animated:NO];
 	indexCount += 1;
 	if ([titleArray count] <= indexCount) {
@@ -119,7 +141,7 @@
 				forState:UIControlStateNormal];
 }
 
-- (void)reloadButtonClicked:(id)sender {
+- (void)reloadButtonTapped:(id)sender {
 	// change our title array so we can see a change
 	if ([titleArray count] > 1) {
 		[titleArray removeLastObject];
@@ -127,21 +149,6 @@
 
 	[pickerView reloadData];
 }
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-	self.pickerView = nil;
-	self.nextButton = nil;
-	self.infoLabel  = nil;
-}
-
 
 #pragma mark - HorizontalPickerView DataSource Methods
 - (NSInteger)numberOfElementsInHorizontalPickerView:(V8HorizontalPickerView *)picker {
