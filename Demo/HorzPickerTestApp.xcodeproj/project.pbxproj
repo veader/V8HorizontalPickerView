@@ -72,9 +72,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				76FB0D2712496F9100407B4A /* V8HorizontalPickerViewProtocol.h */,
-				765B8AB3124846E300BDE37E /* V8HorizontalPickerView.h */,
-				765B8AB4124846E300BDE37E /* V8HorizontalPickerView.m */,
+				76321F0F15051FDE00FACD9F /* V8HorizontalPickerView Classes */,
 				76EFB41A124789F5003020A7 /* TestViewController.h */,
 				76EFB41B124789F5003020A7 /* TestViewController.m */,
 				1D3623240D0F684500981E51 /* HorzPickerTestAppAppDelegate.h */,
@@ -130,6 +128,16 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		76321F0F15051FDE00FACD9F /* V8HorizontalPickerView Classes */ = {
+			isa = PBXGroup;
+			children = (
+				76FB0D2712496F9100407B4A /* V8HorizontalPickerViewProtocol.h */,
+				765B8AB3124846E300BDE37E /* V8HorizontalPickerView.h */,
+				765B8AB4124846E300BDE37E /* V8HorizontalPickerView.m */,
+			);
+			name = "V8HorizontalPickerView Classes";
 			sourceTree = "<group>";
 		};
 		76C20237124A5282000F0F70 /* Images */ = {
