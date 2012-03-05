@@ -45,9 +45,18 @@
     [super viewDidLoad];
 
 	self.view.backgroundColor = [UIColor blackColor];
-	CGFloat width = 200.0f;
-	CGFloat x = (self.view.frame.size.width - width) / 2.0f;
-	CGRect tmpFrame = CGRectMake(x, 150.0f, width, 40.0f);
+	CGFloat margin = 40.0f;
+	CGFloat width = (self.view.bounds.size.width - (margin * 2.0f));
+	CGFloat pickerHeight = 40.0f;
+	CGFloat x = margin;
+	CGFloat y = 150.0f;
+	CGFloat spacing = 25.0f;
+	CGRect tmpFrame = CGRectMake(x, y, width, pickerHeight);
+//
+//	CGFloat width = 200.0f;
+//	CGFloat x = (self.view.frame.size.width - width) / 2.0f;
+//	CGRect tmpFrame = CGRectMake(x, 150.0f, width, 40.0f);
+
 	pickerView = [[V8HorizontalPickerView alloc] initWithFrame:tmpFrame];
 	pickerView.backgroundColor   = [UIColor darkGrayColor];
 	pickerView.selectedTextColor = [UIColor whiteColor];
@@ -85,7 +94,8 @@
 	[self.view addSubview:pickerView];
 	
 	self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	tmpFrame = CGRectMake(x, 225.0f, width, 50.0f);
+	y = y + tmpFrame.size.height + spacing;
+	tmpFrame = CGRectMake(x, y, width, 50.0f);
 	nextButton.frame = tmpFrame;
 	[nextButton addTarget:self
 				   action:@selector(nextButtonTapped:)
@@ -95,7 +105,8 @@
 	[self.view addSubview:nextButton];
 	
 	self.reloadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	tmpFrame = CGRectMake(x, 300, width, 50.0f);
+	y = y + tmpFrame.size.height + spacing;
+	tmpFrame = CGRectMake(x, y, width, 50.0f);
 	reloadButton.frame = tmpFrame;
 	[reloadButton addTarget:self
 					 action:@selector(reloadButtonTapped:)
@@ -103,7 +114,8 @@
 	[reloadButton setTitle:@"Reload Data" forState:UIControlStateNormal];
 	[self.view addSubview:reloadButton];
 	
-	tmpFrame = CGRectMake(x, 375, width, 50.0f);
+	y = y + tmpFrame.size.height + spacing;
+	tmpFrame = CGRectMake(x, y, width, 50.0f);
 	infoLabel = [[UILabel alloc] initWithFrame:tmpFrame];
 	infoLabel.backgroundColor = [UIColor blackColor];
 	infoLabel.textColor = [UIColor whiteColor];
@@ -125,9 +137,61 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return (interfaceOrientation == UIInterfaceOrientationPortrait ||
-			interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-			interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+	return YES;
+//	(interfaceOrientation == UIInterfaceOrientationPortrait ||
+//	 interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+//	 interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+}
+
+//- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+//	CGFloat margin = 40.0f;
+//	CGFloat width = (self.view.frame.size.width - (margin * 2.0f));
+//	CGFloat height = 40.0f;
+//	CGRect tmpFrame;
+//	if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+//		toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+//		tmpFrame = CGRectMake(margin, 50.0f, width + 100.0f, height);
+//	} else {
+//		tmpFrame = CGRectMake(margin, 150.0f, width, height);
+//	}
+//	pickerView.frame = tmpFrame;
+//}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+	CGFloat margin = 40.0f;
+	CGFloat width = (self.view.bounds.size.width - (margin * 2.0f));
+	CGFloat x = margin;
+	CGFloat y = 0.0f;
+	CGFloat height = 40.0f;
+	CGFloat spacing = 25.0f;
+	CGRect tmpFrame;
+	if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+		fromInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+		y = 150.0f;
+		spacing = 25.0f;
+		tmpFrame = CGRectMake(x, y, width, height);
+	} else {
+		y = 50.0f;
+		spacing = 10.0f;
+		tmpFrame = CGRectMake(x, y, width, height);
+	}
+	pickerView.frame = tmpFrame;
+	
+	y = y + tmpFrame.size.height + spacing;
+	tmpFrame = nextButton.frame;
+	tmpFrame.origin.y = y;
+	nextButton.frame = tmpFrame;
+	
+	y = y + tmpFrame.size.height + spacing;
+	tmpFrame = reloadButton.frame;
+	tmpFrame.origin.y = y;
+	reloadButton.frame = tmpFrame;
+	
+	y = y + tmpFrame.size.height + spacing;
+	tmpFrame = infoLabel.frame;
+	tmpFrame.origin.y = y;
+	infoLabel.frame = tmpFrame;
+
 }
 
 #pragma mark - Button Tap Handlers
