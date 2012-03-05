@@ -78,7 +78,6 @@
 		scrollEdgeViewPadding = 0.0f;
 
 		self.autoresizesSubviews = YES;
-		self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	}
     return self;
 }
