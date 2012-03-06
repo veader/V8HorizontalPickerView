@@ -56,6 +56,7 @@ typedef enum {
 	// state keepers
 	BOOL dataHasBeenLoaded;
 	BOOL scrollSizeHasBeenSet;
+	BOOL scrollingBasedOnUserInteraction;
 
 	// keep track of which elements are visible for tiling
 	int firstVisibleElement;

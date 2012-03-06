@@ -67,6 +67,7 @@
 		currentSelectedIndex = 0;
 		dataHasBeenLoaded    = NO;
 		scrollSizeHasBeenSet = NO;
+		scrollingBasedOnUserInteraction = NO;
 
 		// default to the center
 		selectionPoint = CGPointMake(frame.size.width / 2, 0.0f);
@@ -108,11 +109,14 @@
 #pragma mark - LayoutSubViews
 - (void)layoutSubviews {
 	[super layoutSubviews];
+	BOOL adjustWhenFinished = NO;
 
 	if (!dataHasBeenLoaded) {
 		[self collectData];
 	}
 	if (!scrollSizeHasBeenSet) {
+		adjustWhenFinished = YES;
+		[self updateScrollContentInset];
 		[self setTotalWidthOfScrollContent];
 	}
 
@@ -189,6 +193,13 @@
 	// save off what's visible now
 	firstVisibleElement = firstNeededElement;
 	lastVisibleElement  = lastNeededElement;
+
+	// determine if scroll view needs to shift in response to resizing?
+	if ([self centerOfElementAtIndex:self.currentSelectedIndex] != [self currentCenter].x) {
+		if (adjustWhenFinished) {
+			[self scrollToElement:self.currentSelectedIndex animated:NO];
+		}
+	}
 }
 
 
@@ -281,7 +292,6 @@
 		leftScrollEdgeView = [leftView retain];
 
 		scrollSizeHasBeenSet = NO;
-		[self updateScrollContentInset];
 		[self setNeedsLayout];
 	}
 }
@@ -295,11 +305,17 @@
 		rightScrollEdgeView = [rightView retain];
 
 		scrollSizeHasBeenSet = NO;
-		[self updateScrollContentInset];
 		[self setNeedsLayout];
 	}
 }
 
+- (void)setFrame:(CGRect)newFrame {
+	if (!CGRectEqualToRect(self.frame, newFrame)) {
+		// causes recalulation of offsets, etc based on new size
+		scrollSizeHasBeenSet = NO;
+	}
+	[super setFrame:newFrame];
+}
 
 #pragma mark - Reload Data Method
 - (void)reloadData {
@@ -350,12 +366,22 @@
 
 #pragma mark - UIScrollViewDelegate Methods
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-	// set the current item under the center to "highlighted" or current
-	currentSelectedIndex = [self nearestElementToCenter];
+	if (scrollingBasedOnUserInteraction) {
+		// NOTE: sizing and/or changing orientation of control might cause scrolling
+		//		 not initiated by user. do not update current selection in these
+		//		 cases so that the view state is properly preserved.
+
+		// set the current item under the center to "highlighted" or current
+		currentSelectedIndex = [self nearestElementToCenter];
+	}
 
 #if (__IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_4_3)
 	[self setNeedsLayout];
 #endif
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+	scrollingBasedOnUserInteraction = YES;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -365,12 +391,14 @@
 	}
 }
 
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-//	[self scrollToElementNearestToCenter];
-}
+//- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView { }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	[self scrollToElementNearestToCenter];
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+	scrollingBasedOnUserInteraction = NO;
 }
 
 
