@@ -326,11 +326,8 @@
 
 	firstVisibleElement = NSIntegerMax;
 	lastVisibleElement  = NSIntegerMin;
-
 	
 	[self collectData];
-
-	[self setNeedsLayout];
 }
 
 - (void)collectData {
@@ -343,6 +340,7 @@
 	[self updateScrollContentInset];
 
 	dataHasBeenLoaded = YES;
+	[self setNeedsLayout];
 }
 
 
