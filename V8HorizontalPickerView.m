@@ -198,6 +198,10 @@
 	if ([self centerOfElementAtIndex:self.currentSelectedIndex] != [self currentCenter].x) {
 		if (adjustWhenFinished) {
 			[self scrollToElement:self.currentSelectedIndex animated:NO];
+		} else if (numberOfElements <= self.currentSelectedIndex) {
+			// if currentSelectedIndex no longer exists, select what is currently centered
+			currentSelectedIndex = [self nearestElementToCenter];
+			[self scrollToElement:self.currentSelectedIndex animated:NO];
 		}
 	}
 }
