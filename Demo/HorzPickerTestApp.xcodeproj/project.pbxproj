@@ -183,7 +183,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "V8 Labs, LLC";
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "HorzPickerTestApp" */;
@@ -250,7 +250,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HorzPickerTestApp_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "HorzPickerTestApp-Info.plist";
 				PRODUCT_NAME = HorzPickerTestApp;
 			};
@@ -263,7 +263,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HorzPickerTestApp_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "HorzPickerTestApp-Info.plist";
 				PRODUCT_NAME = HorzPickerTestApp;
 				VALIDATE_PRODUCT = YES;
@@ -293,7 +293,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HorzPickerTestApp_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "V8TESTINGUI=1";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "HorzPickerTestApp-Info.plist";
 				PRODUCT_NAME = HorzPickerTestApp;
 			};
