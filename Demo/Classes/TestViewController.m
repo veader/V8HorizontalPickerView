@@ -15,6 +15,11 @@
 @synthesize nextButton, reloadButton;
 @synthesize infoLabel;
 
+#pragma mark - iVars
+NSMutableArray *titleArray;
+int indexCount;
+
+#pragma mark - Init/Dealloc
 - (id)init {
 	if ((self = [super init])) {
 		titleArray = [[NSMutableArray arrayWithObjects:@"All", @"Today", @"Thursday",

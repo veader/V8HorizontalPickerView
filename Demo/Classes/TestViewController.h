@@ -12,12 +12,6 @@
 @class V8HorizontalPickerView;
 
 @interface TestViewController : UIViewController <V8HorizontalPickerViewDelegate, V8HorizontalPickerViewDataSource> {
-	V8HorizontalPickerView *pickerView;
-	NSMutableArray *titleArray;
-	UIButton *nextButton;
-	UIButton *reloadButton;
-	UILabel *infoLabel;
-	int indexCount;
 }
 
 @property (nonatomic, retain) V8HorizontalPickerView *pickerView;

@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HorzPickerTestAppAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-	TestViewController *testView;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

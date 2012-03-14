@@ -53,6 +53,25 @@
 @synthesize leftEdgeView, rightEdgeView;
 @synthesize leftScrollEdgeView, rightScrollEdgeView, scrollEdgeViewPadding;
 
+#pragma mark - iVars
+UIScrollView *_scrollView;
+
+// collection of widths of each element.
+NSMutableArray *elementWidths;
+
+NSInteger elementPadding;	
+
+// state keepers
+BOOL dataHasBeenLoaded;
+BOOL scrollSizeHasBeenSet;
+BOOL scrollingBasedOnUserInteraction;
+
+// keep track of which elements are visible for tiling
+int firstVisibleElement;
+int lastVisibleElement;
+
+
+#pragma mark - Init/Dealloc
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
 		elementWidths = [[NSMutableArray array] retain];
@@ -321,7 +340,7 @@
 	[super setFrame:newFrame];
 }
 
-#pragma mark - Reload Data Method
+#pragma mark - Data Fetching Methods
 - (void)reloadData {
 	// remove all scrollview subviews and "recycle" them
 	for (UIView *view in [_scrollView subviews]) {
