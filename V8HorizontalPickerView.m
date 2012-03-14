@@ -59,7 +59,10 @@ UIScrollView *_scrollView;
 // collection of widths of each element.
 NSMutableArray *elementWidths;
 
-NSInteger elementPadding;	
+NSInteger elementPadding;
+
+// used to prevent flashing "selected" index when calling #scrollToElement:animated:
+NSInteger targetSelectedIndex;
 
 // state keepers
 BOOL dataHasBeenLoaded;
@@ -94,6 +97,8 @@ int lastVisibleElement;
 		
 		firstVisibleElement = -1;
 		lastVisibleElement  = -1;
+
+		targetSelectedIndex = -1;
 
 		scrollEdgeViewPadding = 0.0f;
 
@@ -371,13 +376,7 @@ int lastVisibleElement;
 - (void)scrollToElement:(NSInteger)index animated:(BOOL)animate {
 	int x = [self centerOfElementAtIndex:index] - selectionPoint.x;
 	[_scrollView setContentOffset:CGPointMake(x, 0) animated:animate];
-	currentSelectedIndex = index;
-
-	// notify delegate of the selected index
-	SEL delegateCall = @selector(horizontalPickerView:didSelectElementAtIndex:);
-	if (self.delegate && [self.delegate respondsToSelector:delegateCall]) {
-		[self.delegate horizontalPickerView:self didSelectElementAtIndex:index];
-	}
+	targetSelectedIndex = index;
 
 #if (__IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_4_3)
 	[self setNeedsLayout];
@@ -394,6 +393,21 @@ int lastVisibleElement;
 
 		// set the current item under the center to "highlighted" or current
 		currentSelectedIndex = [self nearestElementToCenter];
+	}
+
+	// if we are moving to a targeted index, determine if we have hit it yet.
+	if (targetSelectedIndex != -1) {
+		NSInteger currentIndex = [self nearestElementToCenter];
+		if (currentIndex == targetSelectedIndex) {
+			currentSelectedIndex = currentIndex;
+			targetSelectedIndex  = -1;
+
+			// notify delegate of the selected index
+			SEL delegateCall = @selector(horizontalPickerView:didSelectElementAtIndex:);
+			if (self.delegate && [self.delegate respondsToSelector:delegateCall]) {
+				[self.delegate horizontalPickerView:self didSelectElementAtIndex:currentSelectedIndex];
+			}
+		}
 	}
 
 #if (__IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_4_3)
