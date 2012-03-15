@@ -61,9 +61,6 @@ NSMutableArray *elementWidths;
 
 NSInteger elementPadding;
 
-// used to prevent flashing "selected" index when calling #scrollToElement:animated:
-NSInteger targetSelectedIndex;
-
 // state keepers
 BOOL dataHasBeenLoaded;
 BOOL scrollSizeHasBeenSet;
@@ -97,8 +94,6 @@ int lastVisibleElement;
 		
 		firstVisibleElement = -1;
 		lastVisibleElement  = -1;
-
-		targetSelectedIndex = -1;
 
 		scrollEdgeViewPadding = 0.0f;
 
@@ -162,6 +157,11 @@ int lastVisibleElement;
 			if ([view respondsToSelector:setSelectedSelector]) {
 				// view's tag is it's index
 				BOOL isSelected = (currentSelectedIndex == [self indexForElement:view]);
+				if (isSelected) {
+					// if this view is set to be selected, make sure it is over the selection point
+					int currentIndex = [self nearestElementToCenter];
+					isSelected = (currentIndex == currentSelectedIndex);
+				}
 				[(V8HorizontalPickerLabel *)view setSelectedElement:isSelected];
 			}
 		}
@@ -374,9 +374,15 @@ int lastVisibleElement;
 
 #pragma mark - Scroll To Element Method
 - (void)scrollToElement:(NSInteger)index animated:(BOOL)animate {
+	currentSelectedIndex = index;
 	int x = [self centerOfElementAtIndex:index] - selectionPoint.x;
 	[_scrollView setContentOffset:CGPointMake(x, 0) animated:animate];
-	targetSelectedIndex = index;
+
+	// notify delegate of the selected index
+	SEL delegateCall = @selector(horizontalPickerView:didSelectElementAtIndex:);
+	if (self.delegate && [self.delegate respondsToSelector:delegateCall]) {
+		[self.delegate horizontalPickerView:self didSelectElementAtIndex:index];
+	}
 
 #if (__IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_4_3)
 	[self setNeedsLayout];
@@ -393,21 +399,6 @@ int lastVisibleElement;
 
 		// set the current item under the center to "highlighted" or current
 		currentSelectedIndex = [self nearestElementToCenter];
-	}
-
-	// if we are moving to a targeted index, determine if we have hit it yet.
-	if (targetSelectedIndex != -1) {
-		NSInteger currentIndex = [self nearestElementToCenter];
-		if (currentIndex == targetSelectedIndex) {
-			currentSelectedIndex = currentIndex;
-			targetSelectedIndex  = -1;
-
-			// notify delegate of the selected index
-			SEL delegateCall = @selector(horizontalPickerView:didSelectElementAtIndex:);
-			if (self.delegate && [self.delegate respondsToSelector:delegateCall]) {
-				[self.delegate horizontalPickerView:self didSelectElementAtIndex:currentSelectedIndex];
-			}
-		}
 	}
 
 #if (__IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_4_3)
@@ -501,7 +492,10 @@ int lastVisibleElement;
 	
 	elementLabel.normalStateColor   = self.textColor;
 	elementLabel.selectedStateColor = self.selectedTextColor;
-	elementLabel.selectedElement    = (currentSelectedIndex == index);
+
+	// show selected status if this element is the selected one and is currently over selectionPoint
+	int currentIndex = [self nearestElementToCenter];
+	elementLabel.selectedElement = (currentSelectedIndex == index) && (currentIndex == currentSelectedIndex);
 
 	return [elementLabel autorelease];
 }
@@ -731,9 +725,10 @@ int lastVisibleElement;
 	[self scrollToElement:[self nearestElementToCenter] animated:YES];
 }
 
+#pragma mark - Tap Gesture Recognizer Handler Method
 // use the gesture recognizer to slide to element under tap
 - (void)scrollViewTapped:(UITapGestureRecognizer *)recognizer {
-	if (recognizer.state == UIGestureRecognizerStateRecognized ) {
+	if (recognizer.state == UIGestureRecognizerStateRecognized) {
 		CGPoint tapLocation    = [recognizer locationInView:_scrollView];
 		NSInteger elementIndex = [self elementContainingPoint:tapLocation];
 		if (elementIndex != -1) { // point not in element
