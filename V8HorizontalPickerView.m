@@ -81,9 +81,10 @@ int lastVisibleElement;
 		self.textColor   = [UIColor blackColor];
 		self.elementFont = [UIFont systemFontOfSize:12.0f];
 
+		currentSelectedIndex = -1; // nothing is selected yet
+
 		numberOfElements     = 0;
 		elementPadding       = 0;
-		currentSelectedIndex = 0;
 		dataHasBeenLoaded    = NO;
 		scrollSizeHasBeenSet = NO;
 		scrollingBasedOnUserInteraction = NO;
@@ -219,13 +220,13 @@ int lastVisibleElement;
 	lastVisibleElement  = lastNeededElement;
 
 	// determine if scroll view needs to shift in response to resizing?
-	if ([self centerOfElementAtIndex:self.currentSelectedIndex] != [self currentCenter].x) {
+	if (currentSelectedIndex > -1 && [self centerOfElementAtIndex:currentSelectedIndex] != [self currentCenter].x) {
 		if (adjustWhenFinished) {
-			[self scrollToElement:self.currentSelectedIndex animated:NO];
-		} else if (numberOfElements <= self.currentSelectedIndex) {
+			[self scrollToElement:currentSelectedIndex animated:NO];
+		} else if (numberOfElements <= currentSelectedIndex) {
 			// if currentSelectedIndex no longer exists, select what is currently centered
 			currentSelectedIndex = [self nearestElementToCenter];
-			[self scrollToElement:self.currentSelectedIndex animated:NO];
+			[self scrollToElement:currentSelectedIndex animated:NO];
 		}
 	}
 }
