@@ -21,10 +21,9 @@ int indexCount;
 
 #pragma mark - Init/Dealloc
 - (id)init {
-	if ((self = [super init])) {
-		titleArray = [[NSMutableArray arrayWithObjects:@"All", @"Today", @"Thursday",
-							@"Wednesday", @"Tuesday", @"Monday", nil] retain];
-        // titleArray = [[NSMutableArray array] retain]; // for testing
+	self = [super init];
+	if (self) {
+		titleArray = [[NSMutableArray arrayWithObjects:@"All", @"Today", @"Thursday", @"Wednesday", @"Tuesday", @"Monday", nil] retain];
 		indexCount = 0;
 	}
 	return self;
@@ -36,18 +35,18 @@ int indexCount;
 	[nextButton   release];
 	[reloadButton release];
 	[infoLabel    release];
-    [super dealloc];
+	[super dealloc];
 }
 
 - (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
+	// Releases the view if it doesn't have a superview.
+	[super didReceiveMemoryWarning];
+	// Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View Management Methods
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
 
 	self.view.backgroundColor = [UIColor blackColor];
 	CGFloat margin = 40.0f;
@@ -57,7 +56,7 @@ int indexCount;
 	CGFloat y = 150.0f;
 	CGFloat spacing = 25.0f;
 	CGRect tmpFrame = CGRectMake(x, y, width, pickerHeight);
-//
+
 //	CGFloat width = 200.0f;
 //	CGFloat x = (self.view.frame.size.width - width) / 2.0f;
 //	CGRect tmpFrame = CGRectMake(x, 150.0f, width, 40.0f);
@@ -97,28 +96,24 @@ int indexCount;
 //	[rightImage release];
 
 	[self.view addSubview:pickerView];
-	
+
 	self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	y = y + tmpFrame.size.height + spacing;
 	tmpFrame = CGRectMake(x, y, width, 50.0f);
 	nextButton.frame = tmpFrame;
-	[nextButton addTarget:self
-				   action:@selector(nextButtonTapped:)
-		 forControlEvents:UIControlEventTouchUpInside];
+	[nextButton addTarget:self action:@selector(nextButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
 	[nextButton	setTitle:@"Center Element 0" forState:UIControlStateNormal];
 	nextButton.titleLabel.textColor = [UIColor blackColor];
 	[self.view addSubview:nextButton];
-	
+
 	self.reloadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	y = y + tmpFrame.size.height + spacing;
 	tmpFrame = CGRectMake(x, y, width, 50.0f);
 	reloadButton.frame = tmpFrame;
-	[reloadButton addTarget:self
-					 action:@selector(reloadButtonTapped:)
-		   forControlEvents:UIControlEventTouchUpInside];
+	[reloadButton addTarget:self action:@selector(reloadButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
 	[reloadButton setTitle:@"Reload Data" forState:UIControlStateNormal];
 	[self.view addSubview:reloadButton];
-	
+
 	y = y + tmpFrame.size.height + spacing;
 	tmpFrame = CGRectMake(x, y, width, 50.0f);
 	infoLabel = [[UILabel alloc] initWithFrame:tmpFrame];
@@ -129,8 +124,8 @@ int indexCount;
 }
 
 - (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+	[super viewDidUnload];
+	// Release any retained subviews of the main view.
 	self.pickerView = nil;
 	self.nextButton = nil;
 	self.infoLabel  = nil;

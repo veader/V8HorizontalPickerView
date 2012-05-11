@@ -11,8 +11,7 @@
 
 @class V8HorizontalPickerView;
 
-@interface TestViewController : UIViewController <V8HorizontalPickerViewDelegate, V8HorizontalPickerViewDataSource> {
-}
+@interface TestViewController : UIViewController <V8HorizontalPickerViewDelegate, V8HorizontalPickerViewDataSource> { }
 
 @property (nonatomic, retain) V8HorizontalPickerView *pickerView;
 @property (nonatomic, retain) UIButton *nextButton;

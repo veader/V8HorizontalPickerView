@@ -16,11 +16,9 @@ typedef enum {
 
 
 
-@interface V8HorizontalPickerView : UIView <UIScrollViewDelegate> {
-}
+@interface V8HorizontalPickerView : UIView <UIScrollViewDelegate> { }
 
-// delegate and datasources to feed scroll view. this view only maintains
-//     a weak reference to these.
+// delegate and datasources to feed scroll view. this view only maintains a weak reference to these
 @property (nonatomic, assign) id <V8HorizontalPickerViewDataSource> dataSource;
 @property (nonatomic, assign) id <V8HorizontalPickerViewDelegate> delegate;
 
@@ -57,9 +55,9 @@ typedef enum {
 
 @end
 
+
 // sub-class of UILabel that knows how to change it's state
-@interface V8HorizontalPickerLabel : UILabel <V8HorizontalPickerElementState> {
-}
+@interface V8HorizontalPickerLabel : UILabel <V8HorizontalPickerElementState> { }
 
 @property (nonatomic, assign) BOOL selectedElement;
 @property (nonatomic, retain) UIColor *selectedStateColor;

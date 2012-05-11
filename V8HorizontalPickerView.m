@@ -9,7 +9,7 @@
 
 
 #pragma mark - Internal Method Interface
-@interface V8HorizontalPickerView (InternalMethods)
+@interface V8HorizontalPickerView ()
 - (void)collectData;
 
 - (void)getNumberOfElementsFromDataSource;
@@ -73,11 +73,11 @@ int lastVisibleElement;
 
 #pragma mark - Init/Dealloc
 - (id)initWithFrame:(CGRect)frame {
-    if ((self = [super initWithFrame:frame])) {
+	if ((self = [super initWithFrame:frame])) {
 		elementWidths = [[NSMutableArray array] retain];
 
 		[self addScrollView];
-		
+
 		self.textColor   = [UIColor blackColor];
 		self.elementFont = [UIFont systemFontOfSize:12.0f];
 
@@ -92,7 +92,7 @@ int lastVisibleElement;
 		// default to the center
 		selectionPoint = CGPointMake(frame.size.width / 2, 0.0f);
 		indicatorPosition = V8HorizontalPickerIndicatorBottom;
-		
+
 		firstVisibleElement = -1;
 		lastVisibleElement  = -1;
 
@@ -100,7 +100,7 @@ int lastVisibleElement;
 
 		self.autoresizesSubviews = YES;
 	}
-    return self;
+	return self;
 }
 
 - (void)dealloc {
@@ -122,7 +122,7 @@ int lastVisibleElement;
 		[selectionIndicatorView release];
 	}
 
-    [super dealloc];
+	[super dealloc];
 }
 
 
@@ -143,6 +143,11 @@ int lastVisibleElement;
 	SEL titleForElementSelector = @selector(horizontalPickerView:titleForElementAtIndex:);
 	SEL viewForElementSelector  = @selector(horizontalPickerView:viewForElementAtIndex:);
 	SEL setSelectedSelector     = @selector(setSelectedElement:);
+	// since performSelector can't take a BOOL argument, we have to resort to an NSInvocation
+	V8HorizontalPickerLabel *tmpLabel = [[V8HorizontalPickerLabel alloc] init]; // create throw away object to get method signature for invocation
+	NSInvocation *setSelectedInvocation = [NSInvocation invocationWithMethodSignature:[tmpLabel methodSignatureForSelector:setSelectedSelector]];
+	setSelectedInvocation.selector = setSelectedSelector;
+	[tmpLabel release];
 
 	CGRect visibleBounds   = [self bounds];
 	CGRect scaledViewFrame = CGRectZero;
@@ -151,10 +156,10 @@ int lastVisibleElement;
 	for (UIView *view in [_scrollView subviews]) {
 		scaledViewFrame = [_scrollView convertRect:[view frame] toView:self];
 
-        // if the view doesn't intersect, it's not visible, so we can recycle it
-        if (!CGRectIntersectsRect(scaledViewFrame, visibleBounds)) {
-            [view removeFromSuperview];
-        } else { // if it is still visible, update it's selected state
+		// if the view doesn't intersect, it's not visible, so we can recycle it
+		if (!CGRectIntersectsRect(scaledViewFrame, visibleBounds)) {
+			[view removeFromSuperview];
+		} else { // if it is still visible, update it's selected state
 			if ([view respondsToSelector:setSelectedSelector]) {
 				// view's tag is it's index
 				BOOL isSelected = (currentSelectedIndex == [self indexForElement:view]);
@@ -163,7 +168,9 @@ int lastVisibleElement;
 					int currentIndex = [self nearestElementToCenter];
 					isSelected = (currentIndex == currentSelectedIndex);
 				}
-				[(V8HorizontalPickerLabel *)view setSelectedElement:isSelected];
+				[setSelectedInvocation setArgument:&isSelected atIndex:2]; // remember that 0 and 1 are already taken for obj-c
+				[setSelectedInvocation invokeWithTarget:view];
+				// [(V8HorizontalPickerLabel *)view setSelectedElement:isSelected];
 			}
 		}
 	}
@@ -179,20 +186,20 @@ int lastVisibleElement;
 		view = nil; // paranoia
 		view = [_scrollView viewWithTag:[self tagForElementAtIndex:i]];
 		if (!view) {
-            if (i < numberOfElements) { // make sure we are not requesting data out of range
-                if (self.delegate && [self.delegate respondsToSelector:titleForElementSelector]) {
-                    NSString *title = [self.delegate horizontalPickerView:self titleForElementAtIndex:i];
-                    view = [self labelForForElementAtIndex:i withTitle:title];
-                } else if (self.delegate && [self.delegate respondsToSelector:viewForElementSelector]) {
-                    view = [self.delegate horizontalPickerView:self viewForElementAtIndex:i];
-                }
+			if (i < numberOfElements) { // make sure we are not requesting data out of range
+				if (self.delegate && [self.delegate respondsToSelector:titleForElementSelector]) {
+					NSString *title = [self.delegate horizontalPickerView:self titleForElementAtIndex:i];
+					view = [self labelForForElementAtIndex:i withTitle:title];
+				} else if (self.delegate && [self.delegate respondsToSelector:viewForElementSelector]) {
+					view = [self.delegate horizontalPickerView:self viewForElementAtIndex:i];
+				}
 
-                if (view) {
-                    // use the index as the tag so we can find it later
-                    view.tag = [self tagForElementAtIndex:i];
-                    [_scrollView addSubview:view];
-                }
-            }
+				if (view) {
+					// use the index as the tag so we can find it later
+					view.tag = [self tagForElementAtIndex:i];
+					[_scrollView addSubview:view];
+				}
+			}
 		}
 	}
 
@@ -287,7 +294,7 @@ int lastVisibleElement;
 			[leftEdgeView release];
 		}
 		leftEdgeView = [leftView retain];
-		
+
 		CGRect tmpFrame = leftEdgeView.frame;
 		tmpFrame.origin.x = 0.0f;
 		tmpFrame.origin.y = 0.0f;
@@ -303,7 +310,7 @@ int lastVisibleElement;
 			[rightEdgeView release];
 		}
 		rightEdgeView = [rightView retain];
-		
+
 		CGRect tmpFrame = rightEdgeView.frame;
 		tmpFrame.origin.x = self.frame.size.width - tmpFrame.size.width;
 		tmpFrame.origin.y = 0.0f;
@@ -355,7 +362,7 @@ int lastVisibleElement;
 
 	firstVisibleElement = NSIntegerMax;
 	lastVisibleElement  = NSIntegerMin;
-	
+
 	[self collectData];
 }
 
@@ -447,17 +454,18 @@ int lastVisibleElement;
 		_scrollView.decelerationRate = 0.1; //UIScrollViewDecelerationRateNormal;
 		_scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 		_scrollView.autoresizesSubviews = YES;
-		
+
 		UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTapped:)];
 		[_scrollView addGestureRecognizer:tapRecognizer];
 		[tapRecognizer release];
-		
+
 		[self addSubview:_scrollView];
 	}
 }
 
 - (void)drawPositionIndicator {
-	CGFloat x = self.selectionPoint.x - (selectionIndicatorView.frame.size.width / 2);
+	CGRect indicatorFrame = selectionIndicatorView.frame;
+	CGFloat x = self.selectionPoint.x - (indicatorFrame.size.width / 2);
 	CGFloat y;
 
 	switch (self.indicatorPosition) {
@@ -466,7 +474,7 @@ int lastVisibleElement;
 			break;
 		}
 		case V8HorizontalPickerIndicatorBottom: {
-			y = self.frame.size.height - selectionIndicatorView.frame.size.height;
+			y = self.frame.size.height - indicatorFrame.size.height;
 			break;
 		}
 		default:
@@ -474,9 +482,7 @@ int lastVisibleElement;
 	}
 
 	// properly place indicator image in view relative to selection point
-	CGRect tmpFrame = CGRectMake(x, y,
-								 selectionIndicatorView.frame.size.width,
-								 selectionIndicatorView.frame.size.height);
+	CGRect tmpFrame = CGRectMake(x, y, indicatorFrame.size.width, indicatorFrame.size.height);
 	selectionIndicatorView.frame = tmpFrame;
 	[self addSubview:selectionIndicatorView];
 }
@@ -490,7 +496,7 @@ int lastVisibleElement;
 	elementLabel.backgroundColor = self.backgroundColor;
 	elementLabel.text            = title;
 	elementLabel.font            = self.elementFont;
-	
+
 	elementLabel.normalStateColor   = self.textColor;
 	elementLabel.selectedStateColor = self.selectedTextColor;
 
@@ -524,6 +530,7 @@ int lastVisibleElement;
 		}
 	}
 }
+
 
 #pragma mark - View Calculation and Manipulation Methods (Internal Methods)
 // what is the total width of the content area?
@@ -560,7 +567,7 @@ int lastVisibleElement;
 			halfFirstWidth = [[elementWidths objectAtIndex:0] floatValue] / 2.0; 
 			halfLastWidth  = [[elementWidths lastObject] floatValue]      / 2.0;
 		}
-		
+
 		// calculating the inset so that the bouncing on the ends happens more smooothly
 		// - first inset is the distance from the left edge to the left edge of the
 		//     first element when that element is centered under the selection point.
@@ -613,7 +620,7 @@ int lastVisibleElement;
 	if (index >= [elementWidths count]) {
 		return 0;
 	}
-	
+
 	NSInteger elementOffset = [self offsetForElementAtIndex:index];
 	NSInteger elementWidth  = [[elementWidths objectAtIndex:index] intValue] / 2;
 	return elementOffset + elementWidth;
@@ -726,6 +733,7 @@ int lastVisibleElement;
 	[self scrollToElement:[self nearestElementToCenter] animated:YES];
 }
 
+
 #pragma mark - Tap Gesture Recognizer Handler Method
 // use the gesture recognizer to slide to element under tap
 - (void)scrollViewTapped:(UITapGestureRecognizer *)recognizer {
@@ -739,6 +747,7 @@ int lastVisibleElement;
 }
 
 @end
+
 
 
 // ------------------------------------------------------------------------
