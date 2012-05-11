@@ -143,11 +143,6 @@ int lastVisibleElement;
 	SEL titleForElementSelector = @selector(horizontalPickerView:titleForElementAtIndex:);
 	SEL viewForElementSelector  = @selector(horizontalPickerView:viewForElementAtIndex:);
 	SEL setSelectedSelector     = @selector(setSelectedElement:);
-	// since performSelector can't take a BOOL argument, we have to resort to an NSInvocation
-	V8HorizontalPickerLabel *tmpLabel = [[V8HorizontalPickerLabel alloc] init]; // create throw away object to get method signature for invocation
-	NSInvocation *setSelectedInvocation = [NSInvocation invocationWithMethodSignature:[tmpLabel methodSignatureForSelector:setSelectedSelector]];
-	setSelectedInvocation.selector = setSelectedSelector;
-	[tmpLabel release];
 
 	CGRect visibleBounds   = [self bounds];
 	CGRect scaledViewFrame = CGRectZero;
@@ -168,9 +163,8 @@ int lastVisibleElement;
 					int currentIndex = [self nearestElementToCenter];
 					isSelected = (currentIndex == currentSelectedIndex);
 				}
-				[setSelectedInvocation setArgument:&isSelected atIndex:2]; // remember that 0 and 1 are already taken for obj-c
-				[setSelectedInvocation invokeWithTarget:view];
-				// [(V8HorizontalPickerLabel *)view setSelectedElement:isSelected];
+				// casting to V8HorizontalPickerLabel so we can call this without all the NSInvocation jazz
+				[(V8HorizontalPickerLabel *)view setSelectedElement:isSelected];
 			}
 		}
 	}
