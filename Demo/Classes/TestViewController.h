@@ -14,8 +14,10 @@
 @interface TestViewController : UIViewController <V8HorizontalPickerViewDelegate, V8HorizontalPickerViewDataSource> { }
 
 @property (nonatomic, retain) V8HorizontalPickerView *pickerView;
+@property (nonatomic, retain) V8HorizontalPickerView *secondPickerView;
 @property (nonatomic, retain) UIButton *nextButton;
 @property (nonatomic, retain) UIButton *reloadButton;
 @property (nonatomic, retain) UILabel *infoLabel;
+@property (nonatomic, retain) UILabel *secondInfoLabel;
 
 @end

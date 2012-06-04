@@ -14,9 +14,11 @@
 @synthesize pickerView;
 @synthesize nextButton, reloadButton;
 @synthesize infoLabel;
+@synthesize secondPickerView, secondInfoLabel;
 
 #pragma mark - iVars
 NSMutableArray *titleArray;
+NSMutableArray *numberArray;
 int indexCount;
 
 #pragma mark - Init/Dealloc
@@ -24,6 +26,7 @@ int indexCount;
 	self = [super init];
 	if (self) {
 		titleArray = [[NSMutableArray arrayWithObjects:@"All", @"Today", @"Thursday", @"Wednesday", @"Tuesday", @"Monday", nil] retain];
+		numberArray = [[NSMutableArray arrayWithObjects:@"One", @"Two", @"Three", @"Four", @"Five", @"Six", @"Seven", @"Eight", @"Nine", @"Ten", nil] retain];
 		indexCount = 0;
 	}
 	return self;
@@ -35,6 +38,9 @@ int indexCount;
 	[nextButton   release];
 	[reloadButton release];
 	[infoLabel    release];
+	[secondPickerView release];
+	[secondInfoLabel  release];
+	[numberArray      release];
 	[super dealloc];
 }
 
@@ -53,7 +59,7 @@ int indexCount;
 	CGFloat width = (self.view.bounds.size.width - (margin * 2.0f));
 	CGFloat pickerHeight = 40.0f;
 	CGFloat x = margin;
-	CGFloat y = 150.0f;
+	CGFloat y = 50.0f;
 	CGFloat spacing = 25.0f;
 	CGRect tmpFrame = CGRectMake(x, y, width, pickerHeight);
 
@@ -97,8 +103,26 @@ int indexCount;
 
 	[self.view addSubview:pickerView];
 
+	// second picker view -----------
+	y += pickerHeight + spacing;
+	tmpFrame = CGRectMake(x, y, width, pickerHeight);
+	secondPickerView = [[V8HorizontalPickerView alloc] initWithFrame:tmpFrame];
+	secondPickerView.backgroundColor   = [UIColor darkGrayColor];
+	secondPickerView.selectedTextColor = [UIColor whiteColor];
+	secondPickerView.textColor   = [UIColor grayColor];
+	secondPickerView.delegate    = self;
+	secondPickerView.dataSource  = self;
+	secondPickerView.elementFont = [UIFont boldSystemFontOfSize:14.0f];
+
+	// add carat or other view to indicate selected element
+	indicator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"indicator"]];
+	secondPickerView.selectionIndicatorView = indicator;
+	[indicator release];
+
+	[self.view addSubview:secondPickerView];
+
 	self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	y = y + tmpFrame.size.height + spacing;
+	y += pickerHeight + spacing;
 	tmpFrame = CGRectMake(x, y, width, 50.0f);
 	nextButton.frame = tmpFrame;
 	[nextButton addTarget:self action:@selector(nextButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -107,20 +131,28 @@ int indexCount;
 	[self.view addSubview:nextButton];
 
 	self.reloadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	y = y + tmpFrame.size.height + spacing;
+	y += tmpFrame.size.height + spacing;
 	tmpFrame = CGRectMake(x, y, width, 50.0f);
 	reloadButton.frame = tmpFrame;
 	[reloadButton addTarget:self action:@selector(reloadButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
 	[reloadButton setTitle:@"Reload Data" forState:UIControlStateNormal];
 	[self.view addSubview:reloadButton];
 
-	y = y + tmpFrame.size.height + spacing;
+	y += tmpFrame.size.height + spacing;
 	tmpFrame = CGRectMake(x, y, width, 50.0f);
 	infoLabel = [[UILabel alloc] initWithFrame:tmpFrame];
 	infoLabel.backgroundColor = [UIColor blackColor];
 	infoLabel.textColor = [UIColor whiteColor];
 	infoLabel.textAlignment = UITextAlignmentCenter;
 	[self.view addSubview:infoLabel];
+
+	y += tmpFrame.size.height + spacing;
+	tmpFrame = CGRectMake(x, y, width, 50.0f);
+	secondInfoLabel = [[UILabel alloc] initWithFrame:tmpFrame];
+	secondInfoLabel.backgroundColor = [UIColor blackColor];
+	secondInfoLabel.textColor = [UIColor whiteColor];
+	secondInfoLabel.textAlignment = UITextAlignmentCenter;
+	[self.view addSubview:secondInfoLabel];
 }
 
 - (void)viewDidUnload {
@@ -129,11 +161,14 @@ int indexCount;
 	self.pickerView = nil;
 	self.nextButton = nil;
 	self.infoLabel  = nil;
+	self.secondPickerView = nil;
+	self.secondInfoLabel  = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[pickerView scrollToElement:0 animated:NO];
+	[secondPickerView scrollToElement:0 animated:NO];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -192,6 +227,7 @@ int indexCount;
 	tmpFrame.origin.y = y;
 	infoLabel.frame = tmpFrame;
 
+#warning TODO: make this work with second picker and label...
 }
 
 #pragma mark - Button Tap Handlers
@@ -216,17 +252,30 @@ int indexCount;
 
 #pragma mark - HorizontalPickerView DataSource Methods
 - (NSInteger)numberOfElementsInHorizontalPickerView:(V8HorizontalPickerView *)picker {
-	return [titleArray count];
+	if (picker == self.secondPickerView) {
+		return [numberArray count];
+	} else {
+		return [titleArray count];
+	}
 }
 
 #pragma mark - HorizontalPickerView Delegate Methods
 - (NSString *)horizontalPickerView:(V8HorizontalPickerView *)picker titleForElementAtIndex:(NSInteger)index {
-	return [titleArray objectAtIndex:index];
+	if (picker == self.secondPickerView) {
+		return [numberArray objectAtIndex:index];
+	} else {
+		return [titleArray objectAtIndex:index];
+	}
 }
 
 - (NSInteger) horizontalPickerView:(V8HorizontalPickerView *)picker widthForElementAtIndex:(NSInteger)index {
 	CGSize constrainedSize = CGSizeMake(MAXFLOAT, MAXFLOAT);
-	NSString *text = [titleArray objectAtIndex:index];
+	NSString *text;
+	if (picker == self.secondPickerView) {
+		text = [numberArray objectAtIndex:index];
+	} else {
+		text = [titleArray objectAtIndex:index];
+	}
 	CGSize textSize = [text sizeWithFont:[UIFont boldSystemFontOfSize:14.0f]
 					   constrainedToSize:constrainedSize
 						   lineBreakMode:UILineBreakModeWordWrap];
@@ -234,7 +283,11 @@ int indexCount;
 }
 
 - (void)horizontalPickerView:(V8HorizontalPickerView *)picker didSelectElementAtIndex:(NSInteger)index {
-	self.infoLabel.text = [NSString stringWithFormat:@"Selected index %d", index];
+	if (picker == self.secondPickerView) {
+		self.secondInfoLabel.text = [NSString stringWithFormat:@"Selected index %d", index];
+	} else {
+		self.infoLabel.text = [NSString stringWithFormat:@"Selected index %d", index];
+	}
 }
 
 @end
