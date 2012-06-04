@@ -9,7 +9,24 @@
 
 
 #pragma mark - Internal Method Interface
-@interface V8HorizontalPickerView ()
+@interface V8HorizontalPickerView () {
+	UIScrollView *_scrollView;
+
+	// collection of widths of each element.
+	NSMutableArray *elementWidths;
+
+	NSInteger elementPadding;
+
+	// state keepers
+	BOOL dataHasBeenLoaded;
+	BOOL scrollSizeHasBeenSet;
+	BOOL scrollingBasedOnUserInteraction;
+
+	// keep track of which elements are visible for tiling
+	int firstVisibleElement;
+	int lastVisibleElement;
+}
+
 - (void)collectData;
 
 - (void)getNumberOfElementsFromDataSource;
@@ -52,24 +69,6 @@
 @synthesize selectionPoint, selectionIndicatorView, indicatorPosition;
 @synthesize leftEdgeView, rightEdgeView;
 @synthesize leftScrollEdgeView, rightScrollEdgeView, scrollEdgeViewPadding;
-
-#pragma mark - iVars
-UIScrollView *_scrollView;
-
-// collection of widths of each element.
-NSMutableArray *elementWidths;
-
-NSInteger elementPadding;
-
-// state keepers
-BOOL dataHasBeenLoaded;
-BOOL scrollSizeHasBeenSet;
-BOOL scrollingBasedOnUserInteraction;
-
-// keep track of which elements are visible for tiling
-int firstVisibleElement;
-int lastVisibleElement;
-
 
 #pragma mark - Init/Dealloc
 - (id)initWithFrame:(CGRect)frame {
