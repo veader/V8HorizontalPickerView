@@ -6,6 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+
 #import "V8HorizontalPickerViewProtocol.h"
 
 // position of indicator view, if shown
@@ -16,7 +18,10 @@ typedef enum {
 
 
 
-@interface V8HorizontalPickerView : UIView <UIScrollViewDelegate> { }
+@interface V8HorizontalPickerView : UIView <UIScrollViewDelegate>
+{
+    AVAudioPlayer *volumeOverridePlayer;
+}
 
 // delegate and datasources to feed scroll view. this view only maintains a weak reference to these
 @property (nonatomic, assign) id <V8HorizontalPickerViewDataSource> dataSource;
@@ -46,6 +51,12 @@ typedef enum {
 @property (nonatomic, retain) UIView *leftScrollEdgeView;
 @property (nonatomic, retain) UIView *rightScrollEdgeView;
 
+// Audio click player
+@property (retain, nonatomic) AVAudioPlayer *volumeOverridePlayer;
+@property (nonatomic) BOOL playSound;
+@property (nonatomic) float audioVolume;
+- (void)setPlayAudioWithPath:(NSURL *)audioFilePath withVolume:(float)volume;
+
 // padding for left/right scroll edge views
 @property (nonatomic, assign) CGFloat scrollEdgeViewPadding;
 
@@ -62,5 +73,7 @@ typedef enum {
 @property (nonatomic, assign) BOOL selectedElement;
 @property (nonatomic, retain) UIColor *selectedStateColor;
 @property (nonatomic, retain) UIColor *normalStateColor;
+@property (nonatomic, assign) AVAudioPlayer *audioPlayer;
+@property (nonatomic, assign) BOOL playSound;
 
 @end

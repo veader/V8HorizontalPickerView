@@ -69,6 +69,9 @@
 @synthesize selectionPoint, selectionIndicatorView, indicatorPosition;
 @synthesize leftEdgeView, rightEdgeView;
 @synthesize leftScrollEdgeView, rightScrollEdgeView, scrollEdgeViewPadding;
+@synthesize volumeOverridePlayer;
+@synthesize playSound;
+@synthesize audioVolume;
 
 #pragma mark - Init/Dealloc
 - (id)initWithFrame:(CGRect)frame {
@@ -98,6 +101,9 @@
 		scrollEdgeViewPadding = 0.0f;
 
 		self.autoresizesSubviews = YES;
+        
+        // Audio support
+        playSound = NO;
 	}
 	return self;
 }
@@ -123,6 +129,22 @@
 
 	[super dealloc];
 }
+
+
+#pragma mark - Audio Support
+
+- (void)setPlayAudioWithPath:(NSURL *)audioFilePath withVolume:(float)volume
+{
+    playSound = YES;
+    audioVolume = volume;
+    
+    volumeOverridePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioFilePath error:nil];
+    volumeOverridePlayer.numberOfLoops = 0;
+    [volumeOverridePlayer setVolume:0.0f];
+    
+    NSLog(@"SET PATH: path=%@, playSound=%d, volume=%f, player=%@", audioFilePath.absoluteString, playSound, volume, volumeOverridePlayer);
+}
+
 
 
 #pragma mark - LayoutSubViews
@@ -409,6 +431,11 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
 	scrollingBasedOnUserInteraction = YES;
+
+    if (playSound == YES)
+    {
+        [volumeOverridePlayer setVolume:audioVolume];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -489,6 +516,8 @@
 	elementLabel.backgroundColor = self.backgroundColor;
 	elementLabel.text            = title;
 	elementLabel.font            = self.elementFont;
+    elementLabel.audioPlayer        = volumeOverridePlayer;
+    elementLabel.playSound          = playSound;
 
 	elementLabel.normalStateColor   = self.textColor;
 	elementLabel.selectedStateColor = self.selectedTextColor;
@@ -737,6 +766,11 @@
 			[self scrollToElement:elementIndex animated:YES];
 		}
 	}
+
+    if (playSound == YES)
+    {
+        [volumeOverridePlayer setVolume:audioVolume];
+    }
 }
 
 @end
@@ -747,12 +781,16 @@
 #pragma mark - Picker Label Implementation
 @implementation V8HorizontalPickerLabel : UILabel
 
-@synthesize selectedElement, selectedStateColor, normalStateColor;
+@synthesize selectedElement, selectedStateColor, normalStateColor, audioPlayer, playSound;
 
 - (void)setSelectedElement:(BOOL)selected {
 	if (selectedElement != selected) {
 		if (selected) {
 			self.textColor = self.selectedStateColor;
+            if (playSound == YES)
+            {
+                [audioPlayer play];
+            }
 		} else {
 			self.textColor = self.normalStateColor;
 		}
