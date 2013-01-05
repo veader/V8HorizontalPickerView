@@ -175,6 +175,8 @@
 
 	// add any views that have become visible
 	UIView *view = nil;
+	CGRect tmpViewFrame = CGRectZero;
+	CGPoint itemViewCenter = CGPointZero;
 	for (int i = firstNeededElement; i <= lastNeededElement; i++) {
 		view = nil; // paranoia
 		view = [_scrollView viewWithTag:[self tagForElementAtIndex:i]];
@@ -185,6 +187,10 @@
 					view = [self labelForForElementAtIndex:i withTitle:title];
 				} else if (self.delegate && [self.delegate respondsToSelector:viewForElementSelector]) {
 					view = [self.delegate horizontalPickerView:self viewForElementAtIndex:i];
+					// move view's center to the center of item's ideal frame
+					tmpViewFrame = [self frameForElementAtIndex:i];
+					itemViewCenter = CGPointMake((tmpViewFrame.size.width / 2.0f) + tmpViewFrame.origin.x, (tmpViewFrame.size.height / 2.0f));
+					view.center = itemViewCenter;
 				}
 
 				if (view) {
