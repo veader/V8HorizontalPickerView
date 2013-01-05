@@ -16,14 +16,23 @@
 @synthesize infoLabel;
 
 #pragma mark - iVars
-NSMutableArray *titleArray;
+NSMutableArray *imageArray;
 int indexCount;
 
 #pragma mark - Init/Dealloc
 - (id)init {
 	self = [super init];
 	if (self) {
-		titleArray = [[NSMutableArray arrayWithObjects:@"All", @"Today", @"Thursday", @"Wednesday", @"Tuesday", @"Monday", nil] retain];
+		imageArray = [[NSMutableArray array] retain];
+		UIImage *img = nil;
+		img = [UIImage imageNamed:@"airplane"];
+		[imageArray addObject:img];
+		img = [UIImage imageNamed:@"loopback"];
+		[imageArray addObject:img];
+		img = [UIImage imageNamed:@"shuffle"];
+		[imageArray addObject:img];
+		img = [UIImage imageNamed:@"squiggle"];
+		[imageArray addObject:img];
 		indexCount = 0;
 	}
 	return self;
@@ -31,7 +40,7 @@ int indexCount;
 
 - (void)dealloc {
 	[pickerView   release];
-	[titleArray   release];
+	[imageArray   release];
 	[nextButton   release];
 	[reloadButton release];
 	[infoLabel    release];
@@ -198,7 +207,7 @@ int indexCount;
 - (void)nextButtonTapped:(id)sender {
 	[pickerView scrollToElement:indexCount animated:NO];
 	indexCount += 1;
-	if ([titleArray count] <= indexCount) {
+	if ([imageArray count] <= indexCount) {
 		indexCount = 0;
 	}
 	[nextButton	setTitle:[NSString stringWithFormat:@"Center Element %d", indexCount]
@@ -207,8 +216,8 @@ int indexCount;
 
 - (void)reloadButtonTapped:(id)sender {
 	// change our title array so we can see a change
-	if ([titleArray count] > 1) {
-		[titleArray removeLastObject];
+	if ([imageArray count] > 1) {
+		[imageArray removeLastObject];
 	}
 
 	[pickerView reloadData];
@@ -216,21 +225,17 @@ int indexCount;
 
 #pragma mark - HorizontalPickerView DataSource Methods
 - (NSInteger)numberOfElementsInHorizontalPickerView:(V8HorizontalPickerView *)picker {
-	return [titleArray count];
+	return [imageArray count];
 }
 
 #pragma mark - HorizontalPickerView Delegate Methods
-- (NSString *)horizontalPickerView:(V8HorizontalPickerView *)picker titleForElementAtIndex:(NSInteger)index {
-	return [titleArray objectAtIndex:index];
+- (UIView *)horizontalPickerView:(V8HorizontalPickerView *)picker viewForElementAtIndex:(NSInteger)index {
+	return [[UIImageView alloc] initWithImage:[imageArray objectAtIndex:index]];
 }
 
 - (NSInteger) horizontalPickerView:(V8HorizontalPickerView *)picker widthForElementAtIndex:(NSInteger)index {
-	CGSize constrainedSize = CGSizeMake(MAXFLOAT, MAXFLOAT);
-	NSString *text = [titleArray objectAtIndex:index];
-	CGSize textSize = [text sizeWithFont:[UIFont boldSystemFontOfSize:14.0f]
-					   constrainedToSize:constrainedSize
-						   lineBreakMode:UILineBreakModeWordWrap];
-	return textSize.width + 40.0f; // 20px padding on each side
+	UIImage *image = [imageArray objectAtIndex:index];
+	return image.size.width + 40.0f; // 20px padding on each side
 }
 
 - (void)horizontalPickerView:(V8HorizontalPickerView *)picker didSelectElementAtIndex:(NSInteger)index {
