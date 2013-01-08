@@ -95,6 +95,8 @@ int indexCount;
 //	pickerView.rightScrollEdgeView = rightImage;
 //	[rightImage release];
 
+    [pickerView setPlayAudioWithPath:[NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"pickerClick" ofType:@"wav"]] withVolume:0.07f];
+    
 	[self.view addSubview:pickerView];
 
 	self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
