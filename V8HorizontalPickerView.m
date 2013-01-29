@@ -73,7 +73,7 @@
 #pragma mark - Init/Dealloc
 - (id)initWithFrame:(CGRect)frame {
 	if ((self = [super initWithFrame:frame])) {
-		elementWidths = [[NSMutableArray array] retain];
+		elementWidths = [NSMutableArray array];
 
 		[self addScrollView];
 
@@ -101,29 +101,6 @@
 	}
 	return self;
 }
-
-- (void)dealloc {
-	_scrollView.delegate = nil;
-
-	[_scrollView    release];
-	[elementWidths  release];
-	[elementFont    release];
-	[leftEdgeView   release];
-	[rightEdgeView  release];
-
-	[leftScrollEdgeView  release];
-	[rightScrollEdgeView release];
-
-	[textColor          release];
-	[selectedTextColor  release];
-
-	if (selectionIndicatorView) {
-		[selectionIndicatorView release];
-	}
-
-	[super dealloc];
-}
-
 
 #pragma mark - LayoutSubViews
 - (void)layoutSubviews {
@@ -278,9 +255,8 @@
 	if (selectionIndicatorView != indicatorView) {
 		if (selectionIndicatorView) {
 			[selectionIndicatorView removeFromSuperview];
-			[selectionIndicatorView release];
 		}
-		selectionIndicatorView = [indicatorView retain];
+		selectionIndicatorView = indicatorView;
 
 		[self drawPositionIndicator];
 	}
@@ -290,9 +266,8 @@
 	if (leftEdgeView != leftView) {
 		if (leftEdgeView) {
 			[leftEdgeView removeFromSuperview];
-			[leftEdgeView release];
 		}
-		leftEdgeView = [leftView retain];
+		leftEdgeView = leftView;
 
 		CGRect tmpFrame = leftEdgeView.frame;
 		tmpFrame.origin.x = 0.0f;
@@ -305,10 +280,8 @@
 - (void)setRightEdgeView:(UIView *)rightView {
 	if (rightEdgeView != rightView) {
 		if (rightEdgeView) {
-			[rightEdgeView removeFromSuperview];
-			[rightEdgeView release];
-		}
-		rightEdgeView = [rightView retain];
+			[rightEdgeView removeFromSuperview];		}
+		rightEdgeView = rightView;
 
 		CGRect tmpFrame = rightEdgeView.frame;
 		tmpFrame.origin.x = self.frame.size.width - tmpFrame.size.width;
@@ -322,9 +295,8 @@
 	if (leftScrollEdgeView != leftView) {
 		if (leftScrollEdgeView) {
 			[leftScrollEdgeView removeFromSuperview];
-			[leftScrollEdgeView release];
 		}
-		leftScrollEdgeView = [leftView retain];
+		leftScrollEdgeView = leftView;
 
 		scrollSizeHasBeenSet = NO;
 		[self setNeedsLayout];
@@ -335,9 +307,8 @@
 	if (rightScrollEdgeView != rightView) {
 		if (rightScrollEdgeView) {
 			[rightScrollEdgeView removeFromSuperview];
-			[rightScrollEdgeView release];
 		}
-		rightScrollEdgeView = [rightView retain];
+		rightScrollEdgeView = rightView;
 
 		scrollSizeHasBeenSet = NO;
 		[self setNeedsLayout];
@@ -456,7 +427,6 @@
 
 		UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTapped:)];
 		[_scrollView addGestureRecognizer:tapRecognizer];
-		[tapRecognizer release];
 
 		[self addSubview:_scrollView];
 	}
@@ -503,7 +473,7 @@
 	int currentIndex = [self nearestElementToCenter];
 	elementLabel.selectedElement = (currentSelectedIndex == index) && (currentIndex == currentSelectedIndex);
 
-	return [elementLabel autorelease];
+	return elementLabel;
 }
 
 
@@ -769,8 +739,7 @@
 
 - (void)setNormalStateColor:(UIColor *)color {
 	if (normalStateColor != color) {
-		[normalStateColor release];
-		normalStateColor = [color retain];
+		normalStateColor = color;
 		self.textColor = normalStateColor;
 		[self setNeedsLayout];
 	}
