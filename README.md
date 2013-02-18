@@ -2,20 +2,18 @@ V8HorizontalPickerView
 ======================
 by Shawn Veader (@veader) of [V8 Logic](http://v8logic.com) / [V8 Labs, LLC](http://v8labs.com)
 
-Original design by [Buck Sharp](http://bucksharp.tumblr.com/), the designer on f/stats.
+Original design concept by [Buck Sharp](http://bucksharp.tumblr.com/), the designer on [f/stats](http://fstatsapp.com).
 
 
 How to use V8HorizontalPickerView
 ---------------------------------
 Add the `V8HorizontalPickerView` header and implementation files (.h and .m)
 along with the protocol header file to your app source and include them in
-your project. (I like to keep them in their own group to keep things tidy.)
+your project.
 
 Implement the necessary delegate and data source protocol methods.
 Instantiate and add the picker view to your view and wire up the delegate
 and data source. That's it!
-
-I modeled this after a lot of the standard Apple controls such as `UITableView`.
 
 Delegate Protocol
 ----------------
@@ -38,7 +36,7 @@ If you are going to implement the
 
     -horizontalPickerView:viewForElementAtIndex:
 
-data source method, make sure your view conforms to the 
+data source method, make sure your view conforms to the
 `V8HorizontalPickerElementState` protocol.
 
 License
