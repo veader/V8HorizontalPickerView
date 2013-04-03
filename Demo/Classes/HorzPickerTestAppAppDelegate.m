@@ -12,18 +12,10 @@
 @implementation HorzPickerTestAppAppDelegate
 
 @synthesize window;
-@synthesize testView;
-
 
 #pragma mark - Application lifecycle
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    
 	// Override point for customization after application launch.
-	testView = [[TestViewController alloc] init];
-	[window addSubview:testView.view];
-
-	[window makeKeyAndVisible];
-
     return YES;
 }
 
@@ -42,8 +34,7 @@
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application { }
 
 - (void)dealloc {
-	[window   release];
-	[testView release];
+	//[window release];
 	[super dealloc];
 }
 

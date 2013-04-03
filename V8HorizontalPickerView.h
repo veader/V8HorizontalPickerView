@@ -19,8 +19,8 @@ typedef enum {
 @interface V8HorizontalPickerView : UIView <UIScrollViewDelegate> { }
 
 // delegate and datasources to feed scroll view. this view only maintains a weak reference to these
-@property (nonatomic, assign) id <V8HorizontalPickerViewDataSource> dataSource;
-@property (nonatomic, assign) id <V8HorizontalPickerViewDelegate> delegate;
+@property (nonatomic, assign) IBOutlet id <V8HorizontalPickerViewDataSource> dataSource;
+@property (nonatomic, assign) IBOutlet id <V8HorizontalPickerViewDelegate> delegate;
 
 @property (nonatomic, readonly) NSInteger numberOfElements;
 @property (nonatomic, readonly) NSInteger currentSelectedIndex;

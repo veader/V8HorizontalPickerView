@@ -23,8 +23,14 @@ int indexCount;
 - (id)init {
 	self = [super init];
 	if (self) {
-		titleArray = [[NSMutableArray arrayWithObjects:@"All", @"Today", @"Thursday", @"Wednesday", @"Tuesday", @"Monday", nil] retain];
-		indexCount = 0;
+	}
+	return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	self = [super initWithCoder:aDecoder];
+	if (self) {
+		//
 	}
 	return self;
 }
@@ -48,32 +54,19 @@ int indexCount;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	self.view.backgroundColor = [UIColor blackColor];
-	CGFloat margin = 40.0f;
-	CGFloat width = (self.view.bounds.size.width - (margin * 2.0f));
-	CGFloat pickerHeight = 40.0f;
-	CGFloat x = margin;
-	CGFloat y = 150.0f;
-	CGFloat spacing = 25.0f;
-	CGRect tmpFrame = CGRectMake(x, y, width, pickerHeight);
+	titleArray = [[NSMutableArray arrayWithObjects:@"All", @"Today", @"Thursday", @"Wednesday", @"Tuesday", @"Monday", nil] retain];
+	indexCount = 0;
 
-//	CGFloat width = 200.0f;
-//	CGFloat x = (self.view.frame.size.width - width) / 2.0f;
-//	CGRect tmpFrame = CGRectMake(x, 150.0f, width, 40.0f);
-
-	pickerView = [[V8HorizontalPickerView alloc] initWithFrame:tmpFrame];
-	pickerView.backgroundColor   = [UIColor darkGrayColor];
-	pickerView.selectedTextColor = [UIColor whiteColor];
-	pickerView.textColor   = [UIColor grayColor];
-	pickerView.delegate    = self;
-	pickerView.dataSource  = self;
-	pickerView.elementFont = [UIFont boldSystemFontOfSize:14.0f];
-	pickerView.selectionPoint = CGPointMake(60, 0);
+	self.pickerView.backgroundColor   = [UIColor darkGrayColor];
+	self.pickerView.selectedTextColor = [UIColor whiteColor];
+	self.pickerView.textColor   = [UIColor grayColor];
+	self.pickerView.elementFont = [UIFont boldSystemFontOfSize:14.0f];
+	self.pickerView.selectionPoint = CGPointMake(60, 0);
 
 	// add carat or other view to indicate selected element
 	UIImageView *indicator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"indicator"]];
-	pickerView.selectionIndicatorView = indicator;
-//	pickerView.indicatorPosition = V8HorizontalPickerIndicatorTop; // specify indicator's location
+	self.pickerView.selectionIndicatorView = indicator;
+//	self.pickerView.indicatorPosition = V8HorizontalPickerIndicatorTop; // specify indicator's location
 	[indicator release];
 
 	// add gradient images to left and right of view if desired
@@ -95,40 +88,14 @@ int indexCount;
 //	pickerView.rightScrollEdgeView = rightImage;
 //	[rightImage release];
 
-	[self.view addSubview:pickerView];
-
-	self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	y = y + tmpFrame.size.height + spacing;
-	tmpFrame = CGRectMake(x, y, width, 50.0f);
-	nextButton.frame = tmpFrame;
-	[nextButton addTarget:self action:@selector(nextButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-	[nextButton	setTitle:@"Center Element 0" forState:UIControlStateNormal];
-	nextButton.titleLabel.textColor = [UIColor blackColor];
-	[self.view addSubview:nextButton];
-
-	self.reloadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	y = y + tmpFrame.size.height + spacing;
-	tmpFrame = CGRectMake(x, y, width, 50.0f);
-	reloadButton.frame = tmpFrame;
-	[reloadButton addTarget:self action:@selector(reloadButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-	[reloadButton setTitle:@"Reload Data" forState:UIControlStateNormal];
-	[self.view addSubview:reloadButton];
-
-	y = y + tmpFrame.size.height + spacing;
-	tmpFrame = CGRectMake(x, y, width, 50.0f);
-	infoLabel = [[UILabel alloc] initWithFrame:tmpFrame];
-	infoLabel.backgroundColor = [UIColor blackColor];
-	infoLabel.textColor = [UIColor whiteColor];
-	infoLabel.textAlignment = UITextAlignmentCenter;
-	[self.view addSubview:infoLabel];
 }
 
 - (void)viewDidUnload {
 	[super viewDidUnload];
 	// Release any retained subviews of the main view.
-	self.pickerView = nil;
-	self.nextButton = nil;
-	self.infoLabel  = nil;
+//	self.pickerView = nil;
+//	self.nextButton = nil;
+//	self.infoLabel  = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
