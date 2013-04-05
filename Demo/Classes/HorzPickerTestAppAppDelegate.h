@@ -10,8 +10,8 @@
 
 @interface HorzPickerTestAppAppDelegate : NSObject <UIApplicationDelegate> { }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) TestViewController *testView;
+@property (nonatomic, strong) IBOutlet UIWindow *window;
+@property (nonatomic, strong) IBOutlet TestViewController *testView;
 
 @end
 
