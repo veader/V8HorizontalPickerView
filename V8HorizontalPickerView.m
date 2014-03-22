@@ -123,7 +123,7 @@
 				BOOL isSelected = (self.currentSelectedIndex == [self indexForElement:view]);
 				if (isSelected) {
 					// if this view is set to be selected, make sure it is over the selection point
-					int currentIndex = [self nearestElementToCenter];
+					NSInteger currentIndex = [self nearestElementToCenter];
 					isSelected = (currentIndex == self.currentSelectedIndex);
 				}
 				// casting to V8HorizontalPickerLabel so we can call this without all the NSInvocation jazz
@@ -134,14 +134,14 @@
 
 	// find needed elements by looking at left and right edges of frame
 	CGPoint offset = _scrollView.contentOffset;
-	int firstNeededElement = [self nearestElementToPoint:CGPointMake(offset.x, 0.0f)];
-	int lastNeededElement  = [self nearestElementToPoint:CGPointMake(offset.x + visibleBounds.size.width, 0.0f)];
+	NSInteger firstNeededElement = [self nearestElementToPoint:CGPointMake(offset.x, 0.0f)];
+	NSInteger lastNeededElement  = [self nearestElementToPoint:CGPointMake(offset.x + visibleBounds.size.width, 0.0f)];
 
 	// add any views that have become visible
 	UIView *view = nil;
 	CGRect tmpViewFrame = CGRectZero;
 	CGPoint itemViewCenter = CGPointZero;
-	for (int i = firstNeededElement; i <= lastNeededElement; i++) {
+	for (NSInteger i = firstNeededElement; i <= lastNeededElement; i++) {
 		view = nil; // paranoia
 		view = [_scrollView viewWithTag:[self tagForElementAtIndex:i]];
 		if (!view) {
@@ -449,7 +449,7 @@
 	CGRect labelFrame     = [self frameForElementAtIndex:index];
 	V8HorizontalPickerLabel *elementLabel = [[V8HorizontalPickerLabel alloc] initWithFrame:labelFrame];
 
-	elementLabel.textAlignment   = UITextAlignmentCenter;
+	elementLabel.textAlignment   = NSTextAlignmentCenter;
 	elementLabel.backgroundColor = self.backgroundColor;
 	elementLabel.text            = title;
 	elementLabel.font            = self.elementFont;
@@ -458,7 +458,7 @@
 	elementLabel.selectedStateColor = self.selectedTextColor;
 
 	// show selected status if this element is the selected one and is currently over selectionPoint
-	int currentIndex = [self nearestElementToCenter];
+	NSInteger currentIndex = [self nearestElementToCenter];
 	elementLabel.selectedElement = (self.currentSelectedIndex == index) && (currentIndex == self.currentSelectedIndex);
 
 	return elementLabel;
