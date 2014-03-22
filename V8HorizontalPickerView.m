@@ -24,8 +24,8 @@
 @property (nonatomic, assign) BOOL scrollingBasedOnUserInteraction;
 
 // keep track of which elements are visible for tiling
-@property (nonatomic, assign) int firstVisibleElement;
-@property (nonatomic, assign) int lastVisibleElement;
+@property (nonatomic, assign) NSInteger firstVisibleElement;
+@property (nonatomic, assign) NSInteger lastVisibleElement;
 
 @end
 
