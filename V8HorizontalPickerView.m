@@ -228,7 +228,10 @@
 - (void)setBackgroundColor:(UIColor *)newColor {
 	[super setBackgroundColor:newColor];
 	_scrollView.backgroundColor = newColor;
-	// TODO: set all subviews as well?
+	
+    for (UIView *view in [_scrollView subviews]) {
+        view.backgroundColor = newColor;
+    }
 }
 
 - (void)setIndicatorPosition:(V8HorizontalPickerIndicatorPosition)position {
