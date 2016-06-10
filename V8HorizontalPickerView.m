@@ -449,7 +449,7 @@
 	CGRect labelFrame     = [self frameForElementAtIndex:index];
 	V8HorizontalPickerLabel *elementLabel = [[V8HorizontalPickerLabel alloc] initWithFrame:labelFrame];
 
-	elementLabel.textAlignment   = UITextAlignmentCenter;
+	elementLabel.textAlignment   = NSTextAlignmentCenter;
 	elementLabel.backgroundColor = self.backgroundColor;
 	elementLabel.text            = title;
 	elementLabel.font            = self.elementFont;

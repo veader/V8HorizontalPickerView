@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		7608BC5F17D1A5750036AB17 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7608BC5E17D1A5750036AB17 /* MainStoryboard.storyboard */; };
 		765B8AB5124846E300BDE37E /* V8HorizontalPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 765B8AB4124846E300BDE37E /* V8HorizontalPickerView.m */; };
 		769A66EB170E5EF100D09DB4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 769A66E8170E5EF100D09DB4 /* Default-568h@2x.png */; };
 		769A66EC170E5EF100D09DB4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 769A66E9170E5EF100D09DB4 /* Default.png */; };
@@ -40,6 +41,7 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* HorzPickerTestApp_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorzPickerTestApp_Prefix.pch; sourceTree = "<group>"; };
+		7608BC5E17D1A5750036AB17 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		765B8AB3124846E300BDE37E /* V8HorizontalPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = V8HorizontalPickerView.h; path = ../V8HorizontalPickerView.h; sourceTree = SOURCE_ROOT; };
 		765B8AB4124846E300BDE37E /* V8HorizontalPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = V8HorizontalPickerView.m; path = ../V8HorizontalPickerView.m; sourceTree = SOURCE_ROOT; };
 		769A66E8170E5EF100D09DB4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				76C20237124A5282000F0F70 /* Images */,
+				7608BC5E17D1A5750036AB17 /* MainStoryboard.storyboard */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* HorzPickerTestApp-Info.plist */,
 			);
@@ -225,6 +228,7 @@
 				76C85CC5124C3367006E4393 /* left_fade.png in Resources */,
 				76C85CC6124C3367006E4393 /* left_fade@2x.png in Resources */,
 				76C85CC7124C3367006E4393 /* right_fade.png in Resources */,
+				7608BC5F17D1A5750036AB17 /* MainStoryboard.storyboard in Resources */,
 				76C85CC8124C3367006E4393 /* right_fade@2x.png in Resources */,
 				76E61B1313BCFD590062C954 /* loopback.png in Resources */,
 				76E61B1413BCFD590062C954 /* loopback@2x.png in Resources */,
@@ -262,7 +266,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HorzPickerTestApp_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "HorzPickerTestApp-Info.plist";
 				PRODUCT_NAME = HorzPickerTestApp;
 			};
@@ -275,7 +279,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HorzPickerTestApp_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "HorzPickerTestApp-Info.plist";
 				PRODUCT_NAME = HorzPickerTestApp;
 				VALIDATE_PRODUCT = YES;
@@ -291,7 +295,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				V8TESTINGUI = YES;
 			};
@@ -307,7 +311,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HorzPickerTestApp_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "V8TESTINGUI=1";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "HorzPickerTestApp-Info.plist";
 				PRODUCT_NAME = HorzPickerTestApp;
 			};
@@ -322,7 +326,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -336,7 +340,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 			};
